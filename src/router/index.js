@@ -30,29 +30,19 @@ const routes = [
         component: () => import('../views/front/CartView.vue')
       },
       {
-        path: 'orderComplete',
-        component: () => import('../views/front/OrderCompletedView.vue')
-      },
-      {
         path: 'orderInformation',
         component: () => import('../views/front/OrderInformationView.vue')
       },
       {
         path: 'payment',
         component: () => import('../views/front/PaymentView.vue')
+      },
+      {
+        path: 'orderComplete',
+        component: () => import('../views/front/OrderCompletedView.vue')
       }
     ]
   }
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: () => import('../views/HomeView.vue')
-  // },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   component: () => import('../views/AboutView.vue')
-  // }
 ]
 
 const router = createRouter({
