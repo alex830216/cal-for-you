@@ -3,7 +3,13 @@
 </template>
 
 <script>
-export default {}
+import { RouterView } from 'vue-router'
+
+export default {
+  components: {
+    RouterView
+  }
+}
 </script>
 
 <style lang="scss">
