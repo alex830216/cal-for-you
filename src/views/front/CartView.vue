@@ -94,11 +94,9 @@
   </section>
 
   <section class="container pb-3">
-    <div class="d-flex justify-content-end align-items-center p-3 bg-primary-subtle">
-      <div>
-        <RouterLink to="/products" class="btn btn-light me-3">繼續購物</RouterLink>
-        <RouterLink to="/orderInformation" class="btn btn-primary">結帳({{ carts.length }})</RouterLink>
-      </div>
+    <div class="d-flex justify-content-end align-items-center p-3 bg-primary-exlight">
+      <RouterLink to="/products" class="btn btn-light me-3">繼續購物</RouterLink>
+      <RouterLink to="/orderInformation" class="btn btn-primary">結帳({{ carts.length }})</RouterLink>
     </div>
   </section>
 </template>
