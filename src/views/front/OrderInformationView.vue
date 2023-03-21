@@ -202,12 +202,13 @@ export default {
     },
     createOrder () {
       const data = this.form
-      this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/order`, { data }).then(() => {
+      this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/order`, { data }).then((res) => {
         // 清除form資料，veevalidate提供的方法
         this.$refs.form.resetForm()
         this.form.message = ''
         this.getCart()
-        this.$router.push('/payment')
+        const id = res.data.orderId
+        this.$router.push({ name: 'payment', query: { id } })
       })
         .catch(err => {
           alert(err.response.data.message)
