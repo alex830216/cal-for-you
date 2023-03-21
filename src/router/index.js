@@ -35,11 +35,31 @@ const routes = [
       },
       {
         path: 'payment',
+        name: 'payment',
         component: () => import('../views/front/PaymentView.vue')
       },
       {
-        path: 'orderComplete',
+        path: 'orderCompleted',
+        name: 'orderCompleted',
         component: () => import('../views/front/OrderCompletedView.vue')
+      },
+      {
+        path: 'login',
+        component: () => import('../views/front/LoginView.vue')
+      }
+    ]
+  },
+  {
+    path: '/admin',
+    component: () => import('../views/DashboardView.vue'),
+    children: [
+      {
+        path: 'orders',
+        component: () => import('../views/admin/AdminOrders.vue')
+      },
+      {
+        path: 'products',
+        component: () => import('../views/admin/AdminProducts.vue')
       }
     ]
   }
