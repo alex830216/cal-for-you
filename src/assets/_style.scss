@@ -1,0 +1,56 @@
+.object-cover {
+  object-fit: cover;
+}
+
+.banner::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.concept::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+// 改寫到 inline-style
+.line-link {
+  color: #090
+}
+
+.line-link:hover {
+  color: #070
+}
+
+// 改寫到 inline-style
+.github-link {
+  color: #555
+}
+
+.github-link:hover {
+  color: #333
+}
+
+// 改寫到 inline-style
+.line {
+  height: 2px;
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  margin-top: -9px;
+  position: relative;
+  z-index: 1;
+}
