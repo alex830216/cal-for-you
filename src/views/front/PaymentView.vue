@@ -33,9 +33,9 @@
     </div>
   </section>
 
-  <section class="container py-3 d-flex justify-content-center bg-primary-exlight">
+  <section class="container p-5 d-flex justify-content-center bg-primary-exlight">
     <div class="w-35">
-      <h3 class="pb-3 text-center">
+      <h3 class="pb-4 text-center">
         付款資料
       </h3>
       <VForm class="pb-4" ref="form" v-slot="{ errors, meta }" @submit="createPayment">
@@ -86,7 +86,7 @@
           ></VField>
           <ErrorMessage name="安全碼" class="invalid-feedback"></ErrorMessage>
         </div>
-        <div class="mb-4 fw-bold fs-5">
+        <div class="pb-4 fw-bold fs-5">
           商品總金額${{ total }} 元
         </div>
         <div>
