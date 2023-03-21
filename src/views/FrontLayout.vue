@@ -43,8 +43,14 @@
 
   <footer class="bg-primary-dark text-primary-light py-3">
     <div class="container d-flex flex-column align-items-center justify-content-center text-center">
-      <div>僅個人作品使用，無任何商業用途 | <RouterLink to="/admin" class="nav-link text-primary-light">後台</RouterLink></div>
-      <div>Cal For You 幫你算 © 2023 ALL RIGHTS RESERVED | made by Alex <a href="https://github.com/alex830216" target="_blank" class="github-link"><i class="bi bi-github fs-3"></i></a></div>
+      <div>
+        僅個人作品使用，無任何商業用途 |
+        <RouterLink to="/admin" class="nav-link text-primary-light d-inline-block">後台</RouterLink>
+      </div>
+      <div>
+        Cal For You 幫你算 © 2023 ALL RIGHTS RESERVED |
+        made by Alex <a href="https://github.com/alex830216" target="_blank" class="github-link"><i class="bi bi-github fs-3"></i></a>
+      </div>
     </div>
   </footer>
 </template>
