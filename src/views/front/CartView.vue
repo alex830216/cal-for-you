@@ -96,7 +96,11 @@
   <section class="container pb-3">
     <div class="d-flex justify-content-end align-items-center p-3 bg-primary-exlight">
       <RouterLink to="/products" class="btn btn-light me-3">繼續購物</RouterLink>
-      <RouterLink to="/orderInformation" class="btn btn-primary">結帳({{ carts.length }})</RouterLink>
+      <RouterLink
+        :to="!carts.length ? '' : '/orderInformation'"
+        class="btn btn-primary">
+        結帳({{ carts.length }})
+      </RouterLink>
     </div>
   </section>
 </template>
@@ -111,7 +115,8 @@ export default {
   data () {
     return {
       cart: {},
-      loadingItem: ''
+      loadingItem: '',
+      disabled: true
     }
   },
   methods: {
