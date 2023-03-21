@@ -72,12 +72,10 @@
             <div class="row">
               <div class="mb-3 col-md-6">
                 <label for="origin_price" class="form-label">原價</label>
-                <!-- 確保原價的值為數字 -->
                 <input id="origin_price" type="number" min="0" class="form-control" placeholder="請輸入原價" v-model.number="innerProduct.origin_price">
               </div>
               <div class="mb-3 col-md-6">
                 <label for="price" class="form-label">售價</label>
-                <!-- 確保售價的值為數字 -->
                 <input id="price" type="number" min="0" class="form-control" placeholder="請輸入售價" v-model.number="innerProduct.price">
               </div>
             </div>
@@ -91,13 +89,21 @@
             <div class="mb-3">
               <label for="content" class="form-label">說明內容</label>
               <textarea id="description" type="text" class="form-control" placeholder="請輸入說明內容" v-model="innerProduct.content">
-                </textarea>
+              </textarea>
             </div>
             <div class="mb-3">
               <div class="form-check">
                 <input id="is_enabled" class="form-check-input" type="checkbox" :true-value="1" :false-value="0" v-model="innerProduct.is_enabled">
                 <label class="form-check-label" for="is_enabled">是否啟用</label>
               </div>
+            </div>
+            <div class="mb-3">
+              <label for="calorie" class="form-label">熱量</label>
+              <input id="calorie" type="number" min="0" class="form-control" placeholder="請輸入熱量" v-model.number="innerProduct.calorie">
+            </div>
+            <div class="mb-3">
+              <label for="protein" class="form-label">蛋白質</label>
+              <input id="protein" type="number" min="0" class="form-control" placeholder="請輸入蛋白質" v-model.number="innerProduct.protein">
             </div>
           </div>
         </div>

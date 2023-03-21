@@ -49,13 +49,6 @@
         </tr>
       </tbody>
     </table>
-    <!-- props -->
-    <!-- <pagination
-      :pages="page"
-      :get-products="getProducts"
-      >
-    </pagination> -->
-    <!-- emit -->
     <PaginationComponent
       :pages="page"
       @change-page="getProducts">
