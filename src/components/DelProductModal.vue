@@ -26,6 +26,5 @@
 <script>
 export default {
   props: ['tempProduct', 'delProduct']
-
 }
 </script>

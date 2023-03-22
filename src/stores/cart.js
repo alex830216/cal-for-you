@@ -23,7 +23,7 @@ const cartStore = defineStore('cart', {
     },
     // eslint-disable-next-line camelcase
     addToCart (product_id, qty = 1) {
-      // this.loadingItem = product_id
+      // eslint-disable-next-line camelcase
       const data = {
         data: {
           // eslint-disable-next-line camelcase
@@ -33,7 +33,6 @@ const cartStore = defineStore('cart', {
       }
       axios.post(`${VITE_URL}/v2/api/${VITE_PATH}/cart`, data).then(() => {
         this.getCart()
-        // this.loadingItem = ''
       })
     }
   }

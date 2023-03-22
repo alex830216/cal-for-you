@@ -42,7 +42,6 @@
         <div class="mb-3 text-danger">* 為必填</div>
         <div class="mb-3">
           <label for="creditAccount" class="form-label">信用卡帳號 <span class="text-danger">*</span></label>
-          <!-- 製做一個 input 欄位，當使用者輸入四個數字就自動加上 -，用 Vue 做 -->
           <VField
             id="creditAccount"
             name="信用卡帳號"
@@ -58,7 +57,6 @@
         </div>
         <div class="mb-3">
           <label for="validateDate" class="form-label">有效日期 <span class="text-danger">*</span></label>
-          <!-- 製做一個 input 欄位，當使用者輸入兩個數字就自動加上 /，用 Vue 做 -->
           <VField
             id="validateDate"
             name="有效日期"

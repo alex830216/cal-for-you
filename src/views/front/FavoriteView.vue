@@ -1,6 +1,7 @@
 <template>
 
   <section class="container pt-6 pb-5">
+    <h2 class="text-center">收藏清單</h2>
     <button type="button" class="btn btn-outline-primary mb-3" @click="removeAllFavorites">刪除所有收藏</button>
     <div class="row g-4">
       <template v-if="items">

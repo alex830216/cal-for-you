@@ -51,8 +51,6 @@
               </span>
               <span v-else>未付款</span>
             </label>
-            <!-- <span class="text-success" v-if="order.is_paid">已付款</span>
-            <span v-else>未付款</span> -->
           </td>
           <td>
             <div class="btn-group">

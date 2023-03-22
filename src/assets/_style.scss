@@ -1,3 +1,25 @@
+body {
+  font-family: "黑體-繁", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/* 將 footer 貼至頁面底端 */
+.app {
+  min-height: 100vh; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.content {
+  flex: 1; 
+}
+
+.footer {
+  height: 100px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+/* 將 footer 貼至頁面底端 */
+
 .object-cover {
   object-fit: cover;
 }
@@ -24,7 +46,6 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-// 改寫到 inline-style
 .line-link {
   color: #090
 }
@@ -33,7 +54,6 @@
   color: #070
 }
 
-// 改寫到 inline-style
 .github-link {
   color: #555
 }
@@ -42,7 +62,6 @@
   color: #333
 }
 
-// 改寫到 inline-style
 .line {
   height: 2px;
 }
@@ -53,4 +72,30 @@
   margin-top: -9px;
   position: relative;
   z-index: 1;
+}
+
+.overlay-link {
+  position: relative;
+  display: inline-block;
+}
+
+.overlay-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlay-link:hover::before {
+  opacity: 1;
+}
+
+.nav-link:hover {
+  transform: translateY(-3px);
+  transition: 0.3s
 }

@@ -27,7 +27,7 @@
         <div class="row g-4">
           <div v-for="product in products" :key="product.id" class="col-md-6 col-lg-4">
             <div class="card">
-              <RouterLink :to="`/product/${product.id}`" class="nav-link text-primary-light"><img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="產品圖片"></RouterLink>
+              <RouterLink :to="`/product/${product.id}`" class="nav-link text-primary-light overlay-link"><img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="產品圖片"></RouterLink>
               <div class="card-body text-center">
                 <h5 class="card-title fw-bold">{{ product.title }}</h5>
                 <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>

@@ -41,102 +41,104 @@
       講了這麼多，讓我們一起來算算看吧！
     </p>
   </section>
-  <section class="container pb-5 px-4 px-lg-7">
-    <h2>
-      BMR、TDEE、蛋白質計算機
-    </h2>
-    <form class="pb-4">
-      <div class="row align-items-center mb-3">
-        <div class="col-3 col-sm-auto me-5">
-          <label class="col-form-label">性別</label>
+  <section class="bg-primary-exlight">
+    <div class="container py-5 px-4 px-lg-7 bg-primary-exlight">
+      <h2>
+        BMR、TDEE、蛋白質計算機
+      </h2>
+      <form class="pb-4">
+        <div class="row align-items-center mb-3">
+          <div class="col-3 col-sm-auto me-5">
+            <label class="col-form-label">性別</label>
+          </div>
+          <div class="col-2 col-sm-auto form-check ms-1 me-3">
+            <input type="radio" name="sex" id="men" class="form-check-input" v-model="gender" checked>
+            <label class="form-check-label" for="men">
+              男
+            </label>
+          </div>
+          <div class="col-2 col-sm-auto form-check me-3">
+            <input type="radio" name="sex" id="women" class="form-check-input" v-model="gender">
+            <label class="form-check-label" for="women">
+              女
+            </label>
+          </div>
         </div>
-        <div class="col-2 col-sm-auto form-check ms-1 me-3">
-          <input type="radio" name="sex" id="men" class="form-check-input" v-model="gender" checked>
-          <label class="form-check-label" for="men">
-            男
-          </label>
+        <div class="row g-3 align-items-center mb-3">
+          <div class="col-auto me-5">
+            <label for="height" class="col-form-label">身高</label>
+          </div>
+          <div class="col-6 col-sm-2">
+            <input type="number" id="height" name="height" min="1" class="form-control" v-model.number="height" placeholder="170">
+          </div>
+          <div class="col-auto">
+            公分
+          </div>
         </div>
-        <div class="col-2 col-sm-auto form-check me-3">
-          <input type="radio" name="sex" id="women" class="form-check-input" v-model="gender">
-          <label class="form-check-label" for="women">
-            女
-          </label>
+        <div class="row g-3 align-items-center mb-3">
+          <div class="col-auto me-5">
+            <label for="weight" class="col-form-label">體重</label>
+          </div>
+          <div class="col-6 col-sm-2">
+            <input type="number" id="weight" name="weight" min="1" class="form-control" v-model.number="weight" placeholder="60">
+          </div>
+          <div class="col-auto">
+            公斤
+          </div>
         </div>
+        <div class="row g-3 align-items-center mb-3">
+          <div class="col-auto me-5">
+            <label for="age" class="col-form-label">年齡</label>
+          </div>
+          <div class="col-6 col-sm-2">
+            <input type="number" id="age" name="age" min="1" class="form-control" v-model.number="age" placeholder="20">
+          </div>
+          <div class="col-auto">
+            歲
+          </div>
+        </div>
+        <div class="row g-3 align-items-center mb-3">
+          <div class="col-auto me-3">
+            <label class="col-form-label">運動強度</label>
+          </div>
+          <div class="col-auto">
+            <select class="form-select" aria-label="exercise-frequency" v-model="activity">
+              <option value="init" selected disabled>請選擇</option>
+              <option value="sedentary">極輕度，久坐的辦公室工作，很少運動</option>
+              <option value="lightly">輕度，每週運動1-3次</option>
+              <option value="moderately">中度，每週運動3-5次</option>
+              <option value="very">高度，每週運動6-7次</option>
+              <option value="super">極高度，每天都有高強度運動或是體力勞動</option>
+            </select>
+          </div>
+        </div>
+        <div class="row g-3 align-items-center mb-3">
+          <div class="col-auto me-3">
+            <label class="col-form-label">理想體態</label>
+          </div>
+          <div class="col-auto">
+            <select class="form-select" aria-label="bulking-and-cutting" v-model="exercise">
+              <option value="init" selected disabled>請選擇</option>
+              <option value="no-exercise">平常無運動或是想減重</option>
+              <option value="exercise-same">有運動健身，想維持肌肉量</option>
+              <option value="exercise-more">有運動健身，想增加肌肉量</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <button type="button" @click="calculateAll" class="btn btn-primary">計算</button>
+        </div>
+      </form>
+      <div v-if="bmr && tdee && protein" class="fs-4">
+        您的每日基礎代謝率BMR： {{ bmr }} 大卡<br>
+        您的每日總熱量消耗TDEE： {{ tdee }} 大卡<br>
+        想減脂，建議攝取： {{ tdee * 0.8 }} ~ {{ tdee * 1.0 }} 大卡<br>
+        想增肌，建議攝取： {{ parseFloat(tdee) + 100 }} ~ {{ parseFloat(tdee) + 500 }} 大卡<br>
+        每日蛋白質需求： {{ protein }}
       </div>
-      <div class="row g-3 align-items-center mb-3">
-        <div class="col-auto me-5">
-          <label for="height" class="col-form-label">身高</label>
-        </div>
-        <div class="col-6 col-sm-2">
-          <input type="number" id="height" name="height" min="1" class="form-control" v-model.number="height">
-        </div>
-        <div class="col-auto">
-          公分
-        </div>
-      </div>
-      <div class="row g-3 align-items-center mb-3">
-        <div class="col-auto me-5">
-          <label for="weight" class="col-form-label">體重</label>
-        </div>
-        <div class="col-6 col-sm-2">
-          <input type="number" id="weight" name="weight" min="1" class="form-control" v-model.number="weight">
-        </div>
-        <div class="col-auto">
-          公斤
-        </div>
-      </div>
-      <div class="row g-3 align-items-center mb-3">
-        <div class="col-auto me-5">
-          <label for="age" class="col-form-label">年齡</label>
-        </div>
-        <div class="col-6 col-sm-2">
-          <input type="number" id="age" name="age" min="1" class="form-control" v-model.number="age">
-        </div>
-        <div class="col-auto">
-          歲
-        </div>
-      </div>
-      <div class="row g-3 align-items-center mb-3">
-        <div class="col-auto me-3">
-          <label class="col-form-label">運動強度</label>
-        </div>
-        <div class="col-auto">
-          <select class="form-select" aria-label="exercise-frequency" v-model="activity">
-            <option value="init" selected disabled>請選擇</option>
-            <option value="sedentary">極輕度，久坐的辦公室工作，很少運動</option>
-            <option value="lightly">輕度，每週運動1-3次</option>
-            <option value="moderately">中度，每週運動3-5次</option>
-            <option value="very">高度，每週運動6-7次</option>
-            <option value="super">極高度，每天都有高強度運動或是體力勞動</option>
-          </select>
-        </div>
-      </div>
-      <div class="row g-3 align-items-center mb-3">
-        <div class="col-auto me-3">
-          <label class="col-form-label">理想體態</label>
-        </div>
-        <div class="col-auto">
-          <select class="form-select" aria-label="bulking-and-cutting" v-model="exercise">
-            <option value="init" selected disabled>請選擇</option>
-            <option value="no-exercise">平常無運動或是想減重</option>
-            <option value="exercise-same">有運動健身，想維持肌肉量</option>
-            <option value="exercise-more">有運動健身，想增加肌肉量</option>
-          </select>
-        </div>
-      </div>
-      <div>
-        <button type="button" @click="calculateAll" class="btn btn-primary">計算</button>
-      </div>
-    </form>
-    <div v-if="bmr && tdee && protein" class="fs-4">
-      您的每日基礎代謝率BMR： {{ bmr }} 大卡<br>
-      您的每日總熱量消耗TDEE： {{ tdee }} 大卡<br>
-      想減脂，建議攝取： {{ tdee * 0.8 }} ~ {{ tdee * 1.0 }} 大卡<br>
-      想增肌，建議攝取： {{ parseFloat(tdee) + 100 }} ~ {{ parseFloat(tdee) + 500 }} 大卡<br>
-      每日蛋白質需求： {{ protein }}
     </div>
   </section>
-  <section class="container text-secondary px-4 px-lg-7">
+  <section class="container text-secondary px-4 px-lg-7 py-5">
     <h4>計算公式：</h4>
     <h5>BMR 使用哈里斯-本尼迪克特公式</h5>
     <ul>

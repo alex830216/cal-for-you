@@ -10,7 +10,6 @@
 
   <section class="container pb-7">
     <div class="row pt-2">
-      <!-- swipper + 多圖 -->
       <div class="col-12 col-lg-6 text-center">
         <img :src="product.imageUrl" alt="" class="object-cover" height="450">
       </div>
@@ -37,7 +36,6 @@
     </div>
   </section>
 
-  <!-- swipper + category 分類 -->
   <!-- <section class="container d-flex flex-column align-items-center justify-content-center text-center py-6">
     <h3 class="fw-bold pb-5">您可能也喜歡</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4">

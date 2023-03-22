@@ -1,5 +1,4 @@
 <template>
-  <!-- 做視差滾動 -->
   <section class="position-relative">
     <div class="banner d-flex align-items-center justify-content-center fs-1 text-white text-opacity-75"
     style="background: no-repeat top/cover url(https://images.unsplash.com/photo-1564836235910-c3055ca0f912?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80); width: 100%; height: 100vh;">
@@ -18,7 +17,7 @@
           <img src="https://images.unsplash.com/photo-1511909525232-61113c912358?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80" class="img-fluid" alt="diet" style="object-fit: cover;">
         </div>
         <div class="col-md-6 ">
-          <h2 class="fs-3">想減肥<br>但不知道該吃哪些食物</h2>
+          <h2 class="fs-2">想減肥<br>但不知道該吃哪些食物</h2>
         </div>
       </div>
       <div class="row flex-row-reverse align-items-center justify-content-center py-sm">
@@ -26,7 +25,7 @@
           <img src="https://images.unsplash.com/photo-1577563612200-a95560e2edec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="img-fluid" alt="obesity" style="object-fit: cover;">
         </div>
         <div class="col-md-6">
-          <h2 class="fs-3">想減脂<br>害怕攝取過多熱量</h2>
+          <h2 class="fs-2">想減脂<br>害怕攝取過多熱量</h2>
         </div>
       </div>
       <div class="row align-items-center justify-content-center py-sm">
@@ -34,13 +33,12 @@
           <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="img-fluid" alt="training" style="object-fit: cover;">
         </div>
         <div class="col-md-6">
-          <h2 class="fs-3">想增肌<br>這樣吃，蛋白質夠嗎</h2>
+          <h2 class="fs-2">想增肌<br>這樣吃，蛋白質夠嗎</h2>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 做視差滾動，使用 AOS -->
   <section class="position-relative">
     <div class="concept d-flex align-items-center justify-content-center text-primary-light"
     style="background: no-repeat center / cover url(https://images.unsplash.com/photo-1505744386214-51dba16a26fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1306&q=80); width: 100%; height: 300px;">
@@ -51,14 +49,13 @@
     </div>
   </section>
 
-  <!-- 使用輪播效果左右切換食物 -->
   <section class="bg-primary-exlight">
     <div class="container d-flex flex-column align-items-center justify-content-center text-center py-5">
       <h2 class="fw-bold pb-4">優選好食</h2>
       <div class="row g-4">
         <div v-for="product in products.slice(0, 3)" :key="product.id" class="col-md-6 col-lg-4">
           <div class="card">
-            <RouterLink :to="`/product/${product.id}`" class="nav-link text-primary-light"><img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="產品圖片"></RouterLink>
+            <RouterLink :to="`/product/${product.id}`" class="nav-link text-primary-light overlay-link"><img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="產品圖片"></RouterLink>
             <div class="card-body">
               <h5 class="card-title fw-bold">{{ product.title }}</h5>
               <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
