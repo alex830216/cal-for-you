@@ -85,10 +85,10 @@
           <td colspan="3" class="col-11 text-end">商品總金額</td>
           <td>${{ total }}</td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td colspan="3" class="text-end text-success">折扣價</td>
           <td class="text-success">${{ final_total }}</td>
-        </tr>
+        </tr> -->
       </tfoot>
     </table>
   </section>

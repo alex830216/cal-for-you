@@ -47,16 +47,16 @@
     </h2>
     <form class="pb-4">
       <div class="row align-items-center mb-3">
-        <div class="col-auto me-5">
+        <div class="col-3 col-sm-auto me-5">
           <label class="col-form-label">性別</label>
         </div>
-        <div class="col-auto form-check ms-1 me-3">
+        <div class="col-2 col-sm-auto form-check ms-1 me-3">
           <input type="radio" name="sex" id="men" class="form-check-input" v-model="gender" checked>
           <label class="form-check-label" for="men">
             男
           </label>
         </div>
-        <div class="col-auto form-check me-3">
+        <div class="col-2 col-sm-auto form-check me-3">
           <input type="radio" name="sex" id="women" class="form-check-input" v-model="gender">
           <label class="form-check-label" for="women">
             女
@@ -67,7 +67,7 @@
         <div class="col-auto me-5">
           <label for="height" class="col-form-label">身高</label>
         </div>
-        <div class="col-2">
+        <div class="col-6 col-sm-2">
           <input type="number" id="height" name="height" min="1" class="form-control" v-model.number="height">
         </div>
         <div class="col-auto">
@@ -78,7 +78,7 @@
         <div class="col-auto me-5">
           <label for="weight" class="col-form-label">體重</label>
         </div>
-        <div class="col-2">
+        <div class="col-6 col-sm-2">
           <input type="number" id="weight" name="weight" min="1" class="form-control" v-model.number="weight">
         </div>
         <div class="col-auto">
@@ -89,7 +89,7 @@
         <div class="col-auto me-5">
           <label for="age" class="col-form-label">年齡</label>
         </div>
-        <div class="col-2">
+        <div class="col-6 col-sm-2">
           <input type="number" id="age" name="age" min="1" class="form-control" v-model.number="age">
         </div>
         <div class="col-auto">

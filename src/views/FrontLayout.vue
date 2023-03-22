@@ -11,7 +11,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5">
+        <ul class="navbar-nav me-lg-auto mb-2 mb-lg-0 fs-5 text-center">
           <li class="nav-item">
             <RouterLink to="/" class="nav-link text-primary-light">首頁</RouterLink>
           </li>
@@ -22,14 +22,14 @@
             <RouterLink to="/products" class="nav-link text-primary-light">商品列表</RouterLink>
           </li>
         </ul>
-        <ul class="d-flex navbar-nav me-2 mb-2 mb-lg-0 fs-3">
+        <ul class="d-flex navbar-nav me-2 mb-2 mb-lg-0 fs-3 text-center">
           <li class="nav-item mx-1">
             <RouterLink to="/favorite" class="nav-link text-primary-light"><i class="bi bi-heart text-primary-light"></i></RouterLink>
           </li>
           <li class="nav-item mx-1">
             <RouterLink to="/cart" class="nav-link text-primary-light position-relative">
               <i class="bi bi-cart3"></i>
-              <span class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger fs-6">
+              <span class="position-absolute top-lg-25 start-lg-100 translate-middle badge rounded-pill bg-danger fs-6">
                 {{ carts.length }}
               </span>
             </RouterLink>

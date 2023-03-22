@@ -5,7 +5,7 @@
     style="background: no-repeat top/cover url(https://images.unsplash.com/photo-1564836235910-c3055ca0f912?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80); width: 100%; height: 100vh;">
       <div class="container position-absolute top-50 start-50 translate-middle text-center">
         <p class="fw-bold text-primary-light">不知道該吃多少嗎?<br>交給我們幫你算</p>
-        <a href="#" class="btn btn-primary-transparent btn-lg">幫你算</a>
+        <RouterLink to="/calculate" class="btn btn-primary-transparent btn-lg">幫你算</RouterLink>
       </div>
     </div>
   </section>
@@ -55,37 +55,15 @@
   <section class="bg-primary-exlight">
     <div class="container d-flex flex-column align-items-center justify-content-center text-center py-5">
       <h2 class="fw-bold pb-4">優選好食</h2>
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card h-100">
-            <a href="#"><img src="..." class="card-img-top" alt="..."></a>
+      <div class="row g-4">
+        <div v-for="product in products.slice(0, 3)" :key="product.id" class="col-md-6 col-lg-4">
+          <div class="card">
+            <RouterLink :to="`/product/${product.id}`" class="nav-link text-primary-light"><img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="產品圖片"></RouterLink>
             <div class="card-body">
-              <h5 class="card-title fw-bold">產品名稱</h5>
-              <p class="card-text">原價<br>現在只要</p>
-              <a href="#" class="btn btn-outline-primary mb-0 mb-md-2 mb-lg-0 me-2 me-md-0"><i class="bi bi-heart-fill"></i> 加入收藏</a>
-              <a href="#" class="btn btn-primary"><i class="bi bi-cart-fill"></i> 加入購物車</a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <a href="#"><img src="..." class="card-img-top" alt="..."></a>
-            <div class="card-body">
-              <h5 class="card-title fw-bold">產品名稱</h5>
-              <p class="card-text">原價<br>現在只要</p>
-              <a href="#" class="btn btn-outline-primary mb-0 mb-md-2 mb-lg-0"><i class="bi bi-heart-fill"></i> 加入收藏</a>
-              <a href="#" class="btn btn-primary"><i class="bi bi-cart-fill"></i> 加入購物車</a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <a href="#"><img src="..." class="card-img-top" alt="..."></a>
-            <div class="card-body">
-              <h5 class="card-title fw-bold">產品名稱</h5>
-              <p class="card-text">原價<br>現在只要</p>
-              <a href="#" class="btn btn-outline-primary mb-0 mb-md-2 mb-lg-0"><i class="bi bi-heart-fill"></i> 加入收藏</a>
-              <a href="#" class="btn btn-primary"><i class="bi bi-cart-fill"></i> 加入購物車</a>
+              <h5 class="card-title fw-bold">{{ product.title }}</h5>
+              <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
+              <p>熱量：{{ product.calorie }} 大卡</p>
+              <p>蛋白質：{{ product.protein }} 克</p>
             </div>
           </div>
         </div>
@@ -102,5 +80,29 @@
 </template>
 
 <script>
+import { RouterLink } from 'vue-router'
 
+const { VITE_URL, VITE_PATH } = import.meta.env
+
+export default {
+  data () {
+    return {
+      products: []
+    }
+  },
+  methods: {
+    getProducts () {
+      this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/products/all`)
+        .then(res => {
+          this.products = res.data.products
+        })
+    }
+  },
+  components: {
+    RouterLink
+  },
+  mounted () {
+    this.getProducts()
+  }
+}
 </script>

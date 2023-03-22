@@ -28,12 +28,12 @@
           <div v-for="product in products" :key="product.id" class="col-md-6 col-lg-4">
             <div class="card">
               <RouterLink :to="`/product/${product.id}`" class="nav-link text-primary-light"><img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="產品圖片"></RouterLink>
-              <div class="card-body">
+              <div class="card-body text-center">
                 <h5 class="card-title fw-bold">{{ product.title }}</h5>
                 <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
                 <p>熱量：{{ product.calorie }} 大卡</p>
                 <p>蛋白質：{{ product.protein }} 克</p>
-                <button type="button" class="btn btn-outline-primary mb-0 mb-md-2 mb-lg-0 me-2 me-md-0" @click="add(product)"><i class="bi bi-heart-fill"></i> 加入收藏</button>
+                <button type="button" class="btn btn-outline-primary mb-0 mb-md-2 mb-xxl-0 me-2 me-md-2" @click="add(product)"><i class="bi bi-heart-fill"></i> 加入收藏</button>
                 <button type="button" class="btn btn-primary" @click="addToCart(product.id, qty);showToast()">
                   <i class="bi bi-cart-fill"></i> 加入購物車
                 </button>
@@ -62,6 +62,7 @@ import PaginationComponent from '@/components/PaginationComponent.vue'
 import cartStore from '@/stores/cart'
 import favoritesStore from '@/stores/favorites'
 import ShowCartToast from '@/components/ShowCartToast.vue'
+
 const { VITE_URL, VITE_PATH } = import.meta.env
 
 export default {
