@@ -12,7 +12,7 @@
     <div class="row pt-2">
       <!-- swipper + 多圖 -->
       <div class="col-12 col-lg-6 text-center">
-        <img :src="product.imageUrl" alt="" class="object-cover" height="300">
+        <img :src="product.imageUrl" alt="" class="object-cover" height="400">
       </div>
       <div class="col-12 col-lg-6 px-5">
         <h2 class="text-center pb-3">{{ product.title }}</h2>
@@ -27,10 +27,11 @@
           </select>
         </div>
         <div class="pt-5 d-flex justify-content-between">
-          <a href="#" class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i> 加入收藏</a>
-          <button type="button" class="btn btn-primary" @click="addToCart(product.id, qty)">
+          <button type="button" class="btn btn-outline-primary" @click="addToFavorites"><i class="bi bi-heart-fill"></i> 加入收藏</button>
+          <button type="button" class="btn btn-primary" @click="addToCart(product.id, qty);showToast()">
             <i class="bi bi-cart-fill"></i> 加入購物車
           </button>
+          <ShowCartToast ref="showCartToast"></ShowCartToast>
         </div>
       </div>
     </div>
@@ -80,7 +81,10 @@
 <script>
 import { mapActions } from 'pinia'
 import { RouterLink } from 'vue-router'
-import cartStore from '../../stores/cart'
+import cartStore from '@/stores/cart'
+import favoritesStore from '@/stores/favorites'
+import ShowCartToast from '@/components/ShowCartToast.vue'
+
 const { VITE_URL, VITE_PATH } = import.meta.env
 
 export default {
@@ -98,10 +102,18 @@ export default {
           this.product = res.data.product
         })
     },
-    ...mapActions(cartStore, ['addToCart'])
+    showToast () {
+      this.$refs.showCartToast.showCartToast()
+    },
+    addToFavorites () {
+      this.add(this.product)
+    },
+    ...mapActions(cartStore, ['addToCart']),
+    ...mapActions(favoritesStore, ['add'])
   },
   components: {
-    RouterLink
+    RouterLink,
+    ShowCartToast
   },
   mounted () {
     this.getProduct()

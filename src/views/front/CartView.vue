@@ -34,13 +34,13 @@
   </section>
 
   <section class="container py-3">
-    <table class="table table-hover align-middle text-center">
+    <table class="table table-hover align-middle">
       <thead>
         <tr class="table-primary">
-          <th class="col-1">刪除</th>
+          <th class="col-2">刪除</th>
           <th class="col-7">品名</th>
           <th class="col-2">數量</th>
-          <th class="col-2">單價</th>
+          <th class="col-1">單價</th>
         </tr>
       </thead>
       <tbody>
@@ -58,7 +58,7 @@
               </button>
             </td>
             <td>
-              <img :src="item.product.imageUrl" class="object-cover" height="100" alt="">{{ item.product.title }}
+              <img :src="item.product.imageUrl" class="object-cover" height="120" alt="產品圖片">{{ item.product.title }}
             </td>
             <td>
               <div class="input-group input-group-sm">
@@ -94,20 +94,25 @@
   </section>
 
   <section class="container pb-3">
-    <div class="d-flex justify-content-end align-items-center p-3 bg-primary-exlight">
-      <RouterLink to="/products" class="btn btn-light me-3">繼續購物</RouterLink>
-      <RouterLink
-        :to="!carts.length ? '' : '/orderInformation'"
-        class="btn btn-primary">
-        結帳({{ carts.length }})
-      </RouterLink>
+    <div class="d-flex justify-content-between align-items-center p-3 bg-primary-exlight">
+      <div>
+        <button @click="deleteCarts" type="button" class="btn btn-outline-danger">刪除所有品項</button>
+      </div>
+      <div>
+        <RouterLink to="/products" class="btn btn-light me-3">繼續購物</RouterLink>
+        <RouterLink
+          :to="!carts.length ? '' : '/orderInformation'"
+          class="btn btn-primary">
+          結帳({{ carts.length }})
+        </RouterLink>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
 import { mapActions, mapState } from 'pinia'
-import cartStore from '../../stores/cart'
+import cartStore from '@/stores/cart'
 
 const { VITE_URL, VITE_PATH } = import.meta.env
 

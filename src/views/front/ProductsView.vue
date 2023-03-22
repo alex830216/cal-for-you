@@ -11,32 +11,32 @@
           <button @click="filterCategory($event.target.innerText)" type="button" class="btn btn-outline-primary">海鮮</button>
         </div>
         <div class="pb-3 pb-md-5 d-md-flex flex-md-column">
-          <button type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">熱量 (Cal)</button>
+          <button type="button" class="btn btn-primary me-1 me-md-0 mb-md-1 disabled">熱量 (Cal)</button>
           <button @click="filterCal($event.target.innerText)" type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">0 ~ 300</button>
           <button @click="filterCal($event.target.innerText)" type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">301 ~ 600</button>
           <button @click="filterCal($event.target.innerText)" type="button" class="btn btn-outline-primary">601<i class="bi bi-arrow-up"></i></button>
         </div>
         <div class="pb-3 pb-md-5 d-md-flex flex-md-column">
-          <button type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">蛋白質 (g)</button>
+          <button type="button" class="btn btn-primary me-1 me-md-0 mb-md-1" disabled>蛋白質 (g)</button>
           <button @click="filterProtein($event.target.innerText)" type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">0 ~ 10</button>
           <button @click="filterProtein($event.target.innerText)" type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">10.1 ~ 20</button>
           <button @click="filterProtein($event.target.innerText)" type="button" class="btn btn-outline-primary">20.1<i class="bi bi-arrow-up"></i></button>
         </div>
       </div>
       <div class="col-md-9">
-        <div class="d-flex align-items-center justify-content-center text-center py-5">
-          <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col" v-for="product in products" :key="product.id">
-              <div class="card h-100">
-                <RouterLink :to="`/product/${product.id}`" class="nav-link text-primary-light"><img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="..."></RouterLink>
-                <div class="card-body">
-                  <h5 class="card-title fw-bold">{{ product.title }}</h5>
-                  <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
-                  <p>熱量：{{ product.calorie }} 大卡</p>
-                  <p>蛋白質：{{ product.protein }} 克</p>
-                  <a href="#" class="btn btn-outline-primary mb-0 mb-md-2 mb-lg-0 me-2 me-md-0"><i class="bi bi-heart-fill"></i> 加入收藏</a>
-                  <a href="#" class="btn btn-primary"><i class="bi bi-cart-fill"></i> 加入購物車</a>
-                </div>
+        <div class="row g-4">
+          <div v-for="product in products" :key="product.id" class="col-md-6 col-lg-4">
+            <div class="card">
+              <RouterLink :to="`/product/${product.id}`" class="nav-link text-primary-light"><img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="產品圖片"></RouterLink>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">{{ product.title }}</h5>
+                <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
+                <p>熱量：{{ product.calorie }} 大卡</p>
+                <p>蛋白質：{{ product.protein }} 克</p>
+                <button type="button" class="btn btn-outline-primary mb-0 mb-md-2 mb-lg-0 me-2 me-md-0" @click="addToFavorites(product)"><i class="bi bi-heart-fill"></i> 加入收藏</button>
+                <button type="button" class="btn btn-primary" @click="addToCart(product.id, qty);showToast()">
+                  <i class="bi bi-cart-fill"></i> 加入購物車
+                </button>
               </div>
             </div>
           </div>
@@ -45,7 +45,9 @@
     </div>
   </section>
 
-  <section class="container d-flex justify-content-center">
+  <ShowCartToast ref="showCartToast"></ShowCartToast>
+
+  <section class="container d-flex justify-content-center pt-5">
     <PaginationComponent
       :pages="page"
       @change-page="getProducts">
@@ -54,8 +56,12 @@
 </template>
 
 <script>
+import { mapActions } from 'pinia'
 import { RouterLink } from 'vue-router'
 import PaginationComponent from '@/components/PaginationComponent.vue'
+import cartStore from '@/stores/cart'
+import favoritesStore from '@/stores/favorites'
+import ShowCartToast from '@/components/ShowCartToast.vue'
 const { VITE_URL, VITE_PATH } = import.meta.env
 
 export default {
@@ -116,11 +122,20 @@ export default {
             })
           }
         })
-    }
+    },
+    showToast () {
+      this.$refs.showCartToast.showCartToast()
+    },
+    addToFavorites (product) {
+      this.add(product)
+    },
+    ...mapActions(cartStore, ['addToCart']),
+    ...mapActions(favoritesStore, ['add'])
   },
   components: {
     RouterLink,
-    PaginationComponent
+    PaginationComponent,
+    ShowCartToast
   },
   mounted () {
     this.getProducts()
