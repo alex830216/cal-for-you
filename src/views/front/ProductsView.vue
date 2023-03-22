@@ -33,7 +33,7 @@
                 <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
                 <p>熱量：{{ product.calorie }} 大卡</p>
                 <p>蛋白質：{{ product.protein }} 克</p>
-                <button type="button" class="btn btn-outline-primary mb-0 mb-md-2 mb-lg-0 me-2 me-md-0" @click="addToFavorites(product)"><i class="bi bi-heart-fill"></i> 加入收藏</button>
+                <button type="button" class="btn btn-outline-primary mb-0 mb-md-2 mb-lg-0 me-2 me-md-0" @click="add(product)"><i class="bi bi-heart-fill"></i> 加入收藏</button>
                 <button type="button" class="btn btn-primary" @click="addToCart(product.id, qty);showToast()">
                   <i class="bi bi-cart-fill"></i> 加入購物車
                 </button>
@@ -125,9 +125,6 @@ export default {
     },
     showToast () {
       this.$refs.showCartToast.showCartToast()
-    },
-    addToFavorites (product) {
-      this.add(product)
     },
     ...mapActions(cartStore, ['addToCart']),
     ...mapActions(favoritesStore, ['add'])
