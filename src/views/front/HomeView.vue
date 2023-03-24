@@ -123,7 +123,7 @@ export default {
   },
   methods: {
     getProducts () {
-      this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/products/all`)
+      this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products/all`)
         .then(res => {
           this.products = res.data.products
         })

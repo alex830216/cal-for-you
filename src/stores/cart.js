@@ -13,7 +13,7 @@ const cartStore = defineStore('cart', {
   },
   actions: {
     getCart () {
-      axios.get(`${VITE_URL}/v2/api/${VITE_PATH}/cart`)
+      axios.get(`${VITE_URL}v2/api/${VITE_PATH}/cart`)
         .then(res => {
           this.carts = res.data.data.carts
           this.total = res.data.data.total
@@ -31,7 +31,7 @@ const cartStore = defineStore('cart', {
           qty
         }
       }
-      axios.post(`${VITE_URL}/v2/api/${VITE_PATH}/cart`, data).then(() => {
+      axios.post(`${VITE_URL}v2/api/${VITE_PATH}/cart`, data).then(() => {
         this.getCart()
       })
     }

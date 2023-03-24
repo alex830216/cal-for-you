@@ -74,14 +74,14 @@ export default {
   },
   methods: {
     getProducts (page = 1) {
-      this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/products?page=${page}`)
+      this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products?page=${page}`)
         .then(res => {
           this.products = res.data.products
           this.page = res.data.pagination
         })
     },
     filterCategory (category) {
-      this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/products/all`)
+      this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products/all`)
         .then(res => {
           this.products = res.data.products.filter((item) => {
             return item.category === category
@@ -89,7 +89,7 @@ export default {
         })
     },
     filterCal (cal) {
-      this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/products/all`)
+      this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products/all`)
         .then(res => {
           if (cal === '0 ~ 300') {
             this.products = res.data.products.filter((item) => {
@@ -107,7 +107,7 @@ export default {
         })
     },
     filterProtein (protein) {
-      this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/products/all`)
+      this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products/all`)
         .then(res => {
           if (protein === '0 ~ 10') {
             this.products = res.data.products.filter((item) => {

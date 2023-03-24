@@ -114,14 +114,14 @@ export default {
   methods: {
     getOrder () {
       const orderId = this.$route.query.id
-      this.$http.get(`${VITE_URL}/v2/api/${VITE_PATH}/order/${orderId}`)
+      this.$http.get(`${VITE_URL}v2/api/${VITE_PATH}/order/${orderId}`)
         .then(res => {
           this.total = res.data.order.total
         })
     },
     createPayment () {
       const orderId = this.$route.query.id
-      this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/pay/${orderId}`)
+      this.$http.post(`${VITE_URL}v2/api/${VITE_PATH}/pay/${orderId}`)
         .then(() => {
           this.$refs.form.resetForm()
           this.$router.push({ name: 'orderCompleted', query: { orderId } })

@@ -132,7 +132,7 @@ export default {
       }
       this.loadingItem = item.id
       this.$http
-        .put(`${VITE_URL}/v2/api/${VITE_PATH}/cart/${item.id}`, { data })
+        .put(`${VITE_URL}v2/api/${VITE_PATH}/cart/${item.id}`, { data })
         .then((res) => {
           this.cart = res.data.data
           this.getCart()
@@ -141,13 +141,13 @@ export default {
     },
     deleteCart (item) {
       this.loadingItem = item.id
-      this.$http.delete(`${VITE_URL}/v2/api/${VITE_PATH}/cart/${item.id}`).then(() => {
+      this.$http.delete(`${VITE_URL}v2/api/${VITE_PATH}/cart/${item.id}`).then(() => {
         this.getCart()
         this.loadingItem = ''
       })
     },
     deleteCarts () {
-      this.$http.delete(`${VITE_URL}/v2/api/${VITE_PATH}/carts`).then(() => {
+      this.$http.delete(`${VITE_URL}v2/api/${VITE_PATH}/carts`).then(() => {
         this.getCart()
       })
     },

@@ -132,7 +132,7 @@ export default {
   methods: {
     getOrder () {
       const orderId = this.$route.query.orderId
-      this.$http.get(`${VITE_URL}/v2/api/${VITE_PATH}/order/${orderId}`)
+      this.$http.get(`${VITE_URL}v2/api/${VITE_PATH}/order/${orderId}`)
         .then(res => {
           this.order = res.data.order
         })
