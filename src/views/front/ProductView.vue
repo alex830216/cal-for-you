@@ -11,7 +11,7 @@
     <section class="container pb-7">
       <div class="row pt-2">
         <div class="col-12 col-lg-6 text-center pb-5 pb-lg-0">
-          <img :src="product.imageUrl" alt="" class="object-cover" height="450">
+          <img :src="product.imageUrl" alt="" class="object-cover" height="300">
         </div>
         <div class="col-12 col-lg-6 px-5">
           <h2 class="text-center pb-3">{{ product.title }}</h2>
@@ -39,28 +39,29 @@
       <div class="container d-flex flex-fill flex-column align-items-center justify-content-center text-center py-5 col-8 col-lg-4">
         <h3 class="fw-bold pb-4">您可能也喜歡</h3>
         <swiper
-          :navigation="true"
-          :grabCursor="true"
-          :loop="true"
-          :scrollbar="{
-            hide: true,
-          }"
-          :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
-          }"
-          :spaceBetween="10"
-          :modules="modules"
+        :spaceBetween="30"
+        :centeredSlides="true"
+        :autoplay="{
+          delay: 2500,
+          disableOnInteraction: false,
+        }"
+        :scrollbar="{
+          hide: true,
+        }"
+        :navigation="true"
+        :modules="modules"
           class="swiper"
         >
-          <swiper-slide v-for="product in products" :key="product.id">
+          <swiper-slide v-for="categoryProduct in products" :key="categoryProduct.id">
             <div class="card">
-              <RouterLink :to="`/product/${product.id}`" class="nav-link text-primary-light overlay-link"><img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="產品圖片"></RouterLink>
+              <RouterLink :to="`/product/${categoryProduct.id}`" @click="getCategoryProduct(categoryProduct)" class="overlay-link">
+                <img :src="categoryProduct.imageUrl" class="card-img-top object-cover" height="200" alt="產品圖片">
+              </RouterLink>
               <div class="card-body">
-                <h5 class="card-title fw-bold">{{ product.title }}</h5>
-                <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
-                <p>熱量：{{ product.calorie }} 大卡</p>
-                <p>蛋白質：{{ product.protein }} 克</p>
+                <h5 class="card-title fw-bold">{{ categoryProduct.title }}</h5>
+                <p class="card-text"><span class="text-decoration-line-through">原價 ${{ categoryProduct.origin_price }}</span><br>現在只要 ${{ categoryProduct.price }}</p>
+                <p>熱量：{{ categoryProduct.calorie }} 大卡</p>
+                <p>蛋白質：{{ categoryProduct.protein }} 克</p>
               </div>
             </div>
           </swiper-slide>
@@ -80,9 +81,8 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Navigation, Scrollbar } from 'swiper'
 
 import 'swiper/css'
-import 'swiper/css/scrollbar'
-import 'swiper/css/effect-coverflow'
 import 'swiper/css/navigation'
+import 'swiper/css/scrollbar'
 
 const { VITE_URL, VITE_PATH } = import.meta.env
 
@@ -91,6 +91,7 @@ export default {
     return {
       products: [],
       product: {},
+      categoryProduct: {},
       qty: 1,
       modules: [Autoplay, Navigation, Scrollbar]
     }
@@ -98,19 +99,21 @@ export default {
   methods: {
     getProduct () {
       const { id } = this.$route.params
-      this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/product/${id}`)
+      this.$http(`${VITE_URL}v2/api/${VITE_PATH}/product/${id}`)
         .then(res => {
           this.product = res.data.product
-          this.getSameCategory(this.product.category)
+          this.getSameCategory()
         })
     },
-    getSameCategory (category) {
-      this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/products/all`)
+    getSameCategory () {
+      const { category } = this.product
+      this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products?category=${category}`)
         .then(res => {
-          this.products = res.data.products.filter((item) => {
-            return item.category === category
-          })
+          this.products = res.data.products
         })
+    },
+    getCategoryProduct (categoryProduct) {
+      this.product = categoryProduct
     },
     showToast () {
       this.$refs.showCartToast.showCartToast()
