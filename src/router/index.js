@@ -68,7 +68,18 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   linkActiveClass: 'active',
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    // `to` and `from` are both route locations
+    // `savedPosition` can be null if there isn't one
+    console.log(to, from, savedPosition)
+    if (to.fullPath.match('/')) {
+      return {
+        top: 0
+      }
+    }
+    return {}
+  }
 })
 
 export default router
