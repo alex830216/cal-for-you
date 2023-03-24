@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary-dark fixed-top">
       <div class="container">
         <h1>

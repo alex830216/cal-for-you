@@ -1,11 +1,13 @@
 <template>
-  <div>這是後台頁面</div>
-  <router-link to="/admin">後台</router-link> |
-  <router-link to="/admin/orders">訂單列表</router-link> |
-  <router-link to="/admin/products">產品列表</router-link> |
-  <router-link to="/">回前台</router-link> |
-  <a href="#" @click.prevent="logout">登出</a>
-  <routerView :check-login="checkLogin"></routerView>
+  <div>
+    <div>這是後台頁面</div>
+    <router-link to="/admin">後台</router-link> |
+    <router-link to="/admin/orders">訂單列表</router-link> |
+    <router-link to="/admin/products">產品列表</router-link> |
+    <router-link to="/">回前台</router-link> |
+    <a href="#" @click.prevent="logout">登出</a>
+    <routerView :check-login="checkLogin"></routerView>
+  </div>
 </template>
 
 <script>
