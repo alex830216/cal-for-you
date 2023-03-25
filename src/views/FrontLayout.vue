@@ -24,9 +24,6 @@
           </ul>
           <ul class="d-flex navbar-nav me-2 mb-2 mb-lg-0 fs-3 text-center">
             <li class="nav-item mx-1">
-              <RouterLink to="/favorites" class="nav-link text-primary-light"><i class="bi bi-heart text-primary-light"></i></RouterLink>
-            </li>
-            <li class="nav-item mx-1">
               <RouterLink to="/cart" class="nav-link text-primary-light position-relative">
                 <i class="bi bi-cart3"></i>
                 <span class="position-absolute top-lg-25 start-lg-100 translate-middle badge rounded-pill bg-danger fs-6">

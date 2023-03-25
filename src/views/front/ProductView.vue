@@ -26,7 +26,6 @@
             </select>
           </div>
           <div class="pt-5 d-flex justify-content-between">
-            <button type="button" class="btn btn-outline-primary mb-0 mb-md-2 mb-lg-0 me-2 me-md-0" @click="add(product)"><i class="bi bi-heart-fill"></i> 加入收藏</button>
             <button type="button" class="btn btn-primary" @click="addToCart(product.id, qty);showToast()">
               <i class="bi bi-cart-fill"></i> 加入購物車
             </button>
@@ -75,7 +74,6 @@
 import { mapActions } from 'pinia'
 import { RouterLink } from 'vue-router'
 import cartStore from '@/stores/cart'
-import favoritesStore from '@/stores/favorites'
 import ShowCartToast from '@/components/ShowCartToast.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Navigation, Scrollbar } from 'swiper'
@@ -118,11 +116,7 @@ export default {
     showToast () {
       this.$refs.showCartToast.showCartToast()
     },
-    addToFavorites () {
-      this.add(this.product)
-    },
-    ...mapActions(cartStore, ['addToCart']),
-    ...mapActions(favoritesStore, ['add'])
+    ...mapActions(cartStore, ['addToCart'])
   },
   components: {
     RouterLink,

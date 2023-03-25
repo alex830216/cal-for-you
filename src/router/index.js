@@ -22,10 +22,6 @@ const routes = [
         component: () => import('../views/front/CalculateView.vue')
       },
       {
-        path: 'favorites',
-        component: () => import('../views/front/FavoritesView.vue')
-      },
-      {
         path: 'cart',
         component: () => import('../views/front/CartView.vue')
       },
