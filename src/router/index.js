@@ -22,8 +22,8 @@ const routes = [
         component: () => import('../views/front/CalculateView.vue')
       },
       {
-        path: 'favorite',
-        component: () => import('../views/front/FavoriteView.vue')
+        path: 'favorites',
+        component: () => import('../views/front/FavoritesView.vue')
       },
       {
         path: 'cart',
@@ -69,10 +69,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   linkActiveClass: 'active',
   routes,
-  scrollBehavior (to, from, savedPosition) {
-    // `to` and `from` are both route locations
-    // `savedPosition` can be null if there isn't one
-    console.log(to, from, savedPosition)
+  scrollBehavior (to) {
     if (to.fullPath.match('/')) {
       return {
         top: 0

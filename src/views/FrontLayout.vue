@@ -24,7 +24,7 @@
           </ul>
           <ul class="d-flex navbar-nav me-2 mb-2 mb-lg-0 fs-3 text-center">
             <li class="nav-item mx-1">
-              <RouterLink to="/favorite" class="nav-link text-primary-light"><i class="bi bi-heart text-primary-light"></i></RouterLink>
+              <RouterLink to="/favorites" class="nav-link text-primary-light"><i class="bi bi-heart text-primary-light"></i></RouterLink>
             </li>
             <li class="nav-item mx-1">
               <RouterLink to="/cart" class="nav-link text-primary-light position-relative">

@@ -26,10 +26,7 @@ import favoritesStore from '@/stores/favorites'
 
 export default {
   methods: {
-    removeAllFavorites () {
-      this.removeAll()
-    },
-    ...mapActions(favoritesStore, ['removeAll'])
+    ...mapActions(favoritesStore, ['removeAllFavorites'])
   },
   computed: {
     ...mapState(favoritesStore, ['items'])
