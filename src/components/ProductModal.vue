@@ -105,6 +105,12 @@
               <label for="protein" class="form-label">蛋白質</label>
               <input id="protein" type="number" min="0" class="form-control" placeholder="請輸入蛋白質" v-model.number="innerProduct.protein">
             </div>
+            <div class="mb-3">
+              <div class="form-check">
+                <input id="isFavorite" class="form-check-input" type="checkbox" :true-value="1" :false-value="0" v-model="innerProduct.isFavorite">
+                <label class="form-check-label" for="isFavorite">我的收藏</label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -126,6 +132,13 @@ export default {
   computed: {
     innerProduct () {
       return this.tempProduct
+    }
+  },
+  watch: {
+    isFavorite (newVal) {
+      if (typeof newVal !== 'boolean') {
+        this.myBoolean = Boolean(newVal)
+      }
     }
   }
 }

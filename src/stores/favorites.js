@@ -7,17 +7,18 @@ const favoritesStore = defineStore('favorites', {
     }
   },
   actions: {
-    add (item) {
-      if (!this.items.includes(item)) {
-        this.items.push(item)
-        localStorage.setItem('favorites', JSON.stringify(this.items))
-      } else if (this.items.includes(item)) {
-        const index = this.items.findIndex(i => i.id === item.id)
-        this.items.splice(index, 1)
-        localStorage.setItem('favorites', JSON.stringify(this.items))
-      }
+    addToFavorites (item) {
+      this.items.push(item)
+      item.isFavorite = true
+      localStorage.setItem('favorites', JSON.stringify(this.items))
     },
-    removeAll () {
+    removeFromFavorites (item) {
+      const index = this.items.findIndex(i => i.id === item.id)
+      this.items.splice(index, 1)
+      item.isFavorite = false
+      localStorage.setItem('favorites', JSON.stringify(this.items))
+    },
+    removeAllFavorites () {
       this.items = []
       localStorage.removeItem('favorites')
     }

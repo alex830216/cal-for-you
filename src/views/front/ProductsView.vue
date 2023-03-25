@@ -34,7 +34,21 @@
                   <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
                   <p>熱量：{{ product.calorie }} 大卡</p>
                   <p>蛋白質：{{ product.protein }} 克</p>
-                  <button type="button" class="btn btn-outline-primary mb-0 mb-md-2 mb-xxl-0 me-2 me-md-2" @click="add(product)"><i class="bi bi-heart-fill"></i> 加入收藏</button>
+                  <!-- <button type="button" class="btn btn-outline-primary mb-0 mb-md-2 mb-xxl-0 me-2 me-md-2" @click="add(product)"><i class="bi bi-heart-fill"></i> 加入收藏</button> -->
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary mb-0 mb-md-2 mb-xxl-0 me-2 me-md-2"
+                    v-if="product.isFavorite"
+                    @click="removeFromFavorites(product)">
+                    <i class="bi bi-heart-fill"></i> 已加入收藏
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary mb-0 mb-md-2 mb-xxl-0 me-2 me-md-2"
+                    v-else
+                    @click="addToFavorites(product)">
+                    <i class="bi bi-heart"></i> 加入收藏
+                  </button>
                   <button type="button" class="btn btn-primary" @click="addToCart(product.id, qty);showToast()">
                     <i class="bi bi-cart-fill"></i> 加入購物車
                   </button>
@@ -128,7 +142,7 @@ export default {
       this.$refs.showCartToast.showCartToast()
     },
     ...mapActions(cartStore, ['addToCart']),
-    ...mapActions(favoritesStore, ['add'])
+    ...mapActions(favoritesStore, ['addToFavorites', 'removeFromFavorites'])
   },
   components: {
     RouterLink,
