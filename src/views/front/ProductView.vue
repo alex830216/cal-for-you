@@ -11,7 +11,7 @@
     <section class="container pb-7">
       <div class="row pt-2">
         <div class="col-12 col-lg-6 text-center pb-5 pb-lg-0">
-          <img :src="product.imageUrl" alt="" class="object-cover" height="300">
+          <img :src="product.imageUrl" alt="" class="object-cover w-100" height="300">
         </div>
         <div class="col-12 col-lg-6 px-5">
           <h2 class="text-center pb-3">{{ product.title }}</h2>
