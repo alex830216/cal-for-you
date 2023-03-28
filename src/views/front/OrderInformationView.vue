@@ -1,34 +1,36 @@
 <template>
   <div>
     <section class="container pt-6 pb-5">
-      <h2 class="text-center pb-4 fw-bold">填寫訂購資料</h2>
-      <div class="row">
-        <div class="col-3 pe-0">
-          <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
-            <div class="line bg-black w-100"></div>
-            <div class="circle bg-white border border border-primary rounded-circle"></div>
-            <div class="mt-3">購物車清單</div>
+      <h2 class="text-center pb-md-5 fw-bold">填寫訂購資料</h2>
+      <div class="d-none d-md-block">
+        <div class="row">
+          <div class="col-3 pe-0">
+            <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
+              <div class="line bg-black w-100"></div>
+              <div class="circle bg-white border border border-primary rounded-circle"></div>
+              <div class="mt-3">購物車清單</div>
+            </div>
           </div>
-        </div>
-        <div class="col-3 px-0">
-          <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
-            <div class="line bg-black w-100"></div>
-            <div class="circle bg-primary border border-primary rounded-circle"></div>
-            <div class="mt-3 fw-bold">填寫訂購資料</div>
+          <div class="col-3 px-0">
+            <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
+              <div class="line bg-black w-100"></div>
+              <div class="circle bg-primary border border-primary rounded-circle"></div>
+              <div class="mt-3 fw-bold">填寫訂購資料</div>
+            </div>
           </div>
-        </div>
-        <div class="col-3 px-0">
-          <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
-            <div class="line bg-black w-100"></div>
-            <div class="circle bg-white border border-primary rounded-circle"></div>
-            <div class="mt-3">填寫付款資料</div>
+          <div class="col-3 px-0">
+            <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
+              <div class="line bg-black w-100"></div>
+              <div class="circle bg-white border border-primary rounded-circle"></div>
+              <div class="mt-3">填寫付款資料</div>
+            </div>
           </div>
-        </div>
-        <div class="col-3 ps-0">
-          <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
-            <div class="line bg-black w-100"></div>
-            <div class="circle bg-white border border-primary rounded-circle"></div>
-            <div class="mt-3">完成訂單</div>
+          <div class="col-3 ps-0">
+            <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
+              <div class="line bg-black w-100"></div>
+              <div class="circle bg-white border border-primary rounded-circle"></div>
+              <div class="mt-3">完成訂單</div>
+            </div>
           </div>
         </div>
       </div>
@@ -46,8 +48,11 @@
         <tbody>
           <template v-if="carts">
             <tr v-for="item in carts" :key="item.id">
-              <td>
-                <img :src="item.product.imageUrl" class="object-cover" height="100" alt="">{{ item.product.title }}
+              <td class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+                <div class="col-12 col-md-3 pb-2 pb-md-0 me-md-2">
+                  <img :src="item.product.imageUrl" class="object-cover w-100" height="120" alt="產品圖片">
+                </div>
+                <div class="col-12 col-md-9 text-center text-md-start">{{ item.product.title }}</div>
               </td>
               <td>
                 {{ item.product.price }}
