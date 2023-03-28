@@ -35,87 +35,99 @@
         </div>
       </div>
     </section>
-    <section class="container py-3">
-      <table class="table table-hover align-middle">
-        <thead>
-          <tr class="table-primary">
-            <th class="col-2">刪除</th>
-            <th class="col-6">品名</th>
-            <th class="col-3">數量</th>
-            <th class="col-2">單價</th>
-          </tr>
-        </thead>
-        <tbody>
-          <template v-if="carts">
-            <tr v-for="item in carts" :key="item.id">
-              <td>
-                <!-- 刪除時不能重複刪除 -->
-                <button type="button"
-                  class="btn btn-outline-danger btn-sm"
-                  :disabled="item.id === loadingItem"
-                  @click="deleteCart(item)">
-                  <span
-                    class="spinner-border spinner-border-sm me-2"
-                    role="status"
-                    aria-hidden="true"
-                    v-if="item.id === loadingItem">
-                  </span>
-                  <i class="bi bi-trash3 fs-6"></i>
-                </button>
-              </td>
-              <td class="d-flex flex-column flex-md-row align-items-center justify-content-center">
-                <div class="col-12 col-md-3 pb-2 pb-md-0 me-md-2">
-                  <img :src="item.product.imageUrl" class="object-cover w-100" height="120" alt="產品圖片">
-                </div>
-                <div class="col-12 col-md-9 text-center text-md-start">{{ item.product.title }}</div>
-              </td>
-              <td>
-                <div class="input-group input-group-sm">
-                  <div class="input-group">
-                    <!-- 更新時不能更改數量 -->
-                    <select name="" id=""
-                      class="form-select"
-                      v-model="item.qty"
+    <template
+      v-if="carts.length">
+      <section class="container py-3">
+        <template v-if="carts.length">
+          <table class="table table-hover align-middle">
+            <thead>
+              <tr class="table-primary">
+                <th class="col-2">刪除</th>
+                <th class="col-6">品名</th>
+                <th class="col-3">數量</th>
+                <th class="col-2">單價</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template v-if="carts">
+                <tr v-for="item in carts" :key="item.id">
+                  <td>
+                    <!-- 刪除時不能重複刪除 -->
+                    <button type="button"
+                      class="btn btn-outline-danger btn-sm"
                       :disabled="item.id === loadingItem"
-                      @change="updateCart(item)">
-                      <option :value="i" v-for="i in 10" :key="`${i}165146`">{{ i }}</option>
-                    </select>
-                  </div>
-                </div>
-              </td>
-              <td>
-                {{ item.product.price }}
-              </td>
-            </tr>
-          </template>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="3" class="col-11 text-end">商品總金額</td>
-            <td>${{ total }}</td>
-          </tr>
-          <!-- <tr>
-            <td colspan="3" class="text-end text-success">折扣價</td>
-            <td class="text-success">${{ final_total }}</td>
-          </tr> -->
-        </tfoot>
-      </table>
-    </section>
-    <section class="container pb-3">
-      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center p-3 bg-primary-exlight">
-        <div>
-          <button @click="deleteCarts" type="button" class="btn btn-outline-danger mb-3 mb-sm-0">刪除所有品項</button>
+                      @click="deleteCart(item)">
+                      <span
+                        class="spinner-border spinner-border-sm me-2"
+                        role="status"
+                        aria-hidden="true"
+                        v-if="item.id === loadingItem">
+                      </span>
+                      <i class="bi bi-trash3 fs-6"></i>
+                    </button>
+                  </td>
+                  <td class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+                    <div class="col-12 col-md-3 pb-2 pb-md-0 me-md-2">
+                      <img :src="item.product.imageUrl" class="object-cover w-100" height="120" alt="產品圖片">
+                    </div>
+                    <div class="col-12 col-md-9 text-center text-md-start">{{ item.product.title }}</div>
+                  </td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group">
+                        <!-- 更新時不能更改數量 -->
+                        <select name="" id=""
+                          class="form-select"
+                          v-model="item.qty"
+                          :disabled="item.id === loadingItem"
+                          @change="updateCart(item)">
+                          <option :value="i" v-for="i in 10" :key="`${i}165146`">{{ i }}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    {{ item.product.price }}
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3" class="col-11 text-end">商品總金額</td>
+                <td>${{ total }}</td>
+              </tr>
+              <!-- <tr>
+                <td colspan="3" class="text-end text-success">折扣價</td>
+                <td class="text-success">${{ final_total }}</td>
+              </tr> -->
+            </tfoot>
+          </table>
+        </template>
+      </section>
+      <section class="container pb-3">
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center p-3 bg-primary-exlight">
+          <div>
+            <button @click="deleteCarts" type="button" class="btn btn-outline-danger mb-3 mb-sm-0">刪除所有品項</button>
+          </div>
+          <div>
+            <RouterLink to="/products" class="btn btn-light me-3">繼續購物</RouterLink>
+            <RouterLink
+              :to="!carts.length ? '' : '/orderInformation'"
+              class="btn btn-primary">
+              結帳({{ carts.length }})
+            </RouterLink>
+          </div>
         </div>
-        <div>
-          <RouterLink to="/products" class="btn btn-light me-3">繼續購物</RouterLink>
-          <RouterLink
-            :to="!carts.length ? '' : '/orderInformation'"
-            class="btn btn-primary">
-            結帳({{ carts.length }})
-          </RouterLink>
+      </section>
+    </template>
+    <template v-else>
+      <section class="container pt-7">
+        <div class="fs-2 text-center">
+          <div>購物車目前沒有商品，<RouterLink to="/products" class="link-primary text-decoration-none">繼續購物</RouterLink></div>
         </div>
-      </div>
-    </section>
+      </section>
+    </template>
   </div>
 </template>
 
