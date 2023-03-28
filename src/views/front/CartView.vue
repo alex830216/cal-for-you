@@ -52,9 +52,13 @@
                   class="btn btn-outline-danger btn-sm"
                   :disabled="item.id === loadingItem"
                   @click="deleteCart(item)">
-                  <i class="fas fa-spinner fa-pulse"
-                    v-if="item.id === loadingItem"></i>
-                  x
+                  <span
+                    class="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true"
+                    v-if="item.id === loadingItem">
+                  </span>
+                  <i class="bi bi-trash3 fs-6"></i>
                 </button>
               </td>
               <td>
