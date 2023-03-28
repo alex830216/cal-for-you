@@ -36,6 +36,7 @@
       </div>
     </nav>
     <RouterView class="content"></RouterView>
+    <ScrollToTop></ScrollToTop>
     <footer class="footer bg-primary-dark text-primary-light py-3">
       <div class="container d-flex flex-column align-items-center justify-content-center text-center">
         <div>
@@ -54,12 +55,14 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import { RouterView, RouterLink } from 'vue-router'
+import ScrollToTop from '@/components/ScrollToTop.vue'
 import cartStore from '../stores/cart'
 
 export default {
   components: {
     RouterView,
-    RouterLink
+    RouterLink,
+    ScrollToTop
   },
   computed: {
     ...mapState(cartStore, ['carts'])
