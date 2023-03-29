@@ -4,8 +4,8 @@
       <div class="banner d-flex align-items-center justify-content-center fs-1 text-white text-opacity-75"
       style="background: no-repeat top/cover url(https://images.unsplash.com/photo-1564836235910-c3055ca0f912?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80); width: 100%; height: 100vh;">
         <div class="container position-absolute top-50 start-50 translate-middle text-center">
-          <p class="fw-bold text-primary-light">不知道該吃多少嗎?<br>交給我們幫你算</p>
-          <RouterLink to="/calculate#calculator" class="btn btn-primary-transparent btn-lg hvr-round-corners">計算後獲得優惠券</RouterLink>
+          <p class="fw-bold text-primary-light animate__animated animate__slideInDown">不知道該吃多少嗎?<br>交給我們幫你算</p>
+          <RouterLink to="/calculate#calculator" class="btn btn-primary-transparent btn-lg hvr-round-corners animate__animated animate__zoomIn">計算後獲得優惠券</RouterLink>
         </div>
       </div>
     </section>
@@ -13,26 +13,26 @@
       <div class="container text-center py-5">
         <div class="fs-2 fw-bold pb-5">您是否有以下困擾?</div>
         <div class="row align-items-center justify-content-center py-sm">
-          <div class="col-md-6 pb-5 pb-md-0">
+          <div class="col-md-6 pb-5 pb-md-0" data-aos="fade-right">
             <img src="https://images.unsplash.com/photo-1511909525232-61113c912358?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80" class="img-fluid" alt="diet" style="object-fit: cover;">
           </div>
-          <div class="col-md-6 ">
+          <div class="col-md-6" data-aos="fade-left">
             <h2 class="fs-2">想減肥<br>但不知道該吃哪些食物</h2>
           </div>
         </div>
         <div class="row flex-row-reverse align-items-center justify-content-center py-sm">
-          <div class="col-md-6 pb-5 pb-md-0">
+          <div class="col-md-6 pb-5 pb-md-0" data-aos="fade-left">
             <img src="https://images.unsplash.com/photo-1577563612200-a95560e2edec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="img-fluid" alt="obesity" style="object-fit: cover;">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6" data-aos="fade-right">
             <h2 class="fs-2">想減脂<br>害怕攝取過多熱量</h2>
           </div>
         </div>
         <div class="row align-items-center justify-content-center py-sm">
-          <div class="col-md-6 pb-5 pb-md-0">
+          <div class="col-md-6 pb-5 pb-md-0" data-aos="fade-right">
             <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="img-fluid" alt="training" style="object-fit: cover;">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6" data-aos="fade-left">
             <h2 class="fs-2">想增肌<br>這樣吃，蛋白質夠嗎</h2>
           </div>
         </div>
@@ -41,7 +41,7 @@
     <section class="position-relative">
       <div class="concept d-flex align-items-center justify-content-center text-primary-light"
       style="background: no-repeat center / cover url(https://images.unsplash.com/photo-1505744386214-51dba16a26fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1306&q=80); width: 100%; height: 300px;">
-        <div class="container position-absolute top-50 start-50 translate-middle text-center">
+        <div class="container position-absolute top-50 start-50 translate-middle text-center" data-aos="fade-up">
           <h2 class="pb-3 fs-2">品牌理念</h2>
           <p class="fs-4">結合 <strong class="fs-3">Cal</strong>culate 與 <strong class="fs-3">Cal</strong>orie<br>為您計算一天所需的熱量以及蛋白質</p>
         </div>
@@ -93,7 +93,7 @@
         </swiper>
       </div>
     </section>
-    <section class="bg-light text-primary-dark py-4">
+    <section class="bg-light text-primary-dark py-4" data-aos="zoom-in">
       <div class="container d-flex flex-column align-items-center justify-content-center text-center">
         <h2>Cal For You 幫你算</h2>
         <p>聯絡我們：0912345678
@@ -110,6 +110,9 @@
 import { RouterLink } from 'vue-router'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Navigation, Scrollbar, EffectCoverflow } from 'swiper'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import 'animate.css'
 
 import 'swiper/css'
 import 'swiper/css/scrollbar'
@@ -139,6 +142,18 @@ export default {
     SwiperSlide
   },
   mounted () {
+    AOS.init({
+      // Global settings:
+      disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+      debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+      throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+      // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+      offset: 120, // offset (in px) from the original trigger point
+      delay: 200, // values from 0 to 3000, with step 50ms
+      duration: 800, // values from 0 to 3000, with step 50ms
+      easing: 'ease', // default easing for AOS animations
+      once: false // whether animation should happen only once - while scrolling down
+    })
     this.getProducts()
   }
 }

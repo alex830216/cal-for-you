@@ -179,3 +179,7 @@ body {
 .hvr-round-corners, .nav-link:hover, .hvr-icon {
   transition: 0.3s
 }
+
+.animate__animated.animate__slideInDown, .animate__animated.animate__zoomIn {
+  --animate-duration: 1.5s;
+}
