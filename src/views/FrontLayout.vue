@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary-dark fixed-top">
       <div class="container">
         <h1>
-          <RouterLink to="/" class="navbar-brand fs-3 fw-bold text-primary-light"><!-- icon from https://freeicons.io/e-commerce-circle-gradient-2/calculator-calculate-math-calculation-icon-48905 -->
+          <RouterLink to="/" class="navbar-brand fs-3 fw-bold text-primary-light hvr-grow"><!-- icon from https://freeicons.io/e-commerce-circle-gradient-2/calculator-calculate-math-calculation-icon-48905 -->
             <img src="../assets/logo.svg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             Cal For You 幫你算</RouterLink>
         </h1>

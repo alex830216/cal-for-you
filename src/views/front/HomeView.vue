@@ -5,7 +5,7 @@
       style="background: no-repeat top/cover url(https://images.unsplash.com/photo-1564836235910-c3055ca0f912?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80); width: 100%; height: 100vh;">
         <div class="container position-absolute top-50 start-50 translate-middle text-center">
           <p class="fw-bold text-primary-light">不知道該吃多少嗎?<br>交給我們幫你算</p>
-          <RouterLink to="/calculate" class="btn btn-primary-transparent btn-lg">幫你算</RouterLink>
+          <RouterLink to="/calculate#calculator" class="btn btn-primary-transparent btn-lg hvr-round-corners">計算後獲得優惠券</RouterLink>
         </div>
       </div>
     </section>
@@ -96,7 +96,11 @@
     <section class="bg-light text-primary-dark py-4">
       <div class="container d-flex flex-column align-items-center justify-content-center text-center">
         <h2>Cal For You 幫你算</h2>
-        <p>聯絡我們：0912345678 <a href="#"><i class="bi bi-facebook fs-3"></i></a> <a href="#" class="line-link"><i class="bi bi-line fs-3"></i></a><br>營業時間（六日公休）：週一 ~ 週五 09：00 ~ 20：00</p>
+        <p>聯絡我們：0912345678
+          <a href="#"><i class="bi bi-facebook fs-3 pe-1"></i></a>
+          <a href="#" class="line-link"><i class="bi bi-line fs-3"></i></a><br>
+          營業時間（六日公休）：週一 ~ 週五 09：00 ~ 20：00
+        </p>
       </div>
     </section>
   </div>

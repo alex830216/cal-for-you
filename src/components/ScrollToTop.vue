@@ -1,6 +1,6 @@
 <template>
-  <div class="scroll-to-top position-fixed rounded-circle bg-primary text-white d-flex justify-content-center align-items-center" @click="scrollToTop">
-    <i class="bi bi-chevron-up fs-4"></i>
+  <div class="scroll-to-top position-fixed rounded-circle bg-primary text-white d-flex justify-content-center align-items-center hvr-icon-bob" @click="scrollToTop">
+    <i class="bi bi-chevron-up fs-4 hvr-icon"></i>
   </div>
 </template>
 

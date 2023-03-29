@@ -42,7 +42,7 @@
         講了這麼多，讓我們一起來算算看吧！
       </p>
     </section>
-    <section class="bg-primary-exlight">
+    <section class="bg-primary-exlight" id="calculator">
       <div class="container py-5 px-4 px-lg-7 bg-primary-exlight">
         <h2>
           BMR、TDEE、蛋白質計算機

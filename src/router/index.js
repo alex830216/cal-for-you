@@ -70,7 +70,12 @@ const router = createRouter({
   linkActiveClass: 'active',
   routes,
   scrollBehavior (to) {
-    if (to.fullPath.match('/')) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        top: 74
+      }
+    } else if (to.fullPath.match('/')) {
       return {
         top: 0
       }

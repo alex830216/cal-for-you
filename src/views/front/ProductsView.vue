@@ -45,7 +45,7 @@
                   <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
                   <p>熱量：{{ product.calorie }} 大卡</p>
                   <p>蛋白質：{{ product.protein }} 克</p>
-                  <button type="button" class="btn btn-primary" @click="addToCart(product.id, qty);showToast()">
+                  <button type="button" class="btn btn-outline-primary" @click="addToCart(product.id, qty);showToast()">
                     <i class="bi bi-cart-fill"></i> 加入購物車
                   </button>
                 </div>

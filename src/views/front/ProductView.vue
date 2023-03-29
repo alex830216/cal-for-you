@@ -26,7 +26,7 @@
             </select>
           </div>
           <div class="pt-5 d-flex justify-content-between">
-            <button type="button" class="btn btn-primary" @click="addToCart(product.id, qty);showToast()">
+            <button type="button" class="btn btn-outline-primary" @click="addToCart(product.id, qty);showToast()">
               <i class="bi bi-cart-fill"></i> 加入購物車
             </button>
             <ShowCartToast ref="showCartToast"></ShowCartToast>
