@@ -111,15 +111,17 @@
             輸入優惠碼
           </div>
           <div class="px-3">
-            <input type="text" class="p-1" placeholder="請輸入優惠碼" v-model="couponCode">
+            <input type="text" class="p-1" placeholder="請輸入優惠碼" v-model="coupon">
           </div>
-          <button type="button" class="btn btn-outline-primary" @click="useCoupon">
+          <button type="button" class="btn btn-outline-primary" @click="useCoupon(this.coupon); clear()">
             使用
           </button>
         </div>
-        <div class="d-flex justify-content-end align-items-center pb-4 text-danger fw-bold" v-if="couponIsUsed">
-          優惠碼已使用，享{{ final_total * 10 / total }}折優惠
-        </div>
+        <template v-if="couponIsUsed">
+          <div class="d-flex justify-content-end align-items-center pb-4 text-danger fw-bold">
+            優惠碼已使用，享{{ final_total * 10 / total }}折優惠
+          </div>
+        </template>
         <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
           <div>
             <button @click="deleteCarts" type="button" class="btn btn-outline-danger mb-3 mb-sm-0">刪除所有品項</button>
@@ -142,14 +144,12 @@
         </div>
       </section>
     </template>
-    <ShowCouponUsedToast ref="showCouponUsedToast"></ShowCouponUsedToast>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'pinia'
 import cartStore from '@/stores/cart'
-import ShowCouponUsedToast from '@/components/ShowCouponUsedToast.vue'
 
 const { VITE_URL, VITE_PATH } = import.meta.env
 
@@ -159,8 +159,7 @@ export default {
       cart: {},
       loadingItem: '',
       disabled: true,
-      couponCode: '',
-      couponIsUsed: false
+      coupon: ''
     }
   },
   methods: {
@@ -183,43 +182,28 @@ export default {
       this.$http.delete(`${VITE_URL}v2/api/${VITE_PATH}/cart/${item.id}`).then(() => {
         this.getCart()
         this.loadingItem = ''
+        localStorage.setItem('coupon', JSON.stringify(false))
       })
     },
     deleteCarts () {
       this.$http.delete(`${VITE_URL}v2/api/${VITE_PATH}/carts`).then(() => {
         this.getCart()
+        localStorage.setItem('coupon', JSON.stringify(false))
       })
-    },
-    useCoupon () {
-      const data = {
-        data: {
-          code: this.couponCode
-        }
-      }
-      this.$http.post(`${VITE_URL}v2/api/${VITE_PATH}/coupon`, data)
-        .then((res) => {
-          this.couponIsUsed = true
-          this.couponCode = ''
-          this.showToast(this.couponIsUsed, res.data.message)
-          this.getCart()
-        })
-        .catch((err) => {
-          this.showToast(this.couponIsUsed = false, err.response.data.message)
-        })
     },
     showToast (couponIsUsed, message) {
       this.$refs.showCouponUsedToast.showCouponUsedToast(couponIsUsed, message)
     },
-    ...mapActions(cartStore, ['getCart', 'addToCart'])
+    clear () {
+      this.coupon = ''
+    },
+    ...mapActions(cartStore, ['getCart', 'addToCart', 'useCoupon', 'showToast'])
   },
   computed: {
-    ...mapState(cartStore, ['carts', 'total', 'final_total'])
+    ...mapState(cartStore, ['carts', 'total', 'final_total', 'couponIsUsed'])
   },
   mounted () {
     this.getCart()
-  },
-  components: {
-    ShowCouponUsedToast
   }
 }
 </script>

@@ -8,7 +8,9 @@ const cartStore = defineStore('cart', {
     return {
       carts: [],
       total: 0,
-      final_total: 0
+      final_total: 0,
+      couponCode: '',
+      couponIsUsed: false
     }
   },
   actions: {
@@ -18,6 +20,7 @@ const cartStore = defineStore('cart', {
           this.carts = res.data.data.carts
           this.total = res.data.data.total
           // 使用優惠券後的金額
+          this.couponIsUsed = JSON.parse(localStorage.getItem('coupon'))
           this.final_total = res.data.data.final_total
         })
     },
@@ -34,6 +37,24 @@ const cartStore = defineStore('cart', {
       axios.post(`${VITE_URL}v2/api/${VITE_PATH}/cart`, data).then(() => {
         this.getCart()
       })
+    },
+    useCoupon (coupon) {
+      this.couponCode = coupon
+      const data = {
+        data: {
+          code: this.couponCode
+        }
+      }
+      axios.post(`${VITE_URL}v2/api/${VITE_PATH}/coupon`, data)
+        .then((res) => {
+          this.couponIsUsed = true
+          localStorage.setItem('coupon', JSON.stringify(this.couponIsUsed))
+          this.final_total = res.data.final_total
+          this.getCart()
+        })
+        .catch((err) => {
+          alert(err.response.data.message)
+        })
     }
   }
 })
