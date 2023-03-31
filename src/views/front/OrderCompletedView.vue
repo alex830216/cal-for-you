@@ -44,7 +44,7 @@
         <thead>
           <tr>
             <th class="col-2">訂單金額</th>
-            <td>${{ order.total }}</td>
+            <td>${{ $filters.currency(order.total) }}</td>
           </tr>
         </thead>
         <tbody>
@@ -81,7 +81,7 @@
                 <tfoot>
                   <tr>
                     <td colspan="3" class="col-11 text-end pe-5 fw-bold">訂單金額</td>
-                    <td class="col-1 fw-bold">${{ order.total }}</td>
+                    <td class="col-1 fw-bold">${{ $filters.currency(order.total) }}</td>
                   </tr>
                 </tfoot>
               </table>

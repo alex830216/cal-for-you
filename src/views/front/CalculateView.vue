@@ -131,11 +131,25 @@
           </div>
         </form>
         <div v-if="bmr && tdee && protein" class="fs-4">
-          您的每日基礎代謝率BMR： {{ bmr }} 大卡<br>
-          您的每日總熱量消耗TDEE： {{ tdee }} 大卡<br>
-          想減脂，建議攝取： {{ (tdee * 0.8).toFixed() }} ~ {{ tdee * 1.0 }} 大卡<br>
-          想增肌，建議攝取： {{ tdee + 100 }} ~ {{ tdee + 500 }} 大卡<br>
-          每日蛋白質需求： {{ protein }}
+          <div class="pb-3">
+            您的每日基礎代謝率BMR： {{ bmr }} 大卡<br>
+            您的每日總熱量消耗TDEE： {{ tdee }} 大卡<br>
+            想減脂，建議攝取： {{ (tdee * 0.8).toFixed() }} ~ {{ tdee * 1.0 }} 大卡<br>
+            想增肌，建議攝取： {{ tdee + 100 }} ~ {{ tdee + 500 }} 大卡<br>
+            每日蛋白質需求： {{ protein }}
+          </div>
+          <div class="d-flex align-items-center pb-3">
+            <div class="pe-3 text-success">
+              輸入優惠碼：{{ couponCode }}，享九折優惠
+            </div>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              @click="copyCouponCode">
+              點我複製優惠碼
+            </button>
+          </div>
+          <RouterLink to="/products" class="btn btn-primary text-decoration-none fs-4 fw-bold hvr-grow"><i class="bi bi-arrow-right"></i> 前往購物</RouterLink>
         </div>
       </div>
     </section>
@@ -162,10 +176,13 @@
         再乘以PAL的數值:1598 x 1.55 = 2478.9（大約為2479大卡）
       </p>
     </section>
+    <ShowCouponCopyToast ref="showCouponCopyToast">
+    </ShowCouponCopyToast>
   </div>
 </template>
 
 <script>
+import ShowCouponCopyToast from '@/components/ShowCouponCopyToast.vue'
 export default {
   data () {
     return {
@@ -177,7 +194,8 @@ export default {
       bmr: null,
       tdee: null,
       exercise: 'init',
-      protein: null
+      protein: null,
+      couponCode: 'cal-for-you'
     }
   },
   methods: {
@@ -222,7 +240,20 @@ export default {
       this.calculateBMR()
       this.calculateTDEE()
       this.calculateProtein()
+    },
+    copyCouponCode () {
+      // 複製代碼，clipboard 為非同步語法
+      navigator.clipboard.writeText(this.couponCode)
+        .then(() => {
+          this.showToast()
+        })
+    },
+    showToast () {
+      this.$refs.showCouponCopyToast.showCouponCopyToast()
     }
+  },
+  components: {
+    ShowCouponCopyToast
   }
 }
 </script>

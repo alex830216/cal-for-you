@@ -97,21 +97,35 @@
                 <td colspan="3" class="col-11 text-end">商品總金額</td>
                 <td>${{ total }}</td>
               </tr>
-              <!-- <tr>
+              <tr v-if="couponIsUsed">
                 <td colspan="3" class="text-end text-success">折扣價</td>
-                <td class="text-success">${{ final_total }}</td>
-              </tr> -->
+                <td class="text-success">${{ $filters.currency(final_total) }}</td>
+              </tr>
             </tfoot>
           </table>
         </template>
       </section>
-      <section class="container pb-3">
-        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center p-3 bg-primary-exlight">
+      <section class="container bg-primary-exlight p-4">
+        <div class="d-flex justify-content-end align-items-center pb-4">
+          <div>
+            輸入優惠碼
+          </div>
+          <div class="px-3">
+            <input type="text" class="p-1" placeholder="請輸入優惠碼" v-model="couponCode">
+          </div>
+          <button type="button" class="btn btn-outline-primary" @click="useCoupon">
+            使用
+          </button>
+        </div>
+        <div class="d-flex justify-content-end align-items-center pb-4 text-danger fw-bold" v-if="couponIsUsed">
+          優惠碼已使用，享{{ final_total * 10 / total }}折優惠
+        </div>
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
           <div>
             <button @click="deleteCarts" type="button" class="btn btn-outline-danger mb-3 mb-sm-0">刪除所有品項</button>
           </div>
           <div>
-            <RouterLink to="/products" class="btn btn-light me-3">繼續購物</RouterLink>
+            <RouterLink to="/products" class="btn btn-light me-4">繼續購物</RouterLink>
             <RouterLink
               :to="!carts.length ? '' : '/orderInformation'"
               class="btn btn-primary">
@@ -128,12 +142,14 @@
         </div>
       </section>
     </template>
+    <ShowCouponUsedToast ref="showCouponUsedToast"></ShowCouponUsedToast>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'pinia'
 import cartStore from '@/stores/cart'
+import ShowCouponUsedToast from '@/components/ShowCouponUsedToast.vue'
 
 const { VITE_URL, VITE_PATH } = import.meta.env
 
@@ -142,7 +158,9 @@ export default {
     return {
       cart: {},
       loadingItem: '',
-      disabled: true
+      disabled: true,
+      couponCode: '',
+      couponIsUsed: false
     }
   },
   methods: {
@@ -172,6 +190,26 @@ export default {
         this.getCart()
       })
     },
+    useCoupon () {
+      const data = {
+        data: {
+          code: this.couponCode
+        }
+      }
+      this.$http.post(`${VITE_URL}v2/api/${VITE_PATH}/coupon`, data)
+        .then((res) => {
+          this.couponIsUsed = true
+          this.couponCode = ''
+          this.showToast(this.couponIsUsed, res.data.message)
+          this.getCart()
+        })
+        .catch((err) => {
+          this.showToast(this.couponIsUsed = false, err.response.data.message)
+        })
+    },
+    showToast (couponIsUsed, message) {
+      this.$refs.showCouponUsedToast.showCouponUsedToast(couponIsUsed, message)
+    },
     ...mapActions(cartStore, ['getCart', 'addToCart'])
   },
   computed: {
@@ -179,6 +217,9 @@ export default {
   },
   mounted () {
     this.getCart()
+  },
+  components: {
+    ShowCouponUsedToast
   }
 }
 </script>

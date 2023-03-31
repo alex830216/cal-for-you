@@ -87,10 +87,10 @@
             <ErrorMessage name="安全碼" class="invalid-feedback"></ErrorMessage>
           </div>
           <div class="pb-4 fw-bold fs-5">
-            商品總金額${{ total }} 元
+            商品總金額${{ $filters.currency(total) }} 元
           </div>
           <div>
-            <RouterLink to="/orderInformation" class="btn btn-light me-3">返回填寫訂購資料</RouterLink>
+            <RouterLink to="/orderInformation" class="btn btn-light me-4">返回填寫訂購資料</RouterLink>
             <button type="submit" class="btn btn-primary" :disabled="!meta.valid">付款</button>
           </div>
         </VForm>

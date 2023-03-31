@@ -34,7 +34,7 @@
                 {{ product.product.unit }}
             </td>
           </template>
-          <td>{{ order.total }}</td>
+          <td>{{ $filters.currency(order.total) }}</td>
           <td class="form-check">
             <input
               class="form-check-input"

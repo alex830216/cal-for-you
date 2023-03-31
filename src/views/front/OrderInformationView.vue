@@ -69,7 +69,7 @@
         <tfoot>
           <tr class="fs-4">
             <td colspan="3" class="col-11 text-end pe-5 fw-bold">訂單金額</td>
-            <td class="col-1 fw-bold">${{ final_total }}</td>
+            <td class="col-1 fw-bold">${{ $filters.currency(final_total) }}</td>
           </tr>
         </tfoot>
       </table>
@@ -142,7 +142,7 @@
             <textarea class="form-control" id="remarks" cols="30" rows="5" v-model="form.message"></textarea>
           </div>
           <div class="d-flex justify-content-end align-items-center p-3">
-            <RouterLink to="/cart" class="btn btn-light me-3">返回購物車</RouterLink>
+            <RouterLink to="/cart" class="btn btn-light me-4">返回購物車</RouterLink>
             <button
               type="submit"
               class="btn btn-primary"
