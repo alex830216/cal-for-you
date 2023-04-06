@@ -74,7 +74,7 @@
                       <td>{{ product.product.title }}</td>
                       <td>{{ product.product.price }}</td>
                       <td>{{ product.qty }}</td>
-                      <td>${{ product.total }}</td>
+                      <td>${{ $filters.currency(product.total) }}</td>
                     </tr>
                   </template>
                 </tbody>

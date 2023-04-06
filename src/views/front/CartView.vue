@@ -95,7 +95,7 @@
             <tfoot>
               <tr>
                 <td colspan="3" class="col-11 text-end">商品總金額</td>
-                <td>${{ total }}</td>
+                <td>${{ $filters.currency(total) }}</td>
               </tr>
               <tr v-if="couponIsUsed">
                 <td colspan="3" class="text-end text-success">折扣價</td>

@@ -11,7 +11,7 @@ import {
 import AllRules from '@vee-validate/rules'
 import { localize, setLocale } from '@vee-validate/i18n'
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
-import { currency, date } from './methods/filters'
+import { currency, date, dateMonth } from './methods/filters'
 
 import App from './App.vue'
 import router from './router'
@@ -31,7 +31,7 @@ setLocale('zh_TW')
 
 const app = createApp(App)
 
-app.config.globalProperties.$filters = { currency, date }
+app.config.globalProperties.$filters = { currency, date, dateMonth }
 
 app.use(VueAxios, axios)
 app.use(createPinia())

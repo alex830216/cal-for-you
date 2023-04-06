@@ -7,3 +7,8 @@ export function date (time) {
   const localDate = new Date(time * 1000)
   return localDate.toLocaleDateString()
 }
+
+export function dateMonth (time) {
+  const newDate = new Date(time).toISOString().slice(0, 7)
+  return newDate
+}

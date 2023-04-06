@@ -30,7 +30,7 @@
         <tr v-for="coupon in coupons" :key="coupon.id">
           <td>{{ coupon.title }}</td>
           <td>{{ coupon.percent }}</td>
-          <td>{{ new Date(coupon.due_date).toISOString().slice(0, 7) }}</td>
+          <td>{{ $filters.dateMonth(coupon.due_date) }}</td>
           <td>{{ coupon.code }}</td>
           <td>
             <span class="text-success" v-if="coupon.is_enabled">啟用</span>
@@ -162,7 +162,7 @@ export default {
         this.couponModal.show()
         this.isNew = false
         this.tempCoupon = { ...coupon }
-        this.tempCoupon.due_date = new Date(this.tempCoupon.due_date).toISOString().slice(0, 7)
+        this.tempCoupon.due_date = this.$filters.dateMonth(this.tempCoupon.due_date)
       } else if (status === 'delete') {
         this.delCouponModal.show()
         this.tempCoupon = { ...coupon }
