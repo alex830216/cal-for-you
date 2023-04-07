@@ -11,7 +11,21 @@
     <section class="container pb-7">
       <div class="row pt-2">
         <div class="col-12 col-lg-6 text-center pb-5 pb-lg-0">
-          <img :src="product.imageUrl" alt="" class="object-cover w-100" height="300">
+          <swiper
+            :spaceBetween="30"
+            :centeredSlides="true"
+            :scrollbar="{
+              hide: true,
+            }"
+            :loop="true"
+            :navigation="true"
+            :modules="modules"
+            class="swiper"
+            >
+            <swiper-slide v-for="productPicture in productPictures" :key="productPicture">
+              <img :src="productPicture" alt="" class="object-cover w-100" height="422">
+            </swiper-slide>
+          </swiper>
         </div>
         <div class="col-12 col-lg-6 px-5">
           <h2 class="text-center pb-3">{{ product.title }}</h2>
@@ -89,6 +103,7 @@ export default {
     return {
       products: [],
       product: {},
+      productPictures: [],
       categoryProduct: {},
       qty: 1,
       modules: [Autoplay, Navigation, Scrollbar]
@@ -100,6 +115,12 @@ export default {
       this.$http(`${VITE_URL}v2/api/${VITE_PATH}/product/${id}`)
         .then(res => {
           this.product = res.data.product
+          // this.productPictures.push(this.product.imageUrl, this.product.imagesUrl)
+          if (this.product.imagesUrl) {
+            this.productPictures = [this.product.imageUrl, ...this.product.imagesUrl]
+          } else {
+            this.productPictures = [this.product.imageUrl]
+          }
           this.getSameCategory()
         })
     },
