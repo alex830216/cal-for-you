@@ -21,6 +21,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "hover.css": "^2.3.2",
     "pinia": "^2.0.33",
+    "popper.js": "^1.16.1",
     "swiper": "^9.1.1",
     "vee-validate": "^4.8.3",
     "vue": "^3.2.45",

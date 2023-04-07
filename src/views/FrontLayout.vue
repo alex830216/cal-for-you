@@ -3,28 +3,28 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary-dark fixed-top">
       <div class="container">
         <h1>
-          <RouterLink to="/" class="navbar-brand fs-3 fw-bold text-primary-light hvr-grow"><!-- icon from https://freeicons.io/e-commerce-circle-gradient-2/calculator-calculate-math-calculation-icon-48905 -->
+          <RouterLink to="/" class="navbar-brand fs-3 fw-bold text-primary-light hvr-grow" @click="navToggle"><!-- icon from https://freeicons.io/e-commerce-circle-gradient-2/calculator-calculate-math-calculation-icon-48905 -->
             <img src="../assets/logo.svg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             Cal For You 幫你算</RouterLink>
         </h1>
         <button class="navbar-toggler text-primary-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" ref="navbar">
           <ul class="navbar-nav me-lg-auto mb-2 mb-lg-0 fs-5 text-center">
             <li class="nav-item">
-              <RouterLink to="/" class="nav-link text-primary-light">首頁</RouterLink>
+              <RouterLink to="/" class="nav-link text-primary-light" @click="navToggle">首頁</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/calculate" class="nav-link text-primary-light">幫你算</RouterLink>
+              <RouterLink to="/calculate" class="nav-link text-primary-light" @click="navToggle">幫你算</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/products" class="nav-link text-primary-light">商品列表</RouterLink>
+              <RouterLink to="/products" class="nav-link text-primary-light" @click="navToggle">商品列表</RouterLink>
             </li>
           </ul>
           <ul class="d-flex navbar-nav me-2 mb-2 mb-lg-0 fs-3 text-center">
             <li class="nav-item mx-1">
-              <RouterLink to="/cart" class="nav-link text-primary-light position-relative">
+              <RouterLink to="/cart" class="nav-link text-primary-light position-relative" @click="navToggle">
                 <i class="bi bi-cart3"></i>
                 <span class="position-absolute top-lg-25 start-lg-100 translate-middle badge rounded-pill bg-danger fs-6">
                   {{ carts.length }}
@@ -60,6 +60,7 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import { RouterView, RouterLink } from 'vue-router'
+import { Collapse } from 'bootstrap'
 import ScrollToTop from '@/components/ScrollToTop.vue'
 import cartStore from '../stores/cart'
 
@@ -73,10 +74,32 @@ export default {
     ...mapState(cartStore, ['carts'])
   },
   methods: {
+    navToggle () {
+      const bsCollapse = new Collapse(this.$refs.navbar, {
+        toggle: false
+      })
+
+      bsCollapse.hide()
+    },
     ...mapActions(cartStore, ['getCart'])
   },
   mounted () {
     this.getCart()
+    const navMenu = this.$refs.navbar
+    document.addEventListener('click', function (event) {
+      const clickTarget = event.target
+      if (
+        navMenu.classList.contains('show') &&
+        !navMenu.contains(clickTarget) &&
+        clickTarget.getAttribute('aria-controls') !== 'navbarSupportedContent'
+      ) {
+        const bsCollapse = new Collapse(navMenu, {
+          toggle: false
+        })
+
+        bsCollapse.hide()
+      }
+    })
   }
 }
 </script>
