@@ -11,7 +11,8 @@ export default defineConfig({
       include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue']
     })
   ],
-  base: '/cal-for-you/',
+  // 確保編譯後的路徑以及本地開發的路徑都是正確的
+  base: process.env.NODE_ENV === 'production' ? '/cal-for-you/' : '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
