@@ -120,11 +120,15 @@
         </div>
       </div>
     </section>
+    <LoadingComponent
+      ref="loading">
+    </LoadingComponent>
   </div>
 </template>
 
 <script>
 import { RouterLink } from 'vue-router'
+import LoadingComponent from '@/components/LoadingComponent.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Navigation, Scrollbar, EffectCoverflow } from 'swiper'
 import AOS from 'aos'
@@ -150,13 +154,15 @@ export default {
       this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products/all`)
         .then(res => {
           this.products = res.data.products
+          this.$refs.loading.loading.isLoading = false
         })
     }
   },
   components: {
     RouterLink,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    LoadingComponent
   },
   mounted () {
     AOS.init({

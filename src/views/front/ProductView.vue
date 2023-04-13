@@ -81,6 +81,9 @@
         </swiper>
       </div>
     </section>
+    <LoadingComponent
+      ref="loading">
+    </LoadingComponent>
   </div>
 </template>
 
@@ -89,6 +92,7 @@ import { mapActions } from 'pinia'
 import { RouterLink } from 'vue-router'
 import cartStore from '@/stores/cart'
 import ShowCartToast from '@/components/ShowCartToast.vue'
+import LoadingComponent from '@/components/LoadingComponent.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Navigation, Scrollbar } from 'swiper'
 
@@ -115,7 +119,7 @@ export default {
       this.$http(`${VITE_URL}v2/api/${VITE_PATH}/product/${id}`)
         .then(res => {
           this.product = res.data.product
-          // this.productPictures.push(this.product.imageUrl, this.product.imagesUrl)
+          this.$refs.loading.loading.isLoading = false
           if (this.product.imagesUrl) {
             this.productPictures = [this.product.imageUrl, ...this.product.imagesUrl]
           } else {
@@ -142,6 +146,7 @@ export default {
   components: {
     RouterLink,
     ShowCartToast,
+    LoadingComponent,
     Swiper,
     SwiperSlide
   },

@@ -1,16 +1,5 @@
 <template>
   <div>
-    <loading
-      :active="loading.isLoading"
-      :is-full-page="loading.fullPage"
-      :background-color="loading.backgroundColor">
-      <div class="loadingio-spinner-ripple-6lay1q6s1f">
-        <div class="ldio-170y7nacyvl">
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </loading>
     <section class="container pt-6">
       <h2 class="fw-bold pb-4 text-center">商品列表</h2>
       <div class="row d-flex flex-md-row flex-column">
@@ -55,6 +44,9 @@
         </div>
       </div>
     </section>
+    <LoadingComponent
+      ref="loading">
+    </LoadingComponent>
     <ShowCartToast ref="showCartToast"></ShowCartToast>
     <section class="container d-flex justify-content-center pt-5">
       <PaginationComponent
@@ -68,8 +60,7 @@
 <script>
 import { mapActions } from 'pinia'
 import { RouterLink } from 'vue-router'
-import Loading from 'vue-loading-overlay'
-import 'vue-loading-overlay/dist/css/index.css'
+import LoadingComponent from '@/components/LoadingComponent.vue'
 import PaginationComponent from '@/components/PaginationComponent.vue'
 import cartStore from '@/stores/cart'
 import ShowCartToast from '@/components/ShowCartToast.vue'
@@ -80,12 +71,7 @@ export default {
   data () {
     return {
       products: [],
-      page: {},
-      loading: {
-        isLoading: false,
-        fullPage: false,
-        backgroundColor: 'rgb(230, 243, 250)'
-      }
+      page: {}
     }
   },
   methods: {
@@ -94,7 +80,7 @@ export default {
         .then(res => {
           this.products = res.data.products
           this.page = res.data.pagination
-          this.loading.isLoading = false
+          this.$refs.loading.loading.isLoading = false
         })
     },
     filterCategory (category) {
@@ -149,11 +135,10 @@ export default {
   components: {
     RouterLink,
     PaginationComponent,
-    Loading,
+    LoadingComponent,
     ShowCartToast
   },
   mounted () {
-    this.loading.isLoading = true
     this.getProducts()
   }
 }
