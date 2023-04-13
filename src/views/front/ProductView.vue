@@ -43,7 +43,7 @@
             <button type="button" class="btn btn-outline-primary" @click="addToCart(product.id, qty);showToast()">
               <i class="bi bi-cart-fill"></i> 加入購物車
             </button>
-            <ShowCartToast ref="showCartToast"></ShowCartToast>
+            <ShowCartToast ref="showCartToast" />
           </div>
         </div>
       </div>
@@ -82,8 +82,7 @@
       </div>
     </section>
     <LoadingComponent
-      ref="loading">
-    </LoadingComponent>
+      ref="loading" />
   </div>
 </template>
 

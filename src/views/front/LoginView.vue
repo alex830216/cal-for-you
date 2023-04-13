@@ -22,7 +22,7 @@
       </div>
     </div>
     <p class="mt-5 mb-3 text-muted">
-      &copy; 2023~∞ - 六角學院
+      &copy; 2023~∞ - Cal For You 幫你算
     </p>
   </div>
 </template>

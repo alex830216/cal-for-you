@@ -51,22 +51,19 @@
     </table>
     <PaginationComponent
       :pages="page"
-      @change-page="getCoupons">
-    </PaginationComponent>
+      @change-page="getCoupons" />
     <!-- Modal -->
     <div id="couponModal" ref="couponModal" class="modal fade" tabindex="-1" aria-labelledby="couponModalLabel"
       aria-hidden="true">
       <CouponModal
         :temp-coupon="tempCoupon"
-        :add-or-update-coupon="addOrUpdateCoupon">
-      </CouponModal>
+        :add-or-update-coupon="addOrUpdateCoupon" />
     </div>
     <div id="delCouponModal" ref="delCouponModal" class="modal fade" tabindex="-1"
       aria-labelledby="delCouponModalLabel" aria-hidden="true">
       <DelCouponModal
         :temp-coupon="tempCoupon"
-        :del-coupon="delCoupon">
-      </DelCouponModal>
+        :del-coupon="delCoupon" />
     </div>
     <!-- Modal -->
   </div>

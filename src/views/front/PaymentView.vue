@@ -53,9 +53,8 @@
               placeholder="xxxx-xxxx-xxxx-xxxx"
               rules="required"
               v-model="form.creditAccount"
-              maxlength="16"
-            ></VField>
-            <ErrorMessage name="信用卡帳號" class="invalid-feedback"></ErrorMessage>
+              maxlength="16" />
+            <ErrorMessage name="信用卡帳號" class="invalid-feedback" />
           </div>
           <div class="mb-3">
             <label for="validateDate" class="form-label">有效日期 <span class="text-danger">*</span></label>
@@ -67,9 +66,8 @@
               :class="{ 'is-invalid': errors['有效日期'] }"
               rules="required"
               v-model="form.validateDate"
-              :min="minDate"
-            ></VField>
-            <ErrorMessage name="有效日期" class="invalid-feedback"></ErrorMessage>
+              :min="minDate" />
+            <ErrorMessage name="有效日期" class="invalid-feedback" />
           </div>
           <div class="mb-4">
             <label for="safeCode" class="form-label">安全碼 <span class="text-danger">*</span></label>
@@ -82,9 +80,8 @@
               placeholder="123"
               rules="required|max:4"
               v-model="form.safeCode"
-              maxlength="4"
-            ></VField>
-            <ErrorMessage name="安全碼" class="invalid-feedback"></ErrorMessage>
+              maxlength="4" />
+            <ErrorMessage name="安全碼" class="invalid-feedback" />
           </div>
           <div class="pb-4 fw-bold fs-5">
             商品總金額${{ $filters.currency(total) }} 元

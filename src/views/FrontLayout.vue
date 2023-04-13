@@ -35,8 +35,8 @@
         </div>
       </div>
     </nav>
-    <RouterView class="content"></RouterView>
-    <ScrollToTop></ScrollToTop>
+    <RouterView class="content" />
+    <ScrollToTop />
     <footer class="footer bg-primary-dark text-primary-light py-3">
       <div class="container d-flex flex-column align-items-center justify-content-center text-center">
         <div>

@@ -51,23 +51,20 @@
     </table>
     <PaginationComponent
       :pages="page"
-      @change-page="getProducts">
-    </PaginationComponent>
+      @change-page="getProducts" />
     <!-- Modal -->
     <div id="productModal" ref="productModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel"
       aria-hidden="true">
       <ProductModal
         :temp-product="tempProduct"
         :add-or-update-product="addOrUpdateProduct"
-        :create-images="createImages">
-      </ProductModal>
+        :create-images="createImages" />
     </div>
     <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1"
       aria-labelledby="delProductModalLabel" aria-hidden="true">
       <DelProductModal
         :temp-product="tempProduct"
-        :del-product="delProduct">
-      </DelProductModal>
+        :del-product="delProduct" />
     </div>
     <!-- Modal -->
   </div>

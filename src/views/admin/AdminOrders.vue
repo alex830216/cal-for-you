@@ -67,22 +67,19 @@
     </table>
     <PaginationComponent
       :pages="page"
-      @change-page="getOrders">
-    </PaginationComponent>
+      @change-page="getOrders" />
     <!-- Modal -->
     <div id="orderModal" ref="orderModal" class="modal fade" tabindex="-1" aria-labelledby="orderModalLabel"
       aria-hidden="true">
       <OrderModal
         :temp-order="tempOrder"
-        :update-order="updateOrder">
-      </OrderModal>
+        :update-order="updateOrder" />
     </div>
     <div id="delOrderModal" ref="delOrderModal" class="modal fade" tabindex="-1"
       aria-labelledby="delOrderModalLabel" aria-hidden="true">
       <DelOrderModal
         :temp-order="tempOrder"
-        :del-order="delOrder">
-      </DelOrderModal>
+        :del-order="delOrder" />
     </div>
     <!-- Modal -->
   </div>

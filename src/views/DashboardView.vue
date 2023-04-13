@@ -7,7 +7,7 @@
     <RouterLink to="/admin/coupons">優惠券列表</RouterLink> |
     <RouterLink to="/">回前台</RouterLink> |
     <a href="#" @click.prevent="logout">登出</a>
-    <routerView :check-login="checkLogin"></routerView>
+    <routerView :check-login="checkLogin" />
   </div>
 </template>
 

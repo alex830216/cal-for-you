@@ -91,9 +91,8 @@
               :class="{ 'is-invalid': errors['email'] }"
               placeholder="name@gmail.com"
               rules="required|email"
-              v-model="form.user.email"
-            ></VField>
-            <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
+              v-model="form.user.email" />
+            <ErrorMessage name="email" class="invalid-feedback" />
           </div>
           <div class="mb-3">
             <label for="name" class="form-label">收件人姓名 <span class="text-danger">*</span></label>
@@ -105,9 +104,8 @@
               :class="{ 'is-invalid': errors['姓名'] }"
               placeholder="王小明"
               rules="required"
-              v-model="form.user.name"
-            ></VField>
-            <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
+              v-model="form.user.name" />
+            <ErrorMessage name="姓名" class="invalid-feedback" />
           </div>
           <div class="mb-3">
             <label for="tel" class="form-label">收件人電話 <span class="text-danger">*</span></label>
@@ -119,9 +117,8 @@
               :class="{ 'is-invalid': errors['電話'] }"
               placeholder="0912345678"
               rules="required|phone"
-              v-model="form.user.tel"
-            ></VField>
-            <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
+              v-model="form.user.tel" />
+            <ErrorMessage name="電話" class="invalid-feedback" />
           </div>
           <div class="mb-3">
             <label for="address" class="form-label">收件人地址 <span class="text-danger">*</span></label>
@@ -133,9 +130,8 @@
               :class="{ 'is-invalid': errors['地址'] }"
               placeholder="xx市xx區xx路x段x號x樓"
               rules="required"
-              v-model="form.user.address"
-            ></VField>
-            <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
+              v-model="form.user.address" />
+            <ErrorMessage name="地址" class="invalid-feedback" />
           </div>
           <div class="mb-4">
             <label for="remarks" class="form-label">備註</label>

@@ -45,14 +45,12 @@
       </div>
     </section>
     <LoadingComponent
-      ref="loading">
-    </LoadingComponent>
-    <ShowCartToast ref="showCartToast"></ShowCartToast>
+      ref="loading" />
+    <ShowCartToast ref="showCartToast" />
     <section class="container d-flex justify-content-center pt-5">
       <PaginationComponent
         :pages="page"
-        @change-page="getProducts">
-      </PaginationComponent>
+        @change-page="getProducts" />
     </section>
   </div>
 </template>

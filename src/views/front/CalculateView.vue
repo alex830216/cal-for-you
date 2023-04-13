@@ -176,8 +176,7 @@
         再乘以PAL的數值:1598 x 1.55 = 2478.9（大約為2479大卡）
       </p>
     </section>
-    <ShowCouponCopyToast ref="showCouponCopyToast">
-    </ShowCouponCopyToast>
+    <ShowCouponCopyToast ref="showCouponCopyToast" />
   </div>
 </template>
 

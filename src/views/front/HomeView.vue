@@ -121,8 +121,7 @@
       </div>
     </section>
     <LoadingComponent
-      ref="loading">
-    </LoadingComponent>
+      ref="loading" />
   </div>
 </template>
 
