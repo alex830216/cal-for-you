@@ -68,7 +68,7 @@
                   </td>
                   <td class="d-flex flex-column flex-md-row align-items-center justify-content-center">
                     <div class="col-12 col-md-3 pb-2 pb-md-0 me-md-2">
-                      <img :src="item.product.imageUrl" class="object-cover w-100" height="120" alt="產品圖片">
+                      <img :src="item.product.imageUrl" class="object-cover w-100" height="120" alt="productImage">
                     </div>
                     <div class="col-12 col-md-9 text-center text-md-start">{{ item.product.title }}</div>
                   </td>

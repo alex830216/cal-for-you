@@ -2,7 +2,7 @@
   <div class="toast-container position-fixed top-7 end-0 p-3">
     <div ref="couponCopyToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
-        <img src="../assets/logo.svg" class="rounded me-2" height="20" alt="...">
+        <img src="../assets/logo.svg" class="rounded me-2" height="20" alt="logo">
         <strong class="me-auto">Cal For You</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>

@@ -16,7 +16,7 @@
                 <label for="imageUrl" class="form-label">輸入圖片網址</label>
                 <input type="text" class="form-control" placeholder="請輸入圖片連結" v-model="innerProduct.imageUrl">
               </div>
-              <img class="img-fluid" :src="innerProduct.imageUrl" alt="">
+              <img class="img-fluid" :src="innerProduct.imageUrl" alt="productImage">
             </div>
             <div>
               <h4>多圖設置</h4>
@@ -24,7 +24,7 @@
               <div v-if="Array.isArray(innerProduct.imagesUrl)">
                 <template v-for="(img, key) in innerProduct.imagesUrl" :key="key + 1653256">
                   <input type="text" class="form-control" v-model="innerProduct.imagesUrl[key]">
-                  <img :src="innerProduct.imagesUrl[key]" alt="" class="img-fluid mb-2">
+                  <img :src="innerProduct.imagesUrl[key]" alt="productImages" class="img-fluid mb-2">
                 </template>
                 <!-- 判斷新增、刪除出現的時機 -->
                 <!-- 新增的條件:沒有欄位的時候、或是目前欄位是有資料的 -->

@@ -23,7 +23,7 @@
             class="swiper"
             >
             <swiper-slide v-for="productPicture in productPictures" :key="productPicture">
-              <img :src="productPicture" alt="" class="object-cover w-100" height="422">
+              <img :src="productPicture" alt="productImage" class="object-cover w-100" height="422">
             </swiper-slide>
           </swiper>
         </div>
@@ -68,7 +68,7 @@
           <swiper-slide v-for="categoryProduct in products" :key="categoryProduct.id">
             <div class="card">
               <RouterLink :to="`/product/${categoryProduct.id}`" @click="getCategoryProduct(categoryProduct)" class="overlay-link">
-                <img :src="categoryProduct.imageUrl" class="card-img-top object-cover" height="200" alt="產品圖片">
+                <img :src="categoryProduct.imageUrl" class="card-img-top object-cover" height="200" alt="productImage">
               </RouterLink>
               <div class="card-body">
                 <h5 class="card-title fw-bold">{{ categoryProduct.title }}</h5>
