@@ -124,7 +124,7 @@
         </template>
         <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
           <div>
-            <button @click="deleteCarts" type="button" class="btn btn-outline-danger mb-3 mb-sm-0">刪除所有品項</button>
+            <button type="button" @click="deleteCarts" class="btn btn-outline-danger mb-3 mb-sm-0">刪除所有品項</button>
           </div>
           <div>
             <RouterLink to="/products" class="btn btn-light me-4">繼續購物</RouterLink>

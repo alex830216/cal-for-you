@@ -5,23 +5,23 @@
       <div class="row d-flex flex-md-row flex-column">
         <div class="col-md-3">
           <div class="pb-3 pb-md-5 d-md-flex flex-md-column">
-            <button @click="getProducts" type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">全部商品</button>
-            <button @click="filterCategory($event.target.innerText)" type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">健康餐盒</button>
-            <button @click="filterCategory($event.target.innerText)" type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">乳清蛋白</button>
-            <button @click="filterCategory($event.target.innerText)" type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">雞肉</button>
-            <button @click="filterCategory($event.target.innerText)" type="button" class="btn btn-outline-primary">海鮮</button>
+            <button type="button" @click="getProducts" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">全部商品</button>
+            <button type="button" @click="filterCategory($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">健康餐盒</button>
+            <button type="button" @click="filterCategory($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">乳清蛋白</button>
+            <button type="button" @click="filterCategory($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">雞肉</button>
+            <button type="button" @click="filterCategory($event.target.innerText)" class="btn btn-outline-primary">海鮮</button>
           </div>
           <div class="pb-3 pb-md-5 d-md-flex flex-md-column">
             <button type="button" class="btn btn-primary me-1 me-md-0 mb-md-1 disabled">熱量 (Cal)</button>
-            <button @click="filterCal($event.target.innerText)" type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">0 ~ 300</button>
-            <button @click="filterCal($event.target.innerText)" type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">301 ~ 600</button>
-            <button @click="filterCal($event.target.innerText)" type="button" class="btn btn-outline-primary">601<i class="bi bi-arrow-up"></i></button>
+            <button type="button" @click="filterCal($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">0 ~ 300</button>
+            <button type="button" @click="filterCal($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">301 ~ 600</button>
+            <button type="button" @click="filterCal($event.target.innerText)" class="btn btn-outline-primary">601<i class="bi bi-arrow-up"></i></button>
           </div>
           <div class="pb-3 pb-md-5 d-md-flex flex-md-column">
             <button type="button" class="btn btn-primary me-1 me-md-0 mb-md-1" disabled>蛋白質 (g)</button>
-            <button @click="filterProtein($event.target.innerText)" type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">0 ~ 10</button>
-            <button @click="filterProtein($event.target.innerText)" type="button" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">10.1 ~ 20</button>
-            <button @click="filterProtein($event.target.innerText)" type="button" class="btn btn-outline-primary">20.1<i class="bi bi-arrow-up"></i></button>
+            <button type="button" @click="filterProtein($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">0 ~ 10</button>
+            <button type="button" @click="filterProtein($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">10.1 ~ 20</button>
+            <button type="button" @click="filterProtein($event.target.innerText)" class="btn btn-outline-primary">20.1<i class="bi bi-arrow-up"></i></button>
           </div>
         </div>
         <div class="col-md-9">

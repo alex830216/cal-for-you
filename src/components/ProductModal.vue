@@ -28,7 +28,9 @@
                 </template>
                 <!-- 判斷新增、刪除出現的時機 -->
                 <!-- 新增的條件:沒有欄位的時候、或是目前欄位是有資料的 -->
-                <button class="btn btn-outline-primary btn-sm d-block w-100"
+                <button
+                  type="button"
+                  class="btn btn-outline-primary btn-sm d-block w-100"
                   v-if="
                   !innerProduct.imagesUrl.length ||
                   innerProduct.imagesUrl[innerProduct.imagesUrl.length - 1]
@@ -37,7 +39,9 @@
                   新增圖片
                 </button>
                 <!-- 刪除的條件:有欄位的時候才能刪除 -->
-                <button class="btn btn-outline-danger btn-sm d-block w-100"
+                <button
+                  type="button"
+                  class="btn btn-outline-danger btn-sm d-block w-100"
                   v-else
                   @click="innerProduct.imagesUrl.pop()">
                   刪除圖片
@@ -45,7 +49,9 @@
               </div>
               <!-- 當該產品資料沒有屬性 imagesUrl 時，可以新增多圖 -->
               <div v-else>
-                <button class="btn btn-outline-primary btn-sm d-block w-100"
+                <button
+                  type="button"
+                  class="btn btn-outline-primary btn-sm d-block w-100"
                   @click="createImages">
                   新增圖片
                 </button>

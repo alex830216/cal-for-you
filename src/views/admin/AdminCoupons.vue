@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="text-end mt-4">
-      <button class="btn btn-primary" @click="openModal('create')">
+      <button type="button" class="btn btn-primary" @click="openModal('create')">
         建立新的優惠券
       </button>
     </div>

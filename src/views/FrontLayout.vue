@@ -7,7 +7,7 @@
             <img src="../assets/logo.svg" alt="logo" width="30" height="30" class="d-inline-block align-text-top">
             Cal For You 幫你算</RouterLink>
         </h1>
-        <button class="navbar-toggler text-primary-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button type="button" class="navbar-toggler text-primary-light" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent" ref="navbar">
