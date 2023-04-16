@@ -80,6 +80,9 @@ export default {
           this.page = res.data.pagination
           this.$refs.loading.loading.isLoading = false
         })
+        .catch(err => {
+          alert(err.response.data.message)
+        })
     },
     filterCategory (category) {
       this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products/all`)
@@ -87,6 +90,9 @@ export default {
           this.products = res.data.products.filter((item) => {
             return item.category === category
           })
+        })
+        .catch(err => {
+          alert(err.response.data.message)
         })
     },
     filterCal (cal) {
@@ -106,6 +112,9 @@ export default {
             })
           }
         })
+        .catch(err => {
+          alert(err.response.data.message)
+        })
     },
     filterProtein (protein) {
       this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products/all`)
@@ -123,6 +132,9 @@ export default {
               return item.protein >= 20.1
             })
           }
+        })
+        .catch(err => {
+          alert(err.response.data.message)
         })
     },
     showToast () {

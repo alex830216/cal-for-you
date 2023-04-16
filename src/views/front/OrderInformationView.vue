@@ -188,29 +188,42 @@ export default {
           this.getCart()
           this.loadingItem = ''
         })
+        .catch((err) => {
+          alert(err.response.data.message)
+        })
     },
     deleteCart (item) {
       this.loadingItem = item.id
-      this.$http.delete(`${VITE_URL}v2/api/${VITE_PATH}/cart/${item.id}`).then(() => {
-        this.getCart()
-        this.loadingItem = ''
-      })
+      this.$http
+        .delete(`${VITE_URL}v2/api/${VITE_PATH}/cart/${item.id}`).then(() => {
+          this.getCart()
+          this.loadingItem = ''
+        })
+        .catch((err) => {
+          alert(err.response.data.message)
+        })
     },
     deleteCarts () {
-      this.$http.delete(`${VITE_URL}v2/api/${VITE_PATH}/carts`).then(() => {
-        this.getCart()
-      })
+      this.$http
+        .delete(`${VITE_URL}v2/api/${VITE_PATH}/carts`).then(() => {
+          this.getCart()
+        })
+        .catch((err) => {
+          alert(err.response.data.message)
+        })
     },
     createOrder () {
       const data = this.form
-      this.$http.post(`${VITE_URL}v2/api/${VITE_PATH}/order`, { data }).then((res) => {
-        // 清除form資料，veevalidate提供的方法
-        this.$refs.form.resetForm()
-        this.form.message = ''
-        this.getCart()
-        const id = res.data.orderId
-        this.$router.push({ name: 'payment', query: { id } })
-      })
+      this.$http
+        .post(`${VITE_URL}v2/api/${VITE_PATH}/order`, { data })
+        .then((res) => {
+          // 清除form資料，veevalidate提供的方法
+          this.$refs.form.resetForm()
+          this.form.message = ''
+          this.getCart()
+          const id = res.data.orderId
+          this.$router.push({ name: 'payment', query: { id } })
+        })
         .catch(err => {
           alert(err.response.data.message)
         })

@@ -119,7 +119,8 @@ export default {
         })
     },
     updateOrder (order) {
-      this.$http.put(`${VITE_URL}v2/api/${VITE_PATH}/admin/order/${order.id}`, { data: order })
+      this.$http
+        .put(`${VITE_URL}v2/api/${VITE_PATH}/admin/order/${order.id}`, { data: order })
         .then((res) => {
           alert(res.data.message)
           this.getOrders()

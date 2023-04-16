@@ -155,6 +155,9 @@ export default {
           this.products = res.data.products
           this.$refs.loading.loading.isLoading = false
         })
+        .catch((err) => {
+          alert(err.response.data.message)
+        })
     }
   },
   components: {

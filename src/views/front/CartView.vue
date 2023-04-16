@@ -176,20 +176,33 @@ export default {
           this.getCart()
           this.loadingItem = ''
         })
+        .catch((err) => {
+          alert(err.response.data.message)
+        })
     },
     deleteCart (item) {
       this.loadingItem = item.id
-      this.$http.delete(`${VITE_URL}v2/api/${VITE_PATH}/cart/${item.id}`).then(() => {
-        this.getCart()
-        this.loadingItem = ''
-        localStorage.setItem('coupon', JSON.stringify(false))
-      })
+      this.$http
+        .delete(`${VITE_URL}v2/api/${VITE_PATH}/cart/${item.id}`)
+        .then(() => {
+          this.getCart()
+          this.loadingItem = ''
+          localStorage.setItem('coupon', JSON.stringify(false))
+        })
+        .catch((err) => {
+          alert(err.response.data.message)
+        })
     },
     deleteCarts () {
-      this.$http.delete(`${VITE_URL}v2/api/${VITE_PATH}/carts`).then(() => {
-        this.getCart()
-        localStorage.setItem('coupon', JSON.stringify(false))
-      })
+      this.$http
+        .delete(`${VITE_URL}v2/api/${VITE_PATH}/carts`)
+        .then(() => {
+          this.getCart()
+          localStorage.setItem('coupon', JSON.stringify(false))
+        })
+        .catch((err) => {
+          alert(err.response.data.message)
+        })
     },
     showToast (couponIsUsed, message) {
       this.$refs.showCouponUsedToast.showCouponUsedToast(couponIsUsed, message)

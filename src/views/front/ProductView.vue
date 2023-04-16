@@ -126,12 +126,18 @@ export default {
           }
           this.getSameCategory()
         })
+        .catch(err => {
+          alert(err.response.data.message)
+        })
     },
     getSameCategory () {
       const { category } = this.product
       this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products?category=${category}`)
         .then(res => {
           this.products = res.data.products
+        })
+        .catch(err => {
+          alert(err.response.data.message)
         })
     },
     getCategoryProduct (categoryProduct) {

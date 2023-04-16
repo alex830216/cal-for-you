@@ -43,7 +43,8 @@ export default {
     login () {
       // 登入api
       const url = `${VITE_URL}/v2/admin/signin`
-      this.$http.post(url, this.user)
+      this.$http
+        .post(url, this.user)
         .then(res => {
           const { token, expired } = res.data
           // 將 token 及 expired 存入 cookie ，供其他頁面可以使用這個 token
