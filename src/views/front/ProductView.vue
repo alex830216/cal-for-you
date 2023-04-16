@@ -40,7 +40,11 @@
             </select>
           </div>
           <div class="pt-5 d-flex justify-content-between">
-            <button type="button" class="btn btn-outline-primary" @click="addToCart(product.id, qty);showToast()">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              @click="addToCart(product.id, qty);showToast()"
+              :disabled="product.id === loadingItem">
               <i class="bi bi-cart-fill"></i> 加入購物車
             </button>
             <ShowCartToast ref="showCartToast" />
@@ -87,7 +91,7 @@
 </template>
 
 <script>
-import { mapActions } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import { RouterLink } from 'vue-router'
 import cartStore from '@/stores/cart'
 import ShowCartToast from '@/components/ShowCartToast.vue'
@@ -157,6 +161,9 @@ export default {
   },
   mounted () {
     this.getProduct()
+  },
+  computed: {
+    ...mapState(cartStore, ['loadingItem'])
   }
 }
 </script>
