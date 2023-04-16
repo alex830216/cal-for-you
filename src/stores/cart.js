@@ -30,7 +30,7 @@ const cartStore = defineStore('cart', {
         })
     },
     // eslint-disable-next-line camelcase
-    addToCart (product_id, qty = 1) {
+    addToCart (product_id, qty = 1, showToast) {
       const data = {
         data: {
           // eslint-disable-next-line camelcase
@@ -44,6 +44,7 @@ const cartStore = defineStore('cart', {
         .post(`${VITE_URL}v2/api/${VITE_PATH}/cart`, data).then(() => {
           this.getCart()
           this.loadingItem = ''
+          showToast()
         })
         .catch((err) => {
           alert(err.response.data.message)

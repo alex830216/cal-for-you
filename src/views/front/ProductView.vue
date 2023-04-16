@@ -43,7 +43,7 @@
             <button
               type="button"
               class="btn btn-outline-primary"
-              @click="addToCart(product.id, qty);showToast()"
+              @click="addToCart(product.id, qty, showToast)"
               :disabled="product.id === loadingItem">
               <i class="bi bi-cart-fill"></i> 加入購物車
             </button>
