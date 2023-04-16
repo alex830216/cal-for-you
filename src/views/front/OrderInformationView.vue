@@ -154,7 +154,7 @@
 
 <script>
 import { mapActions, mapState } from 'pinia'
-import cartStore from '../../stores/cart'
+import cartStore from '@/stores/cart'
 
 const { VITE_URL, VITE_PATH } = import.meta.env
 
