@@ -76,12 +76,12 @@
                     <div class="input-group input-group-sm">
                       <div class="input-group">
                         <!-- 更新時不能更改數量 -->
-                        <select name="" id=""
+                        <select
                           class="form-select"
                           v-model="item.qty"
                           :disabled="item.id === loadingItem"
                           @change="updateCart(item)">
-                          <option :value="i" v-for="i in 10" :key="`${i}165146`">{{ i }}</option>
+                          <option :value="i" v-for="i in (item.qty <= 10 ? 10 : item.qty)" :key="`${i}165146`">{{ i }}</option>
                         </select>
                       </div>
                     </div>
