@@ -5,23 +5,23 @@
       <div class="row d-flex flex-md-row flex-column">
         <div class="col-md-3">
           <div class="pb-3 pb-md-5 d-md-flex flex-md-column">
-            <button type="button" @click="getProducts" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">全部商品</button>
-            <button type="button" @click="filterCategory($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">健康餐盒</button>
-            <button type="button" @click="filterCategory($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">乳清蛋白</button>
-            <button type="button" @click="filterCategory($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">雞肉</button>
-            <button type="button" @click="filterCategory($event.target.innerText)" class="btn btn-outline-primary">海鮮</button>
+            <button type="button" @click="getProducts" ref="allProducts" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">全部商品</button>
+            <button type="button" @click="filterCategory($event.target)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">健康餐盒</button>
+            <button type="button" @click="filterCategory($event.target)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">乳清蛋白</button>
+            <button type="button" @click="filterCategory($event.target)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">雞肉</button>
+            <button type="button" @click="filterCategory($event.target)" class="btn btn-outline-primary">海鮮</button>
           </div>
           <div class="pb-3 pb-md-5 d-md-flex flex-md-column">
             <button type="button" class="btn btn-primary me-1 me-md-0 mb-md-1 disabled">熱量 (Cal)</button>
-            <button type="button" @click="filterCal($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">0 ~ 300</button>
-            <button type="button" @click="filterCal($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">301 ~ 600</button>
-            <button type="button" @click="filterCal($event.target.innerText)" class="btn btn-outline-primary">601<i class="bi bi-arrow-up"></i></button>
+            <button type="button" @click="filterCal($event.target)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">0 ~ 300</button>
+            <button type="button" @click="filterCal($event.target)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">301 ~ 600</button>
+            <button type="button" @click="filterCal($event.target)" class="btn btn-outline-primary">601<i class="bi bi-arrow-up"></i></button>
           </div>
           <div class="pb-3 pb-md-5 d-md-flex flex-md-column">
-            <button type="button" class="btn btn-primary me-1 me-md-0 mb-md-1" disabled>蛋白質 (g)</button>
-            <button type="button" @click="filterProtein($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">0 ~ 10</button>
-            <button type="button" @click="filterProtein($event.target.innerText)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">10.1 ~ 20</button>
-            <button type="button" @click="filterProtein($event.target.innerText)" class="btn btn-outline-primary">20.1<i class="bi bi-arrow-up"></i></button>
+            <button type="button" class="btn btn-primary me-1 me-md-0 mb-md-1 disabled">蛋白質 (g)</button>
+            <button type="button" @click="filterProtein($event.target)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">0 ~ 10</button>
+            <button type="button" @click="filterProtein($event.target)" class="btn btn-outline-primary me-1 me-md-0 mb-md-1">10.1 ~ 20</button>
+            <button type="button" @click="filterProtein($event.target)" class="btn btn-outline-primary">20.1<i class="bi bi-arrow-up"></i></button>
           </div>
         </div>
         <div class="col-md-9">
@@ -83,59 +83,68 @@ export default {
           this.products = res.data.products
           this.page = res.data.pagination
           this.$refs.loading.loading.isLoading = false
+          const allProductsBtn = this.$refs.allProducts
+          const Btns = allProductsBtn.parentNode.parentNode.querySelectorAll('button')
+          Btns.forEach(item => {
+            item.disabled = false
+          })
+          allProductsBtn.disabled = true
         })
         .catch(err => {
-          alert(err.response.data.message)
+          alert(err)
         })
     },
-    filterCategory (category) {
+    filterCategory (btn) {
       this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products/all`)
         .then(res => {
           this.products = res.data.products.filter((item) => {
-            return item.category === category
+            return item.category === btn.innerText
           })
+          this.btnDisabled(btn)
         })
         .catch(err => {
           alert(err.response.data.message)
         })
     },
-    filterCal (cal) {
+    filterCal (btn) {
       this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products/all`)
         .then(res => {
-          if (cal === '0 ~ 300') {
+          if (btn.innerText === '0 ~ 300') {
             this.products = res.data.products.filter((item) => {
               return item.calorie >= 0 && item.calorie <= 300
             })
-          } else if (cal === '301 ~ 600') {
+          } else if (btn.innerText === '301 ~ 600') {
             this.products = res.data.products.filter((item) => {
               return item.calorie >= 301 && item.calorie <= 600
             })
-          } else if (cal === '601') {
+          } else if (btn.innerText === '601') {
             this.products = res.data.products.filter((item) => {
               return item.calorie >= 601
             })
           }
+          this.btnDisabled(btn)
         })
         .catch(err => {
           alert(err.response.data.message)
         })
     },
-    filterProtein (protein) {
+    filterProtein (btn) {
       this.$http(`${VITE_URL}v2/api/${VITE_PATH}/products/all`)
         .then(res => {
-          if (protein === '0 ~ 10') {
+          if (btn.innerText === '0 ~ 10') {
             this.products = res.data.products.filter((item) => {
               return item.protein >= 0 && item.protein <= 10
             })
-          } else if (protein === '10.1 ~ 20') {
+          } else if (btn.innerText === '10.1 ~ 20') {
             this.products = res.data.products.filter((item) => {
               return item.protein >= 10.1 && item.protein <= 20
             })
-          } else if (protein === '20.1') {
+          } else if (btn.innerText === '20.1') {
             this.products = res.data.products.filter((item) => {
               return item.protein >= 20.1
             })
           }
+          this.btnDisabled(btn)
         })
         .catch(err => {
           alert(err.response.data.message)
@@ -143,6 +152,13 @@ export default {
     },
     showToast () {
       this.$refs.showCartToast.showCartToast()
+    },
+    btnDisabled (btn) {
+      const Btns = btn.parentNode.parentNode.querySelectorAll('button')
+      Btns.forEach(item => {
+        item.disabled = false
+      })
+      btn.disabled = true
     },
     ...mapActions(cartStore, ['addToCart'])
   },
