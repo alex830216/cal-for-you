@@ -1,9 +1,8 @@
 <template>
   <div>
     <div>這是後台頁面</div>
-    <RouterLink to="/admin">後台</RouterLink> |
+    <RouterLink to="/admin">產品列表</RouterLink> |
     <RouterLink to="/admin/orders">訂單列表</RouterLink> |
-    <RouterLink to="/admin/products">產品列表</RouterLink> |
     <RouterLink to="/admin/coupons">優惠券列表</RouterLink> |
     <RouterLink to="/">回前台</RouterLink> |
     <a href="#" @click.prevent="logout">登出</a>

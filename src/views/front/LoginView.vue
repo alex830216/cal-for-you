@@ -52,7 +52,7 @@ export default {
           // hexToken 名字可自取，但需跟 products.js mounted 的 document.cookie.replace 內的 token 取名相同
           document.cookie = `hexToken=${token}; expires=${new Date(expired)};`
           // 轉址到後台產品頁面
-          this.$router.push('/admin/products')
+          this.$router.push('/admin')
         })
         .catch((err) => {
           alert(err.response.data.message)

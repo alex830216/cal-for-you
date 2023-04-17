@@ -54,12 +54,12 @@ const routes = [
     component: () => import('../views/DashboardView.vue'),
     children: [
       {
-        path: 'orders',
-        component: () => import('../views/admin/AdminOrders.vue')
+        path: '',
+        component: () => import('../views/admin/AdminProducts.vue')
       },
       {
-        path: 'products',
-        component: () => import('../views/admin/AdminProducts.vue')
+        path: 'orders',
+        component: () => import('../views/admin/AdminOrders.vue')
       },
       {
         path: 'coupons',
