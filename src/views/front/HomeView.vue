@@ -97,7 +97,7 @@
       <div class="container d-flex flex-column align-items-center justify-content-center text-center" style="border-bottom: 1px solid rgb(230, 243, 250);" data-aos="zoom-in">
         <h2>Cal For You 幫你算</h2>
         <div class="d-flex align-items-center">
-          <div>聯絡我們：0912345678</div>
+          <div>聯絡我們：<a href="tel:+886-912345678" class="tel">0912-345-678</a></div>
           <ul class="d-flex ps-0">
             <li>
               <a href="#" class="px-2">
