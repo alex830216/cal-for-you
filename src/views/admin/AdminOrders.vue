@@ -3,6 +3,9 @@
     <table class="table mt-4">
       <thead>
         <tr>
+          <th width="250">
+            訂單 ID
+          </th>
           <th width="120">
             購買時間
           </th>
@@ -25,6 +28,7 @@
       </thead>
       <tbody>
         <tr v-for="order in orders" :key="order.id">
+          <td>{{ order.id }}</td>
           <td>{{ $filters.date(order.create_at) }}</td>
           <td>{{ order.user.email }}</td>
           <template v-for="product in order.products" :key="product.id">

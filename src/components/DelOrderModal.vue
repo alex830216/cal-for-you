@@ -10,9 +10,8 @@
       <div class="modal-body">
         是否刪除
         <strong
-          class="text-danger"
-          v-for="product in tempOrder.products" :key="product.id">
-          {{ product.product.title }}
+          class="text-danger">
+          {{ tempOrder.id }}
         </strong> 訂單(刪除後將無法恢復)。
       </div>
       <div class="modal-footer">
