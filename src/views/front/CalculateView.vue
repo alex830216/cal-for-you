@@ -253,6 +253,23 @@ export default {
   },
   components: {
     ShowCouponCopyToast
+  },
+  watch: {
+    height: function (newVal) {
+      if (Number(newVal) < 1) {
+        this.height = 1
+      }
+    },
+    weight: function (newVal) {
+      if (Number(newVal) < 1) {
+        this.weight = 1
+      }
+    },
+    age: function (newVal) {
+      if (Number(newVal) < 1) {
+        this.age = 1
+      }
+    }
   }
 }
 </script>
