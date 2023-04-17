@@ -11,10 +11,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent" ref="navbar">
-          <ul class="navbar-nav me-lg-auto mb-2 mb-lg-0 fs-5 text-center">
-            <li class="nav-item">
-              <RouterLink to="/" class="nav-link text-primary-light" @click="navToggle">首頁</RouterLink>
-            </li>
+          <ul class="navbar-nav me-lg-auto mb-2 mb-lg-0 ms-3 fs-5 text-center">
             <li class="nav-item">
               <RouterLink to="/calculate" class="nav-link text-primary-light" @click="navToggle">幫你算</RouterLink>
             </li>
