@@ -89,7 +89,7 @@
               type="email"
               class="form-control"
               :class="{ 'is-invalid': errors['email'] }"
-              placeholder="name@gmail.com"
+              placeholder="email@gmail.com"
               rules="required|email"
               v-model="form.user.email" />
             <ErrorMessage name="email" class="invalid-feedback" />

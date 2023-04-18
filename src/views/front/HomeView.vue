@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="position-relative">
-      <div class="banner d-flex align-items-center justify-content-center fs-1 text-white text-opacity-75"
+      <div class="cover d-flex align-items-center justify-content-center fs-1 text-white text-opacity-75"
       style="background: url(https://images.unsplash.com/photo-1564836235910-c3055ca0f912?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) no-repeat fixed top/cover ; width: 100%; height: 100vh;">
         <div class="container position-absolute top-50 start-50 translate-middle text-center">
           <p class="fw-bold text-primary-light animate__animated animate__slideInDown">不知道該吃多少嗎?<br>交給我們幫你算</p>
@@ -9,9 +9,9 @@
         </div>
       </div>
     </section>
-    <section class="text-primary-dark bg-primary-exlight">
-      <div class="container text-center py-5">
-        <div class="fs-2 fw-bold pb-5">您是否有以下困擾?</div>
+    <section class="text-primary-dark bg-primary-exlight py-6">
+      <div class="container text-center">
+        <div class="fs-1 fw-bold pb-5">您是否有以下困擾?</div>
         <div class="row align-items-center justify-content-center py-sm">
           <div class="col-md-6 pb-5 pb-md-0" data-aos="fade-right">
             <img src="https://images.unsplash.com/photo-1511909525232-61113c912358?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80" class="img-fluid" alt="diet" style="object-fit: cover;">
@@ -39,29 +39,22 @@
       </div>
     </section>
     <section class="position-relative">
-      <div class="concept d-flex align-items-center justify-content-center text-primary-light"
+      <div class="cover d-flex align-items-center justify-content-center text-primary-light"
       style="background: url(https://images.unsplash.com/photo-1505744386214-51dba16a26fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1306&q=80) no-repeat fixed center / cover ; width: 100%; height: 500px;">
         <div class="container position-absolute top-50 start-50 translate-middle text-center" data-aos="fade-up">
-          <h2 class="pb-3 fs-2">品牌理念</h2>
-          <p class="fs-4">結合 <strong class="fs-3">Cal</strong>culate 與 <strong class="fs-3">Cal</strong>orie<br>為您計算一天所需的熱量以及蛋白質<br>從此不再擔心熱量超標</p>
+          <h2 class="pb-3 fs-1">品牌理念</h2>
+          <p class="fs-3">結合 <strong class="fs-2">Cal</strong>culate 與 <strong class="fs-2">Cal</strong>orie<br>為您計算一天所需的熱量以及蛋白質<br>從此不再擔心熱量超標</p>
         </div>
       </div>
     </section>
-    <section class="bg-primary-exlight">
-      <div class="container d-flex flex-column align-items-center justify-content-center text-center py-5">
-        <h2 class="fw-bold pb-4">優選好食</h2>
+    <section class="bg-primary-exlight py-6">
+      <div class="container d-flex flex-column align-items-center justify-content-center text-center">
+        <h2 class="fw-bold pb-4 fs-1">優選好食</h2>
         <swiper
           :navigation="true"
           :effect="'coverflow'"
           :grabCursor="true"
           :loop="true"
-          :coverflowEffect="{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }"
           :scrollbar="{
             hide: true,
           }"
@@ -69,7 +62,6 @@
             delay: 2500,
             disableOnInteraction: false,
           }"
-          :spaceBetween="10"
           :breakpoints="{
             '768': {
               slidesPerView: 3,
@@ -93,7 +85,37 @@
         </swiper>
       </div>
     </section>
-    <section class="bg-primary-dark text-primary-light pt-4">
+    <section class="position-relative">
+      <div class="cover d-flex align-items-center justify-content-center text-primary-light"
+      style="background: url(https://images.unsplash.com/photo-1557568192-2fafc8b5bdc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) no-repeat fixed center / cover ; width: 100%; height: 500px;">
+        <div class="container position-absolute top-50 start-50 translate-middle" data-aos="fade-up">
+          <div class="row w-100">
+            <div class="col-12 col-lg-5">
+              <label for="email" class="form-label pb-3 fs-3">訂閱我們<br>可獲得專屬減脂菜單！</label>
+              <VForm class="input-group" v-slot="{ errors, meta }" @submit="subscribe">
+                <VField
+                  id="email"
+                  name="email"
+                  type="email"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors['email'] }"
+                  placeholder="email@gmail.com"
+                  rules="required|email"
+                  v-model="email" />
+                <button
+                  type="submit"
+                  class="btn btn-primary-transparent btn-lg hvr-glow animate__animated animate__zoomIn"
+                  :disabled="!meta.valid">
+                  訂閱
+                </button>
+                <ErrorMessage name="email" class="invalid-feedback" />
+              </VForm>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-primary-dark text-primary-light pt-5">
       <div class="container d-flex flex-column align-items-center justify-content-center text-center" style="border-bottom: 1px solid rgb(230, 243, 250);" data-aos="zoom-in">
         <h2>Cal For You 幫你算</h2>
         <div class="d-flex align-items-center">
@@ -120,6 +142,8 @@
         </div>
       </div>
     </section>
+    <ShowSubscribeToast
+      ref="subscribeToast"/>
     <LoadingComponent
       ref="loading" />
   </div>
@@ -128,8 +152,9 @@
 <script>
 import { RouterLink } from 'vue-router'
 import LoadingComponent from '@/components/LoadingComponent.vue'
+import ShowSubscribeToast from '@/components/ShowSubscribeToast.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Autoplay, Navigation, Scrollbar, EffectCoverflow } from 'swiper'
+import { Autoplay, Navigation, Scrollbar } from 'swiper'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import 'animate.css'
@@ -145,7 +170,8 @@ export default {
   data () {
     return {
       products: [],
-      modules: [Autoplay, Navigation, Scrollbar, EffectCoverflow]
+      email: '',
+      modules: [Autoplay, Navigation, Scrollbar]
     }
   },
   methods: {
@@ -158,13 +184,17 @@ export default {
         .catch((err) => {
           alert(err.response.data.message)
         })
+    },
+    subscribe () {
+      this.$refs.subscribeToast.showSubscribeToast()
     }
   },
   components: {
     RouterLink,
     Swiper,
     SwiperSlide,
-    LoadingComponent
+    LoadingComponent,
+    ShowSubscribeToast
   },
   mounted () {
     AOS.init({
