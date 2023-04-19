@@ -130,6 +130,7 @@ export default {
         .then(() => {
           this.$refs.form.resetForm()
           this.$router.push({ name: 'orderCompleted', query: { orderId } })
+          localStorage.setItem('coupon', false)
         })
         .catch(err => {
           alert(err.response.data.message)
