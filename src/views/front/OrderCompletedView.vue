@@ -52,72 +52,76 @@
       <table class="table table-primary table-bordered border-primary-subtle mb-5">
         <thead>
           <tr>
-            <th class="col-2">訂單金額</th>
+            <th class="col-4 col-md-3">訂單金額</th>
             <td>${{ $filters.currency(order.total) }}</td>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th class="col-2">訂單編號</th>
+            <th class="col-4 col-md-3">訂單編號</th>
             <td>{{ order.id }}</td>
           </tr>
           <tr>
-            <th class="col-2">訂單成立日期</th>
+            <th class="col-4 col-md-3">訂單成立日期</th>
             <td>{{ $filters.date(order.create_at) }}</td>
           </tr>
           <tr>
-            <th class="col-2">訂購品項</th>
+            <th class="col-4 col-md-3">訂購品項</th>
             <td>
-              <table class="table table-primary border-primary-subtle">
-                <thead>
-                  <tr>
-                    <th>品名</th>
-                    <th>單價</th>
-                    <th>數量</th>
-                    <th>小計</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <template v-if="order.products">
-                    <tr v-for="product in order.products" :key="product.id">
+              <template v-if="order.products">
+                <table v-for="product in order.products" :key="product.id" class="table table-primary border-primary-subtle">
+                  <thead>
+                    <tr>
+                      <th class="col-5 col-md-4">品名</th>
                       <td>{{ product.product.title }}</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="col-5 col-md-4">單價</th>
                       <td>{{ product.product.price }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-5 col-md-4">數量</th>
                       <td>{{ product.qty }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-5 col-md-4">小計</th>
                       <td>${{ $filters.currency(product.total) }}</td>
                     </tr>
-                  </template>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td colspan="3" class="col-11 text-end pe-5 fw-bold">訂單金額</td>
-                    <td class="col-1 fw-bold">${{ $filters.currency(order.total) }}</td>
-                  </tr>
-                </tfoot>
-              </table>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>訂單金額</th>
+                      <td class="fw-bold">${{ $filters.currency(order.total) }}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </template>
             </td>
           </tr>
           <tr>
-            <th class="col-2">訂購人資料</th>
+            <th class="col-4 col-md-3">訂購人資料</th>
             <td>
               <table class="table table-primary border-primary-subtle">
                 <template v-if="order.user">
                   <thead>
                     <tr>
-                      <th class="col-2">訂購人</th>
+                      <th class="col-5 col-md-4">訂購人</th>
                       <td>{{ order.user.name }}</td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th class="col-2">Email</th>
+                      <th class="col-5 col-md-4">Email</th>
                       <td>{{ order.user.email }}</td>
                     </tr>
                     <tr>
-                      <th class="col-2">電話</th>
+                      <th class="col-5 col-md-4">電話</th>
                       <td>{{ order.user.tel }}</td>
                     </tr>
                     <tr>
-                      <th class="col-2">地址</th>
+                      <th class="col-5 col-md-4">地址</th>
                       <td>{{ order.user.address }}</td>
                     </tr>
                   </tbody>
