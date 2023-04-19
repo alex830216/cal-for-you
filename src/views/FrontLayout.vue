@@ -11,16 +11,16 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent" ref="navbar">
-          <ul class="navbar-nav me-lg-auto mb-2 mb-lg-0 ms-3 fs-5 text-center">
-            <li class="nav-item">
+          <ul class="navbar-nav me-lg-auto pt-4 pt-lg-0 my-lg-0 ms-lg-3 fs-5 text-center">
+            <li class="nav-item pb-4 pb-lg-0">
               <RouterLink to="/calculate" class="nav-link nav-translate text-primary-light" @click="navToggle">幫你算</RouterLink>
             </li>
-            <li class="nav-item">
+            <li class="nav-item pb-4 pb-lg-0">
               <RouterLink to="/products" class="nav-link nav-translate text-primary-light" @click="navToggle">商品列表</RouterLink>
             </li>
           </ul>
-          <ul class="d-flex navbar-nav me-2 mb-2 mb-lg-0 fs-3 text-center">
-            <li class="nav-item mx-1">
+          <ul class="navbar-nav mb-2 mb-lg-0 fs-3 text-center">
+            <li class="nav-item">
               <RouterLink to="/cart" class="nav-link nav-translate text-primary-light position-relative" @click="navToggle">
                 <i class="bi bi-cart3"></i>
                 <template v-if="carts.length">
@@ -39,8 +39,7 @@
     <footer class="footer bg-primary-dark text-primary-light py-3">
       <div class="container d-flex flex-column align-items-center justify-content-center text-center">
         <div>
-          僅個人作品使用，無任何商業用途 |
-          <RouterLink to="/admin" class="nav-link nav-translate text-primary-light d-inline-block">後台</RouterLink>
+          僅個人作品使用，無任何商業用途
         </div>
         <div>
           Cal For You 幫你算 © 2023 ALL RIGHTS RESERVED |

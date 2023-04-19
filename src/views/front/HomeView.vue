@@ -12,24 +12,24 @@
     <section class="text-primary-dark bg-primary-exlight py-6">
       <div class="container text-center">
         <div class="fs-1 fw-bold pb-5">您是否有以下困擾?</div>
-        <div class="row align-items-center justify-content-center py-sm">
-          <div class="col-md-6 pb-5 pb-md-0" data-aos="fade-right">
+        <div class="row align-items-center justify-content-center pb-6 py-md-sm">
+          <div class="col-md-6 pb-3 pb-md-0" data-aos="fade-right">
             <img src="https://images.unsplash.com/photo-1511909525232-61113c912358?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80" class="img-fluid" alt="diet" style="object-fit: cover;">
           </div>
           <div class="col-md-6" data-aos="fade-left">
             <h2 class="fs-2">想減肥<br>但不知道該吃哪些食物</h2>
           </div>
         </div>
-        <div class="row flex-row-reverse align-items-center justify-content-center py-sm">
-          <div class="col-md-6 pb-5 pb-md-0" data-aos="fade-left">
+        <div class="row flex-row-reverse align-items-center justify-content-center pb-6 py-md-sm">
+          <div class="col-md-6 pb-3 pb-md-0" data-aos="fade-left">
             <img src="https://images.unsplash.com/photo-1577563612200-a95560e2edec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="img-fluid" alt="obesity" style="object-fit: cover;">
           </div>
           <div class="col-md-6" data-aos="fade-right">
             <h2 class="fs-2">想減脂<br>害怕攝取過多熱量</h2>
           </div>
         </div>
-        <div class="row align-items-center justify-content-center py-sm">
-          <div class="col-md-6 pb-5 pb-md-0" data-aos="fade-right">
+        <div class="row align-items-center justify-content-center py-md-sm">
+          <div class="col-md-6 pb-3 pb-md-0" data-aos="fade-right">
             <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="img-fluid" alt="training" style="object-fit: cover;">
           </div>
           <div class="col-md-6" data-aos="fade-left">

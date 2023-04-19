@@ -103,11 +103,11 @@
         </table>
       </section>
       <section class="container bg-primary-exlight p-4">
-        <div class="d-flex justify-content-end align-items-center pb-4">
-          <div>
+        <div class="d-flex flex-column flex-sm-row justify-content-end align-items-center pb-5">
+          <div class="pb-3 pb-sm-0">
             輸入優惠碼
           </div>
-          <div class="px-3">
+          <div class="px-3 pb-3 pb-sm-0">
             <input type="text" class="p-1" placeholder="請輸入優惠碼" v-model="coupon">
           </div>
           <button type="button" class="btn btn-outline-primary" @click="useCoupon(this.coupon); clear()">
@@ -121,7 +121,7 @@
         </template>
         <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
           <div>
-            <button type="button" @click="deleteCarts" class="btn btn-outline-danger mb-3 mb-sm-0">刪除所有品項</button>
+            <button type="button" @click="deleteCarts" class="btn btn-outline-danger mb-4 mb-sm-0">刪除所有品項</button>
           </div>
           <div>
             <RouterLink to="/products" class="btn btn-light me-4">繼續購物</RouterLink>
