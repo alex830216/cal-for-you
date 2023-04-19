@@ -32,7 +32,7 @@
                   <img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="productImage">
                   <div class="card-body text-center">
                     <h5 class="card-title fw-bold">{{ product.title }}</h5>
-                    <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
+                    <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 <span class="fs-5 text-danger">${{ product.price }}</span></p>
                     <p>熱量：{{ product.calorie }} 大卡</p>
                     <p>蛋白質：{{ product.protein }} 克</p>
                   </div>

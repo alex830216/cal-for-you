@@ -30,7 +30,7 @@
         <div class="col-12 col-lg-6 px-5">
           <h2 class="text-center pb-3">{{ product.title }}</h2>
           <p>{{ product.description }}</p>
-          <div class="pb-">
+          <div class="pb-1 fs-5">
             價格：${{ product.price }}
           </div>
           <div>
@@ -77,7 +77,7 @@
                 <img :src="categoryProduct.imageUrl" class="card-img-top object-cover" height="200" alt="productImage">
                 <div class="card-body text-center">
                   <h5 class="card-title fw-bold">{{ categoryProduct.title }}</h5>
-                  <p class="card-text"><span class="text-decoration-line-through">原價 ${{ categoryProduct.origin_price }}</span><br>現在只要 ${{ categoryProduct.price }}</p>
+                  <p class="card-text"><span class="text-decoration-line-through">原價 ${{ categoryProduct.origin_price }}</span><br>現在只要 <span class="fs-5 text-danger">${{ categoryProduct.price }}</span></p>
                   <p>熱量：{{ categoryProduct.calorie }} 大卡</p>
                   <p>蛋白質：{{ categoryProduct.protein }} 克</p>
                 </div>
