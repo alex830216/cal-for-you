@@ -2,10 +2,10 @@
   <div class="wrap">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary-dark fixed-top">
       <div class="container">
-        <h1>
-          <RouterLink to="/" class="navbar-brand fs-3 fw-bold text-primary-light hvr-grow" @click="navToggle"><!-- icon from https://freeicons.io/e-commerce-circle-gradient-2/calculator-calculate-math-calculation-icon-48905 -->
-            <img src="../assets/logo.svg" alt="logo" width="30" height="30" class="d-inline-block align-text-top">
-            Cal For You 幫你算</RouterLink>
+        <h1 class="m-0">
+          <RouterLink to="/" class="navbar-brand fs-3 fw-bold text-primary-light d-flex align-items-center hvr-grow" @click="navToggle"><!-- icon from https://freeicons.io/e-commerce-circle-gradient-2/calculator-calculate-math-calculation-icon-48905 -->
+            <img src="../assets/logo.svg" alt="logo" width="30" height="30" class="d-inline-block me-2">
+            <span>Cal For You 幫你算</span></RouterLink>
         </h1>
         <button type="button" class="navbar-toggler text-primary-light" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
