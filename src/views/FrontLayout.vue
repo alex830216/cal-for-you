@@ -23,9 +23,11 @@
             <li class="nav-item mx-1">
               <RouterLink to="/cart" class="nav-link nav-translate text-primary-light position-relative" @click="navToggle">
                 <i class="bi bi-cart3"></i>
-                <span class="position-absolute top-lg-25 start-lg-100 translate-middle badge rounded-pill bg-danger fs-6">
-                  {{ carts.length }}
-                </span>
+                <template v-if="carts.length">
+                  <span class="position-absolute top-lg-25 start-lg-100 translate-middle badge rounded-pill bg-danger fs-6">
+                    {{ carts.length }}
+                  </span>
+                </template>
               </RouterLink>
             </li>
           </ul>
