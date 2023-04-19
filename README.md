@@ -49,6 +49,7 @@ npm run dev
  - bootstrap 5
  - animate.css
  - hover.css
+ - sweetalert2
  - swiper
  - aos
 
