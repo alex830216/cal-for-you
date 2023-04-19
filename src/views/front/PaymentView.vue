@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <section class="container pt-6 pb-5">
+  <div class="container col-12 col-lg-6">
+    <section class="pt-6 pb-5">
       <h2 class="text-center pb-md-5 fw-bold">填寫付款資料</h2>
       <div class="d-none d-md-block">
         <div class="row">
@@ -35,7 +35,7 @@
         </div>
       </div>
     </section>
-    <section class="container p-5 d-flex justify-content-center bg-primary-exlight">
+    <section class="p-5 d-flex justify-content-center bg-primary-exlight">
       <div class="w-35">
         <h3 class="pb-4 text-center">
           付款資料
@@ -88,7 +88,9 @@
           </div>
           <div>
             <RouterLink to="/orderInformation" class="btn btn-light me-4">返回填寫訂購資料</RouterLink>
-            <button type="submit" class="btn btn-primary" :disabled="!meta.valid">付款</button>
+            <span :class="{ 'disabled-cursor': !meta.valid}">
+              <button type="submit" class="btn btn-primary" :disabled="!meta.valid">付款</button>
+            </span>
           </div>
         </VForm>
       </div>

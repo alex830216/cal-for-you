@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <section class="container pt-6 pb-5">
+  <div class="container col-12 col-lg-6">
+    <section class="pt-6 pb-5">
       <h2 class="text-center pb-md-5 fw-bold">填寫訂購資料</h2>
       <div class="d-none d-md-block">
         <div class="row">
@@ -35,7 +35,7 @@
         </div>
       </div>
     </section>
-    <section class="container py-3">
+    <section class="py-3">
       <table class="table table-hover align-middle text-center">
         <thead>
           <tr class="table-primary">
@@ -74,7 +74,7 @@
         </tfoot>
       </table>
     </section>
-    <section class="container">
+    <section>
       <div class="bg-primary-subtle p-4">
         <h3 class="pb-3">
           訂購資料
@@ -139,12 +139,15 @@
           </div>
           <div class="d-flex justify-content-end align-items-center p-3">
             <RouterLink to="/cart" class="btn btn-light me-4">返回購物車</RouterLink>
-            <button
-              type="submit"
-              class="btn btn-primary"
-              :disabled="!meta.valid || carts.length === 0">
-              確認結帳
-            </button>
+            <!-- <span :class="meta.valid ? '' : 'disabled-cursor'"> -->
+            <span :class="{ 'disabled-cursor': !meta.valid}">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                :disabled="!meta.valid || carts.length === 0">
+                確認結帳
+              </button>
+            </span>
           </div>
         </VForm>
       </div>
@@ -171,7 +174,8 @@ export default {
           address: ''
         },
         message: ''
-      }
+      },
+      isDisabled: true
     }
   },
   methods: {

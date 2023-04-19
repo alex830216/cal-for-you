@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <section class="container pt-6 pb-5">
+  <div class="container col-12 col-lg-6">
+    <section class="pt-6 pb-5">
       <h2 class="text-center pb-md-5 fw-bold">完成訂單</h2>
       <div class="d-none d-md-block">
         <div class="row">
@@ -35,7 +35,7 @@
         </div>
       </div>
     </section>
-    <section class="container py-3">
+    <section class="py-3">
       <div class="fs-1 text-success pb-2">感謝您的訂單<br>訂單成立，已完成付款！</div>
       <div class="fs-5">以下是您在 Cal For You 幫你算<br>訂購的電子明細</div>
     </section>

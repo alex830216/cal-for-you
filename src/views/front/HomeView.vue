@@ -104,12 +104,14 @@
                   placeholder="email@gmail.com"
                   rules="required|email"
                   v-model="email" />
-                <button
-                  type="submit"
-                  class="btn btn-primary-transparent btn-lg hvr-glow animate__animated animate__zoomIn"
-                  :disabled="!meta.valid">
-                  訂閱
-                </button>
+                <span :class="{ 'disabled-cursor': !meta.valid}">
+                  <button
+                    type="submit"
+                    class="btn btn-primary-transparent btn-lg hvr-glow animate__animated animate__zoomIn"
+                    :disabled="!meta.valid">
+                    訂閱
+                  </button>
+                </span>
                 <ErrorMessage name="email" class="invalid-feedback" />
               </VForm>
             </div>
