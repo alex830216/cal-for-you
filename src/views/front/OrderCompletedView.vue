@@ -22,14 +22,14 @@
             <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
               <div class="line bg-black w-100"></div>
               <div class="circle bg-white border border-primary rounded-circle"></div>
-              <div class="mt-3 fw-bold">填寫付款資料</div>
+              <div class="mt-3">填寫付款資料</div>
             </div>
           </div>
           <div class="col-3 ps-0">
             <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
               <div class="line bg-black w-100"></div>
               <div class="circle bg-primary border border-primary rounded-circle"></div>
-              <div class="mt-3">完成訂單</div>
+              <div class="mt-3 fw-bold">完成訂單</div>
             </div>
           </div>
         </div>
