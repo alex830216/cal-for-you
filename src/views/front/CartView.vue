@@ -147,6 +147,7 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import cartStore from '@/stores/cart'
+import Swal from 'sweetalert2'
 
 const { VITE_URL, VITE_PATH } = import.meta.env
 
@@ -191,11 +192,34 @@ export default {
         })
     },
     deleteCarts () {
-      this.$http
-        .delete(`${VITE_URL}v2/api/${VITE_PATH}/carts`)
-        .then(() => {
-          this.getCart()
-          localStorage.setItem('coupon', JSON.stringify(false))
+      Swal
+        .fire({
+          title: '確定要刪除所有品項嗎？',
+          text: '此操作無法復原',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#dc3545',
+          cancelButtonColor: '#6c757d',
+          confirmButtonText: '刪除所有品項！',
+          cancelButtonText: '取消'
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: '所有品項已刪除!',
+              icon: 'success',
+              confirmButtonColor: '#0d6efd'
+            })
+            this.$http
+              .delete(`${VITE_URL}v2/api/${VITE_PATH}/carts`)
+              .then(() => {
+                this.getCart()
+                localStorage.setItem('coupon', JSON.stringify(false))
+              })
+              .catch((err) => {
+                alert(err.response.data.message)
+              })
+          }
         })
         .catch((err) => {
           alert(err.response.data.message)
