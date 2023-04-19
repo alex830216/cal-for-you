@@ -69,27 +69,29 @@
             <th class="col-4 col-md-3">訂購品項</th>
             <td>
               <template v-if="order.products">
-                <table v-for="product in order.products" :key="product.id" class="table table-primary border-primary-subtle">
-                  <thead>
-                    <tr>
-                      <th class="col-5 col-md-4">品名</th>
-                      <td>{{ product.product.title }}</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th class="col-5 col-md-4">單價</th>
-                      <td>{{ product.product.price }}</td>
-                    </tr>
-                    <tr>
-                      <th class="col-5 col-md-4">數量</th>
-                      <td>{{ product.qty }}</td>
-                    </tr>
-                    <tr>
-                      <th class="col-5 col-md-4">小計</th>
-                      <td>${{ $filters.currency(product.total) }}</td>
-                    </tr>
-                  </tbody>
+                <table class="table table-primary border-primary-subtle">
+                  <template v-for="product in order.products" :key="product.id">
+                    <thead>
+                      <tr>
+                        <th class="col-5 col-md-4">品名</th>
+                        <td>{{ product.product.title }}</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th class="col-5 col-md-4">單價</th>
+                        <td>{{ product.product.price }}</td>
+                      </tr>
+                      <tr>
+                        <th class="col-5 col-md-4">數量</th>
+                        <td>{{ product.qty }}</td>
+                      </tr>
+                      <tr>
+                        <th class="col-5 col-md-4">小計</th>
+                        <td>${{ $filters.currency(product.total) }}</td>
+                      </tr>
+                    </tbody>
+                  </template>
                   <tfoot>
                     <tr>
                       <th>訂單金額</th>
