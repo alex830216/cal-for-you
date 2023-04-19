@@ -35,12 +35,21 @@
         </div>
       </div>
     </section>
-    <section class="py-3">
-      <div class="fs-1 text-success pb-2">感謝您的訂單<br>訂單成立，已完成付款！</div>
+    <section class="pb-3">
+      <div class="fs-1 text-success pb-5">感謝您的訂單<br>訂單成立，已完成付款！</div>
+      <div class="fs-2 pb-5">
+        <span class="text-primary-dark pe-2">有東西忘記買了？</span>
+        <RouterLink to="/products" class="btn btn-lg btn-outline-primary hvr-pulse">
+          繼續購物
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+          </svg>
+        </RouterLink>
+      </div>
       <div class="fs-5">以下是您在 Cal For You 幫你算<br>訂購的電子明細</div>
     </section>
-    <section class="container">
-      <table class="table table-primary table-bordered border-primary-subtle">
+    <section class="pb-5">
+      <table class="table table-primary table-bordered border-primary-subtle mb-5">
         <thead>
           <tr>
             <th class="col-2">訂單金額</th>

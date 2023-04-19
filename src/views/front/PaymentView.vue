@@ -35,7 +35,7 @@
         </div>
       </div>
     </section>
-    <section class="p-5 d-flex justify-content-center bg-primary-exlight">
+    <section class="p-5 mb-5 d-flex justify-content-center bg-primary-exlight">
       <div class="w-35">
         <h3 class="pb-4 text-center">
           付款資料
