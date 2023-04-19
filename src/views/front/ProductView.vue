@@ -27,7 +27,7 @@
             </swiper-slide>
           </swiper>
         </div>
-        <div class="col-12 col-lg-6 px-5">
+        <div class="col-12 col-lg-6 px-lg-5 d-lg-flex flex-lg-column justify-content-between">
           <h2 class="text-center pb-3">{{ product.title }}</h2>
           <p>{{ product.description }}</p>
           <div class="pb-1 fs-5">
@@ -39,10 +39,10 @@
               <option :value="i" v-for="i in 10" :key="`${i}18645`">{{ i }}</option>
             </select>
           </div>
-          <div class="pt-5 d-flex justify-content-between">
+          <div class="pt-5 d-flex justify-content-end">
             <button
               type="button"
-              class="btn btn-outline-primary"
+              class="btn btn-outline-primary col-12 col-lg-6"
               @click="addToCart(product.id, qty, showToast)"
               :disabled="product.id === loadingItem">
               <i class="bi bi-cart-fill"></i> 加入購物車
@@ -52,7 +52,7 @@
         </div>
       </div>
     </section>
-    <section class="container pb-5">
+    <section class="container py-5">
       <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="exchange-tab" data-bs-toggle="tab" data-bs-target="#exchange-and-return" type="button" role="tab" aria-controls="exchange-and-return" aria-selected="true">退換貨須知</button>
