@@ -56,30 +56,32 @@
       <div class="container d-flex flex-fill flex-column align-items-center justify-content-center text-center py-5 col-8 col-lg-4">
         <h3 class="fw-bold pb-4">您可能也喜歡</h3>
         <swiper
-        :spaceBetween="30"
-        :centeredSlides="true"
-        :autoplay="{
-          delay: 2500,
-          disableOnInteraction: false,
-        }"
-        :scrollbar="{
-          hide: true,
-        }"
-        :navigation="true"
-        :modules="modules"
-          class="swiper"
-        >
-          <swiper-slide v-for="categoryProduct in products" :key="categoryProduct.id">
-            <div class="card">
-              <RouterLink :to="`/product/${categoryProduct.id}`" @click="getCategoryProduct(categoryProduct)" class="overlay-link">
+          :spaceBetween="30"
+          :centeredSlides="true"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false,
+          }"
+          :scrollbar="{
+            hide: true,
+          }"
+          :navigation="true"
+          :modules="modules"
+          class="swiper">
+          <swiper-slide class="bg-primary-exlight" v-for="categoryProduct in products" :key="categoryProduct.id">
+            <div class="card card-translate" style="position: relative;">
+              <RouterLink
+                :to="`/product/${categoryProduct.id}`"
+                @click="getCategoryProduct(categoryProduct)"
+                class="nav-link overlay-link">
                 <img :src="categoryProduct.imageUrl" class="card-img-top object-cover" height="200" alt="productImage">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">{{ categoryProduct.title }}</h5>
+                  <p class="card-text"><span class="text-decoration-line-through">原價 ${{ categoryProduct.origin_price }}</span><br>現在只要 ${{ categoryProduct.price }}</p>
+                  <p>熱量：{{ categoryProduct.calorie }} 大卡</p>
+                  <p>蛋白質：{{ categoryProduct.protein }} 克</p>
+                </div>
               </RouterLink>
-              <div class="card-body">
-                <h5 class="card-title fw-bold">{{ categoryProduct.title }}</h5>
-                <p class="card-text"><span class="text-decoration-line-through">原價 ${{ categoryProduct.origin_price }}</span><br>現在只要 ${{ categoryProduct.price }}</p>
-                <p>熱量：{{ categoryProduct.calorie }} 大卡</p>
-                <p>蛋白質：{{ categoryProduct.protein }} 克</p>
-              </div>
             </div>
           </swiper-slide>
         </swiper>

@@ -27,21 +27,24 @@
         <div class="col-md-9">
           <div class="row g-4">
             <div v-for="product in products" :key="product.id" class="col-md-6 col-lg-4">
-              <div class="card">
-                <RouterLink :to="`/product/${product.id}`" class="nav-link text-primary-light overlay-link"><img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="productImage"></RouterLink>
-                <div class="card-body text-center">
-                  <h5 class="card-title fw-bold">{{ product.title }}</h5>
-                  <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
-                  <p>熱量：{{ product.calorie }} 大卡</p>
-                  <p>蛋白質：{{ product.protein }} 克</p>
-                  <button
-                    type="button"
-                    class="btn btn-outline-primary"
-                    @click="addToCart(product.id, qty, showToast)"
-                    :disabled="product.id === loadingItem">
-                    <i class="bi bi-cart-fill"></i> 加入購物車
-                  </button>
-                </div>
+              <div class="card card-translate mb-5" style="position: relative;">
+                <RouterLink :to="`/product/${product.id}`" class="nav-link overlay-link">
+                  <img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="productImage">
+                  <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">{{ product.title }}</h5>
+                    <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
+                    <p>熱量：{{ product.calorie }} 大卡</p>
+                    <p>蛋白質：{{ product.protein }} 克</p>
+                  </div>
+                </RouterLink>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  style="position: absolute; bottom: -40px; left: 0; right: 0; z-index: 1;"
+                  @click="addToCart(product.id, qty, showToast)"
+                  :disabled="product.id === loadingItem">
+                  <i class="bi bi-cart-fill"></i> 加入購物車
+                </button>
               </div>
             </div>
           </div>
@@ -50,7 +53,7 @@
     </section>
     <LoadingComponent
       ref="loading" />
-    <ShowCartToast ref="showCartToast" />
+    <ShowCartToast ref="cartToast" />
     <section class="container d-flex justify-content-center pt-5">
       <PaginationComponent
         :pages="page"
@@ -91,7 +94,7 @@ export default {
           allProductsBtn.disabled = true
         })
         .catch(err => {
-          alert(err)
+          alert(err.response.data.message)
         })
     },
     filterCategory (btn) {
@@ -151,7 +154,7 @@ export default {
         })
     },
     showToast () {
-      this.$refs.showCartToast.showCartToast()
+      this.$refs.cartToast.showCartToast()
     },
     btnDisabled (btn) {
       const Btns = btn.parentNode.parentNode.querySelectorAll('button')

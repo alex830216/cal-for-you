@@ -71,15 +71,17 @@
           :modules="modules"
           class="swiper"
         >
-          <swiper-slide v-for="product in products" :key="product.id">
-            <div class="card">
-              <RouterLink :to="`/product/${product.id}`" class="nav-link text-primary-light overlay-link"><img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="productImage"></RouterLink>
-              <div class="card-body">
-                <h5 class="card-title fw-bold">{{ product.title }}</h5>
-                <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
-                <p>熱量：{{ product.calorie }} 大卡</p>
-                <p>蛋白質：{{ product.protein }} 克</p>
-              </div>
+          <swiper-slide class="bg-primary-exlight" v-for="product in products" :key="product.id">
+            <div class="card card-translate" style="position: relative;">
+              <RouterLink :to="`/product/${product.id}`" class="nav-link overlay-link">
+                <img :src="product.imageUrl" class="card-img-top object-cover" height="200" alt="productImage">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">{{ product.title }}</h5>
+                  <p class="card-text"><span class="text-decoration-line-through">原價 ${{ product.origin_price }}</span><br>現在只要 ${{ product.price }}</p>
+                  <p>熱量：{{ product.calorie }} 大卡</p>
+                  <p>蛋白質：{{ product.protein }} 克</p>
+                </div>
+              </RouterLink>
             </div>
           </swiper-slide>
         </swiper>
