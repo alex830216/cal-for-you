@@ -11,7 +11,7 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-12 col-sm-4">
               <div class="mb-2">
                 <div class="mb-3">
                   <label for="imageUrl" class="form-label">輸入圖片網址</label>
@@ -59,7 +59,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-12 col-sm-8">
               <div class="mb-3 text-danger">* 為必填</div>
               <div class="mb-3">
                 <label for="title" class="form-label">標題 <span class="text-danger">*</span></label>
@@ -75,7 +75,7 @@
                 <ErrorMessage name="標題" class="invalid-feedback" />
               </div>
               <div class="row">
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-12 col-md-6">
                   <label for="category" class="form-label">分類 <span class="text-danger">*</span></label>
                   <VField
                     id="category"
@@ -88,7 +88,7 @@
                     v-model="innerProduct.category" />
                   <ErrorMessage name="分類" class="invalid-feedback" />
                 </div>
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-12 col-md-6">
                   <label for="unit" class="form-label">單位 <span class="text-danger">*</span></label>
                   <VField
                     id="unit"
@@ -103,7 +103,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-12 col-md-6">
                   <label for="origin_price" class="form-label">原價 <span class="text-danger">*</span></label>
                   <VField
                     id="origin_price"
@@ -116,7 +116,7 @@
                     v-model.number="innerProduct.origin_price" />
                   <ErrorMessage name="原價" class="invalid-feedback" />
                 </div>
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-12 col-md-6">
                   <label for="price" class="form-label">售價 <span class="text-danger">*</span></label>
                   <VField
                     id="price"

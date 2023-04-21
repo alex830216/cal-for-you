@@ -1,7 +1,7 @@
 <template>
   <div class="container pt-6">
     <div class="row justify-content-center">
-      <h1 class="h3 mb-3 font-weight-normal text-center">
+      <h1 class="col-8 h3 mb-3 font-weight-normal text-center">
         請先登入
       </h1>
       <div class="col-8">
@@ -20,10 +20,10 @@
           </button>
         </form>
       </div>
+      <p class="col-8 mt-5 mb-3 text-muted">
+        &copy; 2023~∞ - Cal For You 幫你算
+      </p>
     </div>
-    <p class="mt-5 mb-3 text-muted">
-      &copy; 2023~∞ - Cal For You 幫你算
-    </p>
   </div>
 </template>
 

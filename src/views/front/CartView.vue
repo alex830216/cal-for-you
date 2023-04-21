@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container">
     <template v-if="carts.length">
-      <section class="container pt-6 pb-5">
+      <section class="pt-6 pb-5">
         <h2 class="text-center pb-md-5 fw-bold">購物車清單</h2>
         <div class="d-none d-md-block">
           <div class="row">
@@ -36,7 +36,7 @@
           </div>
         </div>
       </section>
-      <section class="container py-3">
+      <section class="py-3">
         <table class="table table-hover align-middle">
           <thead>
             <tr class="table-primary">
@@ -68,7 +68,9 @@
                   <div class="col-12 col-md-3 pb-2 pb-md-0 me-md-2">
                     <img :src="item.product.imageUrl" class="object-cover w-100" height="120" alt="productImage">
                   </div>
-                  <div class="col-12 col-md-9 text-center text-md-start">{{ item.product.title }}</div>
+                  <div class="col-12 col-md-9 text-center text-md-start">
+                    {{ item.product.title }}
+                  </div>
                 </td>
                 <td>
                   <div class="input-group input-group-sm">
@@ -92,7 +94,7 @@
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="3" class="col-11 text-end">商品總金額</td>
+              <td colspan="3" class="text-end">商品總金額</td>
               <td>${{ $filters.currency(total) }}</td>
             </tr>
             <tr v-if="couponIsUsed">
@@ -102,7 +104,7 @@
           </tfoot>
         </table>
       </section>
-      <section class="container bg-primary-exlight p-4">
+      <section class="bg-primary-exlight p-4">
         <div class="d-flex flex-column flex-sm-row justify-content-end align-items-center pb-5">
           <div class="pb-3 pb-sm-0">
             輸入優惠碼
@@ -135,7 +137,7 @@
       </section>
     </template>
     <template v-else>
-      <section class="position-absolute top-50 start-50 translate-middle col-12 text-center">
+      <section class="position-absolute top-50 start-50 translate-middle w-100 text-center">
         <div class="fs-2">
           <div>購物車目前沒有商品，<RouterLink to="/products" class="link-primary text-decoration-none">繼續購物</RouterLink></div>
         </div>

@@ -42,7 +42,7 @@
           <div class="pt-5 d-flex justify-content-end">
             <button
               type="button"
-              class="btn btn-outline-primary col-12 col-lg-6"
+              class="btn btn-outline-primary w-50"
               @click="addToCart(product.id, qty, showToast)"
               :disabled="product.id === loadingItem">
               <i class="bi bi-cart-fill"></i> 加入購物車
@@ -77,7 +77,7 @@
       </div>
     </section>
     <section class="bg-primary-exlight">
-      <div class="container d-flex flex-fill flex-column align-items-center justify-content-center text-center py-5 col-8">
+      <div class="container d-flex flex-fill flex-column align-items-center justify-content-center text-center py-5 w-50">
         <h3 class="fw-bold pb-4">您可能也喜歡</h3>
         <swiper
           :spaceBetween="10"

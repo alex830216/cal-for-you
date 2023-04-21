@@ -13,26 +13,26 @@
       <div class="container text-center">
         <div class="fs-1 fw-bold pb-5">您是否有以下困擾?</div>
         <div class="row align-items-center justify-content-center pb-6 py-md-sm">
-          <div class="col-md-6 pb-3 pb-md-0" data-aos="fade-right">
+          <div class="col-12 col-md-6 pb-3 pb-md-0" data-aos="fade-right">
             <img src="https://images.unsplash.com/photo-1511909525232-61113c912358?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80" class="img-fluid" alt="diet" style="object-fit: cover;">
           </div>
-          <div class="col-md-6" data-aos="fade-left">
+          <div class="col-12 col-md-6" data-aos="fade-left">
             <h2 class="fs-2">想減肥<br>但不知道該吃哪些食物</h2>
           </div>
         </div>
         <div class="row flex-row-reverse align-items-center justify-content-center pb-6 py-md-sm">
-          <div class="col-md-6 pb-3 pb-md-0" data-aos="fade-left">
+          <div class="col-12 col-md-6 pb-3 pb-md-0" data-aos="fade-left">
             <img src="https://images.unsplash.com/photo-1577563612200-a95560e2edec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="img-fluid" alt="obesity" style="object-fit: cover;">
           </div>
-          <div class="col-md-6" data-aos="fade-right">
+          <div class="col-12 col-md-6" data-aos="fade-right">
             <h2 class="fs-2">想減脂<br>害怕攝取過多熱量</h2>
           </div>
         </div>
         <div class="row align-items-center justify-content-center py-md-sm">
-          <div class="col-md-6 pb-3 pb-md-0" data-aos="fade-right">
+          <div class="col-12 col-md-6 pb-3 pb-md-0" data-aos="fade-right">
             <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="img-fluid" alt="training" style="object-fit: cover;">
           </div>
-          <div class="col-md-6" data-aos="fade-left">
+          <div class="col-12 col-md-6" data-aos="fade-left">
             <h2 class="fs-2">想增肌<br>這樣吃，蛋白質夠嗎</h2>
           </div>
         </div>
@@ -91,7 +91,7 @@
       <div class="cover d-flex align-items-center justify-content-center text-primary-light"
       style="background: url(https://images.unsplash.com/photo-1557568192-2fafc8b5bdc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) no-repeat fixed center / cover ; width: 100%; height: 500px;">
         <div class="container position-absolute top-50 start-50 translate-middle" data-aos="fade-up">
-          <div class="row w-100">
+          <div class="row">
             <div class="col-12 col-lg-5">
               <label for="email" class="form-label pb-3 fs-3">訂閱我們<br>可獲得專屬減脂菜單！</label>
               <VForm class="input-group" v-slot="{ errors, meta }" @submit="subscribe">

@@ -49,16 +49,16 @@
         </h2>
         <form class="pb-4">
           <div class="row align-items-center mb-3">
-            <div class="col-3 col-sm-auto me-5">
+            <div class="col-auto me-5">
               <label class="col-form-label">性別</label>
             </div>
-            <div class="col-2 col-sm-auto form-check ms-1 me-3">
+            <div class="col-auto form-check ms-1 me-3">
               <input type="radio" name="sex" id="male" class="form-check-input" value="male" v-model="gender" checked>
               <label class="form-check-label" for="male">
                 男
               </label>
             </div>
-            <div class="col-2 col-sm-auto form-check me-3">
+            <div class="col-auto form-check me-3">
               <input type="radio" name="sex" id="female" class="form-check-input" value="female" v-model="gender">
               <label class="form-check-label" for="female">
                 女
@@ -102,7 +102,7 @@
             <div class="col-auto me-3">
               <label class="col-form-label">運動強度</label>
             </div>
-            <div class="col-auto">
+            <div class="col-12 col-sm-auto">
               <select class="form-select" aria-label="exercise-frequency" v-model="activity">
                 <option value="init" selected disabled>請選擇</option>
                 <option value="sedentary">極輕度，久坐的辦公室工作，很少運動</option>
@@ -117,7 +117,7 @@
             <div class="col-auto me-3">
               <label class="col-form-label">理想體態</label>
             </div>
-            <div class="col-auto">
+            <div class="col-12 col-sm-auto">
               <select class="form-select" aria-label="bulking-and-cutting" v-model="exercise">
                 <option value="init" selected disabled>請選擇</option>
                 <option value="no-exercise">平常無運動或是想減重</option>

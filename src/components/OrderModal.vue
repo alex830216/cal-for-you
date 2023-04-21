@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-12 col-md-4">
               <h3>用戶資料</h3>
               <table class="table">
                 <tbody v-if="innerOrder.user">
@@ -32,7 +32,7 @@
                 </tbody>
               </table>
             </div>
-            <div class="col-md-8">
+            <div class="col-12 col-md-8">
               <h3>訂單細節</h3>
               <table class="table">
                 <tbody>

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <section class="container pt-6">
+  <div class="container">
+    <section class="pt-6">
       <h2 class="fw-bold pb-4 text-center">商品列表</h2>
       <div class="row d-flex flex-md-row flex-column">
         <div class="col-8 col-md-3 align-self-center align-self-md-start">
@@ -24,7 +24,7 @@
             <button type="button" @click="filterProtein($event.target)" class="btn btn-outline-primary">20.1<i class="bi bi-arrow-up"></i></button>
           </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-4 col-md-9">
           <div class="row g-4">
             <div v-for="product in products" :key="product.id" class="col-md-6 col-lg-4">
               <div class="card card-translate mb-5" style="position: relative;">
@@ -54,7 +54,7 @@
     <LoadingComponent
       ref="loading" />
     <ShowCartToast ref="cartToast" />
-    <section class="container d-flex justify-content-center pt-5">
+    <section class="d-flex justify-content-center pt-5">
       <PaginationComponent
         :pages="page"
         @change-page="getProducts" />

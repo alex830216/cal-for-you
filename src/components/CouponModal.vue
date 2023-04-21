@@ -15,24 +15,18 @@
               <label for="title" class="form-label">標題</label>
               <input id="title" type="text" class="form-control" placeholder="請輸入標題" v-model="innerCoupon.title">
             </div>
-
-            <div class="row">
-              <div class="mb-3 col-md-6">
-                <label for="percent" class="form-label">打折比例</label>
-                <input id="percent" type="number" min="0" max="100" class="form-control" placeholder="請輸入打折比例" v-model="innerCoupon.percent">
-              </div>
+            <div class="mb-3">
+              <label for="percent" class="form-label">打折比例</label>
+              <input id="percent" type="number" min="0" max="100" class="form-control" placeholder="請輸入打折比例" v-model="innerCoupon.percent">
             </div>
-
             <div class="mb-3">
               <label for="due_date" class="form-label">到期日</label>
               <input id="due_date" type="month" class="form-control" placeholder="請輸入到期日" v-model="innerCoupon.due_date">
             </div>
-
             <div class="mb-3">
               <label for="code" class="form-label">優惠代碼</label>
               <input id="code" type="text" class="form-control" placeholder="請輸入優惠代碼" v-model="innerCoupon.code">
             </div>
-
             <div class="mb-3">
               <div class="form-check">
                 <input id="is_enabled" class="form-check-input" type="checkbox" :true-value="1" :false-value="0" v-model="innerCoupon.is_enabled">

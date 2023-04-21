@@ -1,157 +1,161 @@
 <template>
-  <div class="container col-12 col-lg-6">
-    <section class="pt-6 pb-5">
-      <h2 class="text-center pb-md-5 fw-bold">填寫訂購資料</h2>
-      <div class="d-none d-md-block">
-        <div class="row">
-          <div class="col-3 pe-0">
-            <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
-              <div class="line bg-black w-100"></div>
-              <div class="circle bg-white border border border-primary rounded-circle"></div>
-              <div class="mt-3">購物車清單</div>
-            </div>
-          </div>
-          <div class="col-3 px-0">
-            <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
-              <div class="line bg-black w-100"></div>
-              <div class="circle bg-primary border border-primary rounded-circle"></div>
-              <div class="mt-3 fw-bold">填寫訂購資料</div>
-            </div>
-          </div>
-          <div class="col-3 px-0">
-            <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
-              <div class="line bg-black w-100"></div>
-              <div class="circle bg-white border border-primary rounded-circle"></div>
-              <div class="mt-3">填寫付款資料</div>
-            </div>
-          </div>
-          <div class="col-3 ps-0">
-            <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
-              <div class="line bg-black w-100"></div>
-              <div class="circle bg-white border border-primary rounded-circle"></div>
-              <div class="mt-3">完成訂單</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="py-3">
-      <table class="table table-hover align-middle text-center">
-        <thead>
-          <tr class="table-primary">
-            <th class="col-6">品名</th>
-            <th class="col-2">單價</th>
-            <th class="col-2">數量</th>
-            <th class="col-2">小計</th>
-          </tr>
-        </thead>
-        <tbody>
-          <template v-if="carts">
-            <tr v-for="item in carts" :key="item.id">
-              <td class="d-flex flex-column flex-md-row align-items-center justify-content-center">
-                <div class="col-12 col-md-3 pb-2 pb-md-0 me-md-2">
-                  <img :src="item.product.imageUrl" class="object-cover w-100" height="120" alt="productImage">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-6">
+        <section class="pt-6 pb-5">
+          <h2 class="text-center pb-md-5 fw-bold">填寫訂購資料</h2>
+          <div class="d-none d-md-block">
+            <div class="row">
+              <div class="col-3 pe-0">
+                <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
+                  <div class="line bg-black w-100"></div>
+                  <div class="circle bg-white border border border-primary rounded-circle"></div>
+                  <div class="mt-3">購物車清單</div>
                 </div>
-                <div class="col-12 col-md-9 text-center text-md-start">{{ item.product.title }}</div>
-              </td>
-              <td>
-                {{ item.product.price }}
-              </td>
-              <td>
-                {{ item.qty }}
-              </td>
-              <td>
-                ${{ item.product.price * item.qty }}
-              </td>
-            </tr>
-          </template>
-        </tbody>
-        <tfoot>
-          <tr class="fs-4">
-            <td colspan="3" class="col-11 text-end pe-5 fw-bold">訂單金額</td>
-            <td class="col-1 fw-bold">${{ $filters.currency(final_total) }}</td>
-          </tr>
-        </tfoot>
-      </table>
-    </section>
-    <section>
-      <div class="bg-primary-subtle p-4">
-        <h3 class="pb-3">
-          訂購資料
-        </h3>
-        <VForm class="pb-4" ref="form" v-slot="{ errors, meta }" @submit="createOrder">
-          <div class="mb-3 text-danger">* 為必填</div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-            <VField
-              id="email"
-              name="email"
-              type="email"
-              class="form-control"
-              :class="{ 'is-invalid': errors['email'] }"
-              placeholder="email@gmail.com"
-              rules="required|email"
-              v-model="form.user.email" />
-            <ErrorMessage name="email" class="invalid-feedback" />
+              </div>
+              <div class="col-3 px-0">
+                <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
+                  <div class="line bg-black w-100"></div>
+                  <div class="circle bg-primary border border-primary rounded-circle"></div>
+                  <div class="mt-3 fw-bold">填寫訂購資料</div>
+                </div>
+              </div>
+              <div class="col-3 px-0">
+                <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
+                  <div class="line bg-black w-100"></div>
+                  <div class="circle bg-white border border-primary rounded-circle"></div>
+                  <div class="mt-3">填寫付款資料</div>
+                </div>
+              </div>
+              <div class="col-3 ps-0">
+                <div class="timeline-item d-flex flex-column align-items-center justify-content-center">
+                  <div class="line bg-black w-100"></div>
+                  <div class="circle bg-white border border-primary rounded-circle"></div>
+                  <div class="mt-3">完成訂單</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="name" class="form-label">收件人姓名 <span class="text-danger">*</span></label>
-            <VField
-              id="name"
-              name="姓名"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': errors['姓名'] }"
-              placeholder="王小明"
-              rules="required"
-              v-model="form.user.name" />
-            <ErrorMessage name="姓名" class="invalid-feedback" />
+        </section>
+        <section class="py-3">
+          <table class="table table-hover align-middle text-center">
+            <thead>
+              <tr class="table-primary">
+                <th class="col-6">品名</th>
+                <th class="col-2">單價</th>
+                <th class="col-2">數量</th>
+                <th class="col-2">小計</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template v-if="carts">
+                <tr v-for="item in carts" :key="item.id">
+                  <td class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+                    <div class="col-12 col-md-3 pb-2 pb-md-0 me-md-2">
+                      <img :src="item.product.imageUrl" class="object-cover w-100" height="120" alt="productImage">
+                    </div>
+                    <div class="col-12 col-md-9 text-center text-md-start">{{ item.product.title }}</div>
+                  </td>
+                  <td>
+                    {{ item.product.price }}
+                  </td>
+                  <td>
+                    {{ item.qty }}
+                  </td>
+                  <td>
+                    ${{ item.product.price * item.qty }}
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+            <tfoot>
+              <tr class="fs-4">
+                <td colspan="3" class="col-11 text-end pe-5 fw-bold">訂單金額</td>
+                <td class="col-1 fw-bold">${{ $filters.currency(final_total) }}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </section>
+        <section>
+          <div class="bg-primary-subtle p-4">
+            <h3 class="pb-3">
+              訂購資料
+            </h3>
+            <VForm class="pb-4" ref="form" v-slot="{ errors, meta }" @submit="createOrder">
+              <div class="mb-3 text-danger">* 為必填</div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                <VField
+                  id="email"
+                  name="email"
+                  type="email"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors['email'] }"
+                  placeholder="email@gmail.com"
+                  rules="required|email"
+                  v-model="form.user.email" />
+                <ErrorMessage name="email" class="invalid-feedback" />
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">收件人姓名 <span class="text-danger">*</span></label>
+                <VField
+                  id="name"
+                  name="姓名"
+                  type="text"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors['姓名'] }"
+                  placeholder="王小明"
+                  rules="required"
+                  v-model="form.user.name" />
+                <ErrorMessage name="姓名" class="invalid-feedback" />
+              </div>
+              <div class="mb-3">
+                <label for="tel" class="form-label">收件人電話 <span class="text-danger">*</span></label>
+                <VField
+                  id="tel"
+                  name="電話"
+                  type="tel"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors['電話'] }"
+                  placeholder="0912345678"
+                  rules="required|phone"
+                  v-model="form.user.tel" />
+                <ErrorMessage name="電話" class="invalid-feedback" />
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">收件人地址 <span class="text-danger">*</span></label>
+                <VField
+                  id="address"
+                  name="地址"
+                  type="text"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors['地址'] }"
+                  placeholder="xx市xx區xx路x段x號x樓"
+                  rules="required"
+                  v-model="form.user.address" />
+                <ErrorMessage name="地址" class="invalid-feedback" />
+              </div>
+              <div class="mb-4">
+                <label for="remarks" class="form-label">備註</label>
+                <textarea class="form-control" id="remarks" cols="30" rows="5" v-model="form.message"></textarea>
+              </div>
+              <div class="d-flex justify-content-end align-items-center py-3">
+                <RouterLink to="/cart" class="btn btn-light me-4">返回購物車</RouterLink>
+                <!-- <span :class="meta.valid ? '' : 'disabled-cursor'"> -->
+                <span :class="{ 'disabled-cursor': !meta.valid}">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    :disabled="!meta.valid || carts.length === 0">
+                    確認結帳
+                  </button>
+                </span>
+              </div>
+            </VForm>
           </div>
-          <div class="mb-3">
-            <label for="tel" class="form-label">收件人電話 <span class="text-danger">*</span></label>
-            <VField
-              id="tel"
-              name="電話"
-              type="tel"
-              class="form-control"
-              :class="{ 'is-invalid': errors['電話'] }"
-              placeholder="0912345678"
-              rules="required|phone"
-              v-model="form.user.tel" />
-            <ErrorMessage name="電話" class="invalid-feedback" />
-          </div>
-          <div class="mb-3">
-            <label for="address" class="form-label">收件人地址 <span class="text-danger">*</span></label>
-            <VField
-              id="address"
-              name="地址"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': errors['地址'] }"
-              placeholder="xx市xx區xx路x段x號x樓"
-              rules="required"
-              v-model="form.user.address" />
-            <ErrorMessage name="地址" class="invalid-feedback" />
-          </div>
-          <div class="mb-4">
-            <label for="remarks" class="form-label">備註</label>
-            <textarea class="form-control" id="remarks" cols="30" rows="5" v-model="form.message"></textarea>
-          </div>
-          <div class="d-flex justify-content-end align-items-center py-3">
-            <RouterLink to="/cart" class="btn btn-light me-4">返回購物車</RouterLink>
-            <!-- <span :class="meta.valid ? '' : 'disabled-cursor'"> -->
-            <span :class="{ 'disabled-cursor': !meta.valid}">
-              <button
-                type="submit"
-                class="btn btn-primary"
-                :disabled="!meta.valid || carts.length === 0">
-                確認結帳
-              </button>
-            </span>
-          </div>
-        </VForm>
+        </section>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
