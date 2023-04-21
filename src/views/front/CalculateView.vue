@@ -47,19 +47,35 @@
         <h2>
           BMR、TDEE、蛋白質計算機
         </h2>
-        <form class="pb-4">
+        <VForm v-slot="{ errors, meta }" @submit="calculateAll" class="pb-4">
           <div class="row align-items-center mb-3">
             <div class="col-auto me-5">
               <label class="col-form-label">性別</label>
             </div>
             <div class="col-auto form-check ms-1 me-3">
-              <input type="radio" name="sex" id="male" class="form-check-input" value="male" v-model="gender" checked>
+              <VField
+                id="male"
+                name="性別"
+                type="radio"
+                class="form-check-input"
+                :class="{ 'is-invalid': errors['性別'] }"
+                v-model="gender"
+                value="male" />
+              <ErrorMessage name="性別" class="invalid-feedback" />
               <label class="form-check-label" for="male">
                 男
               </label>
             </div>
             <div class="col-auto form-check me-3">
-              <input type="radio" name="sex" id="female" class="form-check-input" value="female" v-model="gender">
+              <VField
+                id="female"
+                name="性別"
+                type="radio"
+                class="form-check-input"
+                :class="{ 'is-invalid': errors['性別'] }"
+                v-model="gender"
+                value="female" />
+              <ErrorMessage name="性別" class="invalid-feedback" />
               <label class="form-check-label" for="female">
                 女
               </label>
@@ -69,8 +85,17 @@
             <div class="col-auto me-5">
               <label for="height" class="col-form-label">身高</label>
             </div>
-            <div class="col-6 col-sm-2">
-              <input type="number" id="height" name="height" min="1" class="form-control" v-model.number="height" placeholder="170">
+            <div class="col-6 col-lg-4">
+              <VField
+                id="height"
+                name="身高"
+                type="number"
+                class="form-control"
+                :class="{ 'is-invalid': errors['身高'] }"
+                placeholder="請輸入身高"
+                rules="required|min_value:0"
+                v-model.number="height" />
+              <ErrorMessage name="身高" class="invalid-feedback" />
             </div>
             <div class="col-auto">
               公分
@@ -80,8 +105,17 @@
             <div class="col-auto me-5">
               <label for="weight" class="col-form-label">體重</label>
             </div>
-            <div class="col-6 col-sm-2">
-              <input type="number" id="weight" name="weight" min="1" class="form-control" v-model.number="weight" placeholder="60">
+            <div class="col-6 col-lg-4">
+              <VField
+                id="weight"
+                name="體重"
+                type="number"
+                class="form-control"
+                :class="{ 'is-invalid': errors['體重'] }"
+                placeholder="請輸入體重"
+                rules="required|min_value:0"
+                v-model.number="weight" />
+              <ErrorMessage name="體重" class="invalid-feedback" />
             </div>
             <div class="col-auto">
               公斤
@@ -91,8 +125,17 @@
             <div class="col-auto me-5">
               <label for="age" class="col-form-label">年齡</label>
             </div>
-            <div class="col-6 col-sm-2">
-              <input type="number" id="age" name="age" min="1" class="form-control" v-model.number="age" placeholder="20">
+            <div class="col-6 col-lg-4">
+              <VField
+                id="age"
+                name="年齡"
+                type="number"
+                class="form-control"
+                :class="{ 'is-invalid': errors['年齡'] }"
+                placeholder="請輸入年齡"
+                rules="required|min_value:0"
+                v-model.number="age" />
+              <ErrorMessage name="年齡" class="invalid-feedback" />
             </div>
             <div class="col-auto">
               歲
@@ -100,17 +143,25 @@
           </div>
           <div class="row g-3 align-items-center mb-3">
             <div class="col-auto me-3">
-              <label class="col-form-label">運動強度</label>
+              <label for="activity" class="col-form-label">運動強度</label>
             </div>
             <div class="col-12 col-sm-auto">
-              <select class="form-select" aria-label="exercise-frequency" v-model="activity">
+              <VField
+                id="activity"
+                name="運動強度"
+                class="form-select"
+                :class="{ 'is-invalid': errors['運動強度'] }"
+                rules="required|is_not:init"
+                v-model="activity"
+                as="select">
                 <option value="init" selected disabled>請選擇</option>
                 <option value="sedentary">極輕度，久坐的辦公室工作，很少運動</option>
                 <option value="lightly">輕度，每週運動1-3次</option>
                 <option value="moderately">中度，每週運動3-5次</option>
                 <option value="very">高度，每週運動6-7次</option>
                 <option value="super">極高度，每天都有高強度運動或是體力勞動</option>
-              </select>
+              </VField>
+              <ErrorMessage name="運動強度" class="invalid-feedback" />
             </div>
           </div>
           <div class="row g-3 align-items-center mb-3">
@@ -118,18 +169,33 @@
               <label class="col-form-label">理想體態</label>
             </div>
             <div class="col-12 col-sm-auto">
-              <select class="form-select" aria-label="bulking-and-cutting" v-model="exercise">
+              <VField
+                id="exercise"
+                name="理想體態"
+                class="form-select"
+                :class="{ 'is-invalid': errors['理想體態'] }"
+                rules="required|is_not:init"
+                v-model="exercise"
+                as="select">
                 <option value="init" selected disabled>請選擇</option>
                 <option value="no-exercise">平常無運動或是想減重</option>
                 <option value="exercise-same">有運動健身，想維持肌肉量</option>
                 <option value="exercise-more">有運動健身，想增加肌肉量</option>
-              </select>
+              </VField>
+              <ErrorMessage name="理想體態" class="invalid-feedback" />
             </div>
           </div>
           <div>
-            <button type="button" @click="calculateAll" class="btn btn-primary">計算</button>
+            <span :class="{ 'disabled-cursor': !meta.valid}">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                :disabled="!meta.valid">
+                計算
+              </button>
+            </span>
           </div>
-        </form>
+        </VForm>
         <div v-if="bmr && tdee && protein" class="fs-4">
           <div class="pb-3">
             您的每日基礎代謝率BMR： {{ bmr }} 大卡<br>
