@@ -141,7 +141,6 @@
               </div>
               <div class="d-flex justify-content-end align-items-center py-3">
                 <RouterLink to="/cart" class="btn btn-light me-4">返回購物車</RouterLink>
-                <!-- <span :class="meta.valid ? '' : 'disabled-cursor'"> -->
                 <span :class="{ 'disabled-cursor': !meta.valid}">
                   <button
                     type="submit"

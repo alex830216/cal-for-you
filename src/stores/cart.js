@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const { VITE_URL, VITE_PATH } = import.meta.env
 
@@ -66,7 +67,13 @@ const cartStore = defineStore('cart', {
           this.getCart()
         })
         .catch((err) => {
-          alert(err.response.data.message)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     }
   }
