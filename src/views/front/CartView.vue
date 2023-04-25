@@ -117,7 +117,7 @@
           </button>
         </div>
         <template v-if="couponIsUsed">
-          <div class="d-flex justify-content-end align-items-center pb-4 text-danger fw-bold">
+          <div class="d-flex justify-content-center justify-content-sm-end align-items-center pb-4 text-danger fw-bold">
             優惠碼已使用，享{{ final_total * 10 / total }}折優惠
           </div>
         </template>
