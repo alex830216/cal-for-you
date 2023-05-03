@@ -40,7 +40,7 @@
                 <button
                   type="button"
                   class="btn btn-outline-primary"
-                  style="position: absolute; bottom: -40px; left: 0; right: 0; z-index: 1;"
+                  style="position: absolute; width: 100%; bottom: -40px; left: 0; right: 0; z-index: 1;"
                   @click="addToCart(product.id, qty, showToast)"
                   :disabled="product.id === loadingItem">
                   <i class="bi bi-cart-fill"></i> 加入購物車
